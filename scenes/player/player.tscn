@@ -1,32 +1,17 @@
-[gd_scene load_steps=7 format=3 uid="uid://ubcbq426qntu"]
+[gd_scene load_steps=14 format=3 uid="uid://ubcbq426qntu"]
 
 [ext_resource type="Script" uid="uid://dub2ajnceaf0f" path="res://scenes/player/player.gd" id="1_8afob"]
 [ext_resource type="Texture2D" uid="uid://qy5r42vctva0" path="res://assets/player.png" id="2_dovo2"]
-
-[sub_resource type="Animation" id="Animation_dovo2"]
-resource_name = "move"
-length = 0.45
-loop_mode = 1
-step = 0.01
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Visuals/Sprite2D:scale")
-tracks/0/interp = 2
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.15, 0.3),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Vector2(1, 1), Vector2(1.2, 0.9), Vector2(0.9, 1.2)]
-}
+[ext_resource type="Shader" uid="uid://5iltq3s2rogi" path="res://border.gdshader" id="2_lvxji"]
+[ext_resource type="Texture2D" uid="uid://lhkp8nvo84ll" path="res://assets/glob.png" id="3_gmlin"]
+[ext_resource type="Texture2D" uid="uid://bj788wkatxe0n" path="res://assets/player_eyes.png" id="5_p47bc"]
 
 [sub_resource type="Animation" id="Animation_gmlin"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Visuals/Sprite2D:scale")
+tracks/0/path = NodePath("Visuals:scale")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -36,11 +21,58 @@ tracks/0/keys = {
 "values": [Vector2(1, 1)]
 }
 
+[sub_resource type="Animation" id="Animation_dovo2"]
+resource_name = "move"
+length = 0.45
+loop_mode = 1
+step = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Visuals:scale")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.2, 0.9), Vector2(0.9, 1.2)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_lvxji"]
 _data = {
 &"RESET": SubResource("Animation_gmlin"),
 &"move": SubResource("Animation_dovo2")
 }
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_p47bc"]
+shader = ExtResource("2_lvxji")
+shader_parameter/outline_width = 0.5000000074506
+shader_parameter/outline_color = Color(0.3019608, 0.40392157, 0.22745098, 1)
+
+[sub_resource type="Curve" id="Curve_gmlin"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.13080895, 1), 0.0, 0.0, 0, 0, Vector2(0.93459547, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_lvxji"]
+curve = SubResource("Curve_gmlin")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_p47bc"]
+particle_flag_disable_z = true
+emission_shape_offset = Vector3(0, 0.5, 0)
+emission_shape = 3
+emission_box_extents = Vector3(4, 2, 1)
+angle_min = -179.99998
+angle_max = 180.00002
+gravity = Vector3(0, 0, 0)
+scale_min = 0.39999998
+scale_max = 1.1999999
+scale_curve = SubResource("CurveTexture_lvxji")
+turbulence_enabled = true
+turbulence_noise_strength = 0.2
+turbulence_noise_scale = 0.6
+turbulence_influence_min = 0.020000001
+turbulence_influence_max = 0.080000006
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_p47bc"]
 radius = 5.0
@@ -53,10 +85,25 @@ libraries = {
 &"": SubResource("AnimationLibrary_lvxji")
 }
 
-[node name="Visuals" type="Node2D" parent="." unique_id=810093162]
+[node name="Visuals" type="CanvasGroup" parent="." unique_id=1194068647]
+material = SubResource("ShaderMaterial_p47bc")
 
-[node name="Sprite2D" type="Sprite2D" parent="Visuals" unique_id=1881464322]
+[node name="Globs" type="GPUParticles2D" parent="Visuals" unique_id=1737167803]
+amount = 32
+texture = ExtResource("3_gmlin")
+lifetime = 30.0
+preprocess = 60.0
+fixed_fps = 0
+local_coords = true
+process_material = SubResource("ParticleProcessMaterial_p47bc")
+
+[node name="BodySprite2D" type="Sprite2D" parent="Visuals" unique_id=1881464322]
+scale = Vector2(1.1831995, 0.89442456)
 texture = ExtResource("2_dovo2")
+offset = Vector2(0, -8)
+
+[node name="EyesSprite2D" type="Sprite2D" parent="Visuals" unique_id=567074245]
+texture = ExtResource("5_p47bc")
 offset = Vector2(0, -8)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1525390777]
