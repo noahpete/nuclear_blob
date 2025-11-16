@@ -1,0 +1,181 @@
+[gd_scene load_steps=10 format=3 uid="uid://wrbxwpd8qym2"]
+
+[ext_resource type="Script" uid="uid://143welu2vjvf" path="res://scenes/entities/rat/rat.gd" id="1_dhrd7"]
+[ext_resource type="Texture2D" uid="uid://uahisbxv6w5g" path="res://scenes/entities/rat/rat_body.png" id="1_ycvpf"]
+[ext_resource type="Texture2D" uid="uid://c05147h0som5a" path="res://scenes/entities/rat/rat_tail.png" id="2_msx1r"]
+[ext_resource type="Texture2D" uid="uid://dyltgvq6rpo2h" path="res://scenes/entities/rat/rat_head.png" id="3_dhrd7"]
+
+[sub_resource type="Animation" id="Animation_msx1r"]
+resource_name = "idle"
+length = 0.24
+loop_mode = 1
+step = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Visuals/RatBody:rotation")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.08, 0.16),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, -0.20943952, 0.20943952]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Visuals/RatTail:scale")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.08, 0.16),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1, 1.1579411), Vector2(1, 0.8961373)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Visuals/RatTail:rotation")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.08, 0.16),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.7158233, 0.85212517, 0.2617994]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Visuals/RatTail:position")
+tracks/3/interp = 2
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.08, 0.16),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(-4, -9), Vector2(-2, -10), Vector2(-6.0000005, -11)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Visuals/RatHead:position")
+tracks/4/interp = 2
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.08, 0.16),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(5, -3), Vector2(5, -4), Vector2(5, -2)]
+}
+
+[sub_resource type="Animation" id="Animation_dhrd7"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Visuals/RatBody:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Visuals/RatTail:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Visuals/RatTail:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.7158233]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Visuals/RatTail:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-4, -9)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Visuals/RatHead:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(5, -3)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_dhrd7"]
+_data = {
+&"RESET": SubResource("Animation_dhrd7"),
+&"move": SubResource("Animation_msx1r")
+}
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_4ybdi"]
+radius = 13.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_dhrd7"]
+radius = 5.0
+
+[node name="Rat" type="CharacterBody2D" unique_id=660716153]
+script = ExtResource("1_dhrd7")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=301938999]
+libraries = {
+&"": SubResource("AnimationLibrary_dhrd7")
+}
+
+[node name="Area2D" type="Area2D" parent="." unique_id=2059591967]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1310306397]
+position = Vector2(0, -7)
+shape = SubResource("CircleShape2D_4ybdi")
+
+[node name="Visuals" type="Node2D" parent="." unique_id=664246584]
+
+[node name="RatBody" type="Sprite2D" parent="Visuals" unique_id=1715529847]
+position = Vector2(0, -5)
+texture = ExtResource("1_ycvpf")
+
+[node name="RatTail" type="Sprite2D" parent="Visuals" unique_id=573788366]
+position = Vector2(-4, -9)
+rotation = 0.7158233
+texture = ExtResource("2_msx1r")
+
+[node name="RatHead" type="Sprite2D" parent="Visuals" unique_id=916558857]
+position = Vector2(5, -3)
+texture = ExtResource("3_dhrd7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=149080143]
+visible = false
+position = Vector2(0, -5)
+shape = SubResource("CircleShape2D_dhrd7")
