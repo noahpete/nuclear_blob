@@ -5,12 +5,12 @@ extends Node2D
 
 var line_point_queue: Array[Vector2]
 
-@onready var queue_free_timer: Timer = $QueueFreeTimer
+@onready var destroy_timer: Timer = $DestroyTimer
 @onready var line_2d: Line2D = $Line2D
 @onready var hitbox_component: HitboxComponent = $HitboxComponent
 
-#func _ready() -> void:
-	#queue_free_timer.timeout.connect(queue_free)
+func _ready() -> void:
+	destroy_timer.timeout.connect(_on_destroy_timer_timeout)
 
 func _process(_delta: float) -> void:
 	line_point_queue.push_front(global_position)
@@ -20,3 +20,10 @@ func _process(_delta: float) -> void:
 	line_2d.clear_points()
 	for point in line_point_queue:
 		line_2d.add_point(point)
+
+func _on_destroy_timer_timeout() -> void:
+	var opacity_tween := create_tween()
+	opacity_tween.tween_property(self, "modulate:a", 0, 0.4)\
+		.set_trans(Tween.TRANS_CUBIC)\
+		.set_ease(Tween.EASE_OUT)
+	opacity_tween.tween_callback(queue_free)

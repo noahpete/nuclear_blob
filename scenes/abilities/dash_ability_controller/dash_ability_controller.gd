@@ -57,3 +57,4 @@ func dash(direction: Vector2) -> void:
 	current_dash_ability = DASH_ABILITY.instantiate()
 	Main.instance.y_sort_origin.add_child(current_dash_ability)
 	current_dash_ability.global_position = parent.global_position
+	current_dash_ability.destroy_timer.start(dash_duration * 0.8)
