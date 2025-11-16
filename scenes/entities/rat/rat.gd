@@ -5,9 +5,6 @@ const MAX_VELOCITY = 75
 
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 
-func _ready() -> void:
-	name = "Rat"
-
 func _process(_delta: float) -> void:
 	var direction = _get_direction_to_player()
 	velocity = direction * MAX_VELOCITY

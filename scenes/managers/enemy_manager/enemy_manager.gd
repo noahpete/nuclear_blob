@@ -19,5 +19,5 @@ func _on_timer_timeout() -> void:
 	var spawn_position := Player.instance.global_position + random_direction * SPAWN_RADIUS
 
 	var enemy: Rat = RAT.instantiate()
-	enemy_container.add_child(enemy)
+	enemy_container.add_child(enemy, true)
 	enemy.global_position = spawn_position
