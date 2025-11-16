@@ -1,6 +1,6 @@
 shader_type canvas_item;
 
-uniform float outline_width :hint_range(0.0, 10.0, 0.1) = 2.0;
+uniform float outline_width :hint_range(0.0, 10.0, 0.1) = 0.5;
 uniform vec4 outline_color : source_color;
 
 uniform sampler2D screen_texture: hint_screen_texture, filter_nearest, repeat_disable;
