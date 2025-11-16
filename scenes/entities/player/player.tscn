@@ -1,10 +1,11 @@
-[gd_scene load_steps=14 format=3 uid="uid://ubcbq426qntu"]
+[gd_scene load_steps=15 format=3 uid="uid://ubcbq426qntu"]
 
-[ext_resource type="Script" uid="uid://dub2ajnceaf0f" path="res://scenes/player/player.gd" id="1_8afob"]
-[ext_resource type="Texture2D" uid="uid://qy5r42vctva0" path="res://assets/player.png" id="2_dovo2"]
-[ext_resource type="Shader" uid="uid://5iltq3s2rogi" path="res://border.gdshader" id="2_lvxji"]
-[ext_resource type="Texture2D" uid="uid://lhkp8nvo84ll" path="res://assets/glob.png" id="3_gmlin"]
-[ext_resource type="Texture2D" uid="uid://bj788wkatxe0n" path="res://assets/player_eyes.png" id="5_p47bc"]
+[ext_resource type="Script" uid="uid://dub2ajnceaf0f" path="res://scenes/entities/player/player.gd" id="1_8afob"]
+[ext_resource type="Texture2D" uid="uid://qy5r42vctva0" path="res://scenes/entities/player/player.png" id="2_dovo2"]
+[ext_resource type="Shader" uid="uid://5iltq3s2rogi" path="res://resources/border.gdshader" id="2_lvxji"]
+[ext_resource type="Texture2D" uid="uid://cqhdxls22ecvg" path="res://assets/glow.webp" id="3_75vfm"]
+[ext_resource type="Texture2D" uid="uid://lhkp8nvo84ll" path="res://scenes/entities/player/glob.png" id="3_gmlin"]
+[ext_resource type="Texture2D" uid="uid://bj788wkatxe0n" path="res://scenes/entities/player/player_eyes.png" id="5_p47bc"]
 
 [sub_resource type="Animation" id="Animation_gmlin"]
 length = 0.001
@@ -48,7 +49,7 @@ _data = {
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_p47bc"]
 shader = ExtResource("2_lvxji")
 shader_parameter/outline_width = 0.5000000074506
-shader_parameter/outline_color = Color(0.3019608, 0.40392157, 0.22745098, 1)
+shader_parameter/outline_color = Color(0.14509805, 0.58431375, 0.41568628, 1)
 
 [sub_resource type="Curve" id="Curve_gmlin"]
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.13080895, 1), 0.0, 0.0, 0, 0, Vector2(0.93459547, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
@@ -85,10 +86,18 @@ libraries = {
 &"": SubResource("AnimationLibrary_lvxji")
 }
 
+[node name="PointLight2D" type="PointLight2D" parent="." unique_id=613515093]
+scale = Vector2(0.5, 0.5)
+color = Color(0.24705882, 0.85490197, 0.6745098, 1)
+energy = 0.8
+texture = ExtResource("3_75vfm")
+offset = Vector2(0, -8)
+
 [node name="Visuals" type="CanvasGroup" parent="." unique_id=1194068647]
+z_index = 1
 material = SubResource("ShaderMaterial_p47bc")
 
-[node name="Globs" type="GPUParticles2D" parent="Visuals" unique_id=1737167803]
+[node name="BodyGlobs" type="GPUParticles2D" parent="Visuals" unique_id=1737167803]
 amount = 32
 texture = ExtResource("3_gmlin")
 lifetime = 30.0

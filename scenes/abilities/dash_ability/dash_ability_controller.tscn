@@ -1,0 +1,5 @@
+[gd_scene format=3 uid="uid://beor57ripam04"]
+
+[node name="DashAbilityController" type="Node" unique_id=656836596]
+
+[node name="Timer" type="Timer" parent="." unique_id=1012415244]
