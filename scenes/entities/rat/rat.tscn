@@ -177,6 +177,5 @@ position = Vector2(5, -3)
 texture = ExtResource("3_dhrd7")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=149080143]
-visible = false
 position = Vector2(0, -5)
 shape = SubResource("CircleShape2D_dhrd7")

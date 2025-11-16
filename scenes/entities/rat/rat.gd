@@ -3,9 +3,18 @@ extends CharacterBody2D
 
 const MAX_VELOCITY = 75
 
+@onready var animation_player: AnimationPlayer = $AnimationPlayer
+
+func _ready() -> void:
+	name = "Rat"
+
 func _process(_delta: float) -> void:
 	var direction = _get_direction_to_player()
 	velocity = direction * MAX_VELOCITY
+	if velocity.is_zero_approx():
+		animation_player.play("RESET")
+	else:
+		animation_player.play("move")
 	move_and_slide()
 
 func _get_direction_to_player() -> Vector2:
