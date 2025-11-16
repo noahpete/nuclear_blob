@@ -1,11 +1,19 @@
+class_name Player
 extends CharacterBody2D
 
 const GLOB = preload("uid://buyg2u6ftbuc4")
+
+static var instance: Player
 
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var visuals: CanvasGroup = $Visuals
 @onready var body_globs: GPUParticles2D = $Visuals/BodyGlobs
 @onready var eyes_sprite_2d: Sprite2D = $Visuals/EyesSprite2D
+
+func _ready() -> void:
+	if instance:
+		push_error("Only one Player can exist!")
+	instance = self
 
 func _physics_process(delta: float) -> void:
 	var input_vector := Input.get_vector("left", "right", "up", "down")

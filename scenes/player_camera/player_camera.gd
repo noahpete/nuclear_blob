@@ -1,0 +1,15 @@
+class_name PlayerCamera
+extends Camera2D
+
+var target_position: Vector2 = Vector2.ZERO
+
+func _ready() -> void:
+	make_current()
+
+func _process(delta: float) -> void:
+	_update_target()
+	global_position = global_position.lerp(target_position, 1 - exp(-delta * 10)).round()
+
+func _update_target() -> void:
+	if Player.instance != null:
+		target_position = Player.instance.global_position
