@@ -1,7 +1,7 @@
 [gd_scene load_steps=15 format=3 uid="uid://ubcbq426qntu"]
 
 [ext_resource type="Script" uid="uid://dub2ajnceaf0f" path="res://scenes/entities/player/player.gd" id="1_8afob"]
-[ext_resource type="Texture2D" uid="uid://qy5r42vctva0" path="res://scenes/entities/player/player.png" id="2_dovo2"]
+[ext_resource type="Texture2D" uid="uid://qy5r42vctva0" path="res://scenes/entities/player/player_body.png" id="2_dovo2"]
 [ext_resource type="Shader" uid="uid://5iltq3s2rogi" path="res://resources/border.gdshader" id="2_lvxji"]
 [ext_resource type="Texture2D" uid="uid://cqhdxls22ecvg" path="res://assets/glow.webp" id="3_75vfm"]
 [ext_resource type="Texture2D" uid="uid://lhkp8nvo84ll" path="res://scenes/entities/player/glob.png" id="3_gmlin"]
@@ -79,6 +79,7 @@ turbulence_influence_max = 0.080000006
 radius = 5.0
 
 [node name="Player" type="CharacterBody2D" unique_id=733631145]
+collision_layer = 0
 script = ExtResource("1_8afob")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=2027517627]
