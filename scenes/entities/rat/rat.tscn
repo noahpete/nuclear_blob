@@ -1,7 +1,8 @@
-[gd_scene load_steps=10 format=3 uid="uid://wrbxwpd8qym2"]
+[gd_scene load_steps=11 format=3 uid="uid://wrbxwpd8qym2"]
 
 [ext_resource type="Script" uid="uid://143welu2vjvf" path="res://scenes/entities/rat/rat.gd" id="1_dhrd7"]
 [ext_resource type="Texture2D" uid="uid://uahisbxv6w5g" path="res://scenes/entities/rat/rat_body.png" id="1_ycvpf"]
+[ext_resource type="PackedScene" uid="uid://bd6x8kbb5otsi" path="res://scenes/components/hurtbox_component/hurtbox_component.tscn" id="2_4ybdi"]
 [ext_resource type="Texture2D" uid="uid://c05147h0som5a" path="res://scenes/entities/rat/rat_tail.png" id="2_msx1r"]
 [ext_resource type="Texture2D" uid="uid://dyltgvq6rpo2h" path="res://scenes/entities/rat/rat_head.png" id="3_dhrd7"]
 
@@ -155,11 +156,9 @@ libraries = {
 &"": SubResource("AnimationLibrary_dhrd7")
 }
 
-[node name="Area2D" type="Area2D" parent="." unique_id=2059591967]
-collision_layer = 0
-collision_mask = 4
+[node name="HurtboxComponent" parent="." unique_id=1402398024 instance=ExtResource("2_4ybdi")]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1310306397]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtboxComponent" unique_id=438991880]
 position = Vector2(0, -7)
 shape = SubResource("CircleShape2D_4ybdi")
 
