@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://6jxmnjaqynd"]
+
+[ext_resource type="Script" uid="uid://qltdatap5jv8" path="res://scenes/managers/decay_manager/decay_manager.gd" id="1_8upsi"]
+
+[node name="DecayManager" type="Node" unique_id=1581707433]
+script = ExtResource("1_8upsi")
+
+[node name="Timer" type="Timer" parent="." unique_id=1603036462]
+wait_time = 30.0
+one_shot = true
+autostart = true
