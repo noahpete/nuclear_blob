@@ -1,6 +1,7 @@
-[gd_scene load_steps=15 format=3 uid="uid://ubcbq426qntu"]
+[gd_scene load_steps=16 format=3 uid="uid://ubcbq426qntu"]
 
 [ext_resource type="Script" uid="uid://dub2ajnceaf0f" path="res://scenes/entities/player/player.gd" id="1_8afob"]
+[ext_resource type="PackedScene" uid="uid://beor57ripam04" path="res://scenes/abilities/dash_ability_controller/dash_ability_controller.tscn" id="2_1murt"]
 [ext_resource type="Texture2D" uid="uid://qy5r42vctva0" path="res://scenes/entities/player/player_body.png" id="2_dovo2"]
 [ext_resource type="Shader" uid="uid://5iltq3s2rogi" path="res://resources/border.gdshader" id="2_lvxji"]
 [ext_resource type="Texture2D" uid="uid://cqhdxls22ecvg" path="res://assets/glow.webp" id="3_75vfm"]
@@ -86,6 +87,11 @@ script = ExtResource("1_8afob")
 libraries = {
 &"": SubResource("AnimationLibrary_lvxji")
 }
+
+[node name="Abilities" type="Node" parent="." unique_id=1219733044]
+
+[node name="DashAbilityController" parent="Abilities" unique_id=656836596 node_paths=PackedStringArray("parent") instance=ExtResource("2_1murt")]
+parent = NodePath("../..")
 
 [node name="PointLight2D" type="PointLight2D" parent="." unique_id=613515093]
 scale = Vector2(0.5, 0.5)

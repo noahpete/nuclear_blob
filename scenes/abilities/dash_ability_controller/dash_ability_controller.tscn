@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://beor57ripam04"]
+
+[ext_resource type="Script" uid="uid://chmpvbf2wm5ol" path="res://scenes/abilities/dash_ability_controller/dash_ability_controller.gd" id="1_eojki"]
+
+[node name="DashAbilityController" type="Node" unique_id=656836596]
+script = ExtResource("1_eojki")
+
+[node name="Timer" type="Timer" parent="." unique_id=1012415244]

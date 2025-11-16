@@ -9,6 +9,7 @@ static var instance: Player
 @onready var visuals: CanvasGroup = $Visuals
 @onready var body_globs: GPUParticles2D = $Visuals/BodyGlobs
 @onready var eyes_sprite_2d: Sprite2D = $Visuals/EyesSprite2D
+@onready var dash_ability_controller: DashAbilityController = $Abilities/DashAbilityController
 
 func _ready() -> void:
 	if instance:
@@ -29,6 +30,10 @@ func _physics_process(delta: float) -> void:
 
 	velocity = input_vector * 100
 	move_and_slide()
+
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("dash"):
+		dash_ability_controller.dash(velocity.normalized())
 
 func _update_skew(delta: float) -> void:
 	var target_skew := deg_to_rad(Input.get_axis("left", "right") * 5)
