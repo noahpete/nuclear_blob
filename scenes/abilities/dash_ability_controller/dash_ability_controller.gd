@@ -4,7 +4,7 @@ extends Node
 const DASH_ABILITY = preload("uid://c2smnlbex4blt")
 
 @export var parent: CharacterBody2D
-@export var dash_distance: float = 200.0
+@export var dash_distance: float = 8.0
 @export var dash_duration: float = 0.4
 
 var is_dashing: bool = false
@@ -37,7 +37,7 @@ func _process(delta: float) -> void:
 		# Calculate velocity (allow steering if there's input, otherwise use stored direction)
 		var dash_speed := dash_initial_speed * speed_multiplier
 		if not input_direction.is_zero_approx():
-			parent.velocity = input_direction * dash_speed
+			parent.velocity += input_direction * dash_speed
 
 		parent.move_and_slide()
 
@@ -52,9 +52,9 @@ func dash(direction: Vector2) -> void:
 	is_dashing = true
 	dash_timer = dash_duration
 
-	parent.velocity = direction.normalized() * dash_initial_speed
+	parent.velocity += direction.normalized() * dash_initial_speed
 
 	current_dash_ability = DASH_ABILITY.instantiate()
 	Main.instance.y_sort_origin.add_child(current_dash_ability, true)
 	current_dash_ability.global_position = parent.global_position
-	current_dash_ability.destroy_timer.start(dash_duration * 0.8)
+	current_dash_ability.destroy_timer.start(dash_duration * 0.6)
