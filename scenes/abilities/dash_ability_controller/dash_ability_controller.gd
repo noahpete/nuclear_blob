@@ -5,7 +5,7 @@ const DASH_ABILITY = preload("uid://c2smnlbex4blt")
 
 @export var parent: CharacterBody2D
 @export var dash_distance: float = 8.0
-@export var dash_duration: float = 0.4
+@export var dash_duration: float = 0.2
 
 var is_dashing: bool = false
 var dash_timer: float = 0.0

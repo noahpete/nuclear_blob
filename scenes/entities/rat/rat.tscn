@@ -148,7 +148,9 @@ radius = 13.0
 radius = 5.0
 
 [node name="Rat" type="CharacterBody2D" unique_id=660716153]
-collision_layer = 0
+collision_layer = 8
+collision_mask = 9
+motion_mode = 1
 script = ExtResource("1_dhrd7")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=301938999]

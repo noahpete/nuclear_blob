@@ -2,6 +2,8 @@ class_name Player
 extends CharacterBody2D
 
 const GLOB = preload("uid://buyg2u6ftbuc4")
+const MAX_VELOCITY: float = 120.0
+const ACCELERATION_SMOOTHING: float = 15.0
 
 static var instance: Player
 
@@ -28,8 +30,9 @@ func _physics_process(delta: float) -> void:
 	_update_eyes(delta)
 	_update_globs(delta)
 
-	velocity = input_vector * 100
+	velocity = velocity.lerp(input_vector * MAX_VELOCITY, 1 - exp(-ACCELERATION_SMOOTHING * delta))
 	move_and_slide()
+	position = position.round()
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("dash"):

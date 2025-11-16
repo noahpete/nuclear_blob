@@ -5,6 +5,7 @@ const MAX_VELOCITY = 75
 
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var hurtbox_component: HurtboxComponent = $HurtboxComponent
+@onready var visuals: Node2D = $Visuals
 
 func _ready() -> void:
 	hurtbox_component.hit.connect(queue_free)
@@ -16,6 +17,11 @@ func _process(_delta: float) -> void:
 		animation_player.play("RESET")
 	else:
 		animation_player.play("move")
+
+	var move_sign = sign(velocity.x)
+	if move_sign != 0:
+		visuals.scale = Vector2(move_sign, 1)
+
 	move_and_slide()
 
 func _get_direction_to_player() -> Vector2:

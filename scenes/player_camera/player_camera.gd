@@ -8,7 +8,7 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	_update_target()
-	global_position = global_position.lerp(target_position, 1 - exp(-delta * 10)).round()
+	global_position = global_position.lerp(target_position, 1 - exp(-delta * 20)).round()
 
 func _update_target() -> void:
 	if Player.instance != null:
