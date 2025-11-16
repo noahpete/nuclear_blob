@@ -4,6 +4,10 @@ extends CharacterBody2D
 const MAX_VELOCITY = 75
 
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
+@onready var hurtbox_component: HurtboxComponent = $HurtboxComponent
+
+func _ready() -> void:
+	hurtbox_component.hit.connect(queue_free)
 
 func _process(_delta: float) -> void:
 	var direction = _get_direction_to_player()
