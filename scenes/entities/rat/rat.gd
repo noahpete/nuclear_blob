@@ -5,10 +5,11 @@ const MAX_VELOCITY = 75
 
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var hurtbox_component: HurtboxComponent = $HurtboxComponent
+@onready var health_component: HealthComponent = $HealthComponent
 @onready var visuals: Node2D = $Visuals
 
 func _ready() -> void:
-	hurtbox_component.hit.connect(queue_free)
+	health_component.died.connect(_on_died)
 
 func _process(_delta: float) -> void:
 	var direction = _get_direction_to_player()
@@ -28,3 +29,6 @@ func _get_direction_to_player() -> Vector2:
 	if Player.instance != null:
 		return (Player.instance.global_position - global_position).normalized()
 	return Vector2.ZERO
+
+func _on_died() -> void:
+	queue_free()

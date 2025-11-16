@@ -27,8 +27,7 @@ width_curve = SubResource("Curve_pd56i")
 gradient = SubResource("Gradient_pd56i")
 
 [node name="HitboxComponent" parent="." unique_id=849292559 instance=ExtResource("2_pd56i")]
-collision_layer = 4
-collision_mask = 0
+damage = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent" unique_id=1436625827]
 shape = SubResource("CircleShape2D_3iu0l")
