@@ -62,6 +62,6 @@ func dash(direction: Vector2) -> void:
 	owner.velocity += direction.normalized() * dash_initial_speed
 
 	current_dash_ability = DASH_ABILITY.instantiate()
-	Main.instance.y_sort_origin.add_child(current_dash_ability, true)
+	Main.instance.y_sort_root.add_child(current_dash_ability, true)
 	current_dash_ability.global_position = owner.global_position
 	current_dash_ability.destroy_timer.start(dash_duration * 0.6)
