@@ -5,4 +5,4 @@
 [node name="DashAbilityController" type="Node" unique_id=656836596]
 script = ExtResource("1_eojki")
 
-[node name="Timer" type="Timer" parent="." unique_id=1012415244]
+[node name="CooldownTimer" type="Timer" parent="." unique_id=1012415244]
