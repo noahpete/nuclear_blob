@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://ubcbq426qntu" path="res://scenes/entities/player/player.tscn" id="1_hyk8p"]
 [ext_resource type="TileSet" uid="uid://da8kmxappkrvr" path="res://tileset.tres" id="1_iuonh"]
 [ext_resource type="PackedScene" uid="uid://b7irra2gfp663" path="res://scenes/managers/enemy_manager/enemy_manager.tscn" id="1_k2fmo"]
-[ext_resource type="PackedScene" uid="uid://6jxmnjaqynd" path="res://scenes/managers/decay_manager/decay_manager.tscn" id="2_hujxm"]
+[ext_resource type="PackedScene" path="res://scenes/managers/decay_manager/decay_manager.tscn" id="2_hujxm"]
 [ext_resource type="PackedScene" uid="uid://dqp7u3mflaicu" path="res://scenes/player_camera/player_camera.tscn" id="2_l3cfh"]
 [ext_resource type="PackedScene" uid="uid://bny6vn555ibq4" path="res://scenes/lighting/light_subviewport/light_sub_viewport.tscn" id="5_yyfjg"]
 [ext_resource type="PackedScene" uid="uid://cnt5ehv70fhka" path="res://scenes/ui/ui.tscn" id="6_ow5a4"]
