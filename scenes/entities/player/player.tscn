@@ -58,7 +58,7 @@ shader_parameter/outline_color = Color(0.14509805, 0.58431375, 0.41568628, 1)
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.13080895, 1), 0.0, 0.0, 0, 0, Vector2(0.93459547, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
 point_count = 4
 
-[sub_resource type="CurveTexture" id="CurveTexture_lvxji"]
+[sub_resource type="CurveTexture" id="CurveTexture_5sj0x"]
 curve = SubResource("Curve_gmlin")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_p47bc"]
@@ -71,7 +71,7 @@ angle_max = 180.00002
 gravity = Vector3(0, 0, 0)
 scale_min = 0.39999998
 scale_max = 1.1999999
-scale_curve = SubResource("CurveTexture_lvxji")
+scale_curve = SubResource("CurveTexture_5sj0x")
 turbulence_enabled = true
 turbulence_noise_strength = 0.2
 turbulence_noise_scale = 0.6
@@ -105,14 +105,14 @@ energy = 0.8
 texture = ExtResource("3_75vfm")
 offset = Vector2(0, -8)
 
-[node name="Light" parent="." unique_id=208953761 instance=ExtResource("5_5sj0x")]
-hue = Color(0.26666668, 0.88235295, 0.7019608, 1)
-on_by_default = true
-diameter = 0.6
-
 [node name="Visuals" type="CanvasGroup" parent="." unique_id=1194068647]
 z_index = 1
 material = SubResource("ShaderMaterial_p47bc")
+
+[node name="Light" parent="Visuals" unique_id=208953761 instance=ExtResource("5_5sj0x")]
+hue = Color(0.26666668, 0.88235295, 0.7019608, 1)
+on_by_default = true
+diameter = 4.0
 
 [node name="BodyGlobs" type="GPUParticles2D" parent="Visuals" unique_id=1737167803]
 amount = 32

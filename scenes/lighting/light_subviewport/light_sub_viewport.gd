@@ -53,6 +53,10 @@ func turn_on(light_id: int) -> void:
 func turn_off(light_id: int) -> void:
 	get_light_sprite(light_id).hide()
 
+func set_light_energy(light_id: int, energy: float) -> void:
+	var light_sprite := get_light_sprite(light_id)
+	light_sprite.set_energy(energy)
+
 func get_light_sprite(light_id: int) -> LightSprite:
 	return _light_pool[light_id]
 

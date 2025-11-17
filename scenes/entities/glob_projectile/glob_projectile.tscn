@@ -9,6 +9,8 @@ texture = ExtResource("1_5bqib")
 script = ExtResource("2_dvtml")
 
 [node name="LifeTimer" type="Timer" parent="." unique_id=608144989]
+wait_time = 2.0
+one_shot = true
 autostart = true
 
 [node name="Light" parent="." unique_id=208953761 instance=ExtResource("3_s2fpb")]

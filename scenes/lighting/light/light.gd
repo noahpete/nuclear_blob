@@ -8,6 +8,7 @@ extends Node2D
 
 var on: bool = false
 var _light_id: int = -1
+var _previous_energy: float = energy
 
 func _ready() -> void:
 	_ready_deferred.call_deferred()
@@ -15,7 +16,12 @@ func _ready() -> void:
 func _ready_deferred() -> void:
 	_light_id = Main.instance.light_sub_viewport.assign_light_and_get_id(self, diameter, energy, hue)
 	if on_by_default:
-		toggle()
+		turn_on()
+
+func _process(_delta: float) -> void:
+	if _previous_energy != energy:
+		Main.instance.light_sub_viewport.set_light_energy(_light_id, energy)
+	_previous_energy = energy
 
 func _exit_tree() -> void:
 	Main.instance.light_sub_viewport.release_light.call_deferred(_light_id)

@@ -27,13 +27,6 @@ enemy_container = NodePath("../World/YSortRoot")
 
 [node name="LightSubViewport" parent="." unique_id=273128356 instance=ExtResource("5_yyfjg")]
 
-[node name="PlayerCamera" parent="." unique_id=726282148 instance=ExtResource("2_l3cfh")]
-process_callback = 0
-
-[node name="SkyColorSprite" type="Sprite2D" parent="PlayerCamera" unique_id=1230093902]
-material = SubResource("ShaderMaterial_ouso4")
-texture = SubResource("ViewportTexture_b1x3f")
-
 [node name="World" type="Node2D" parent="." unique_id=837120503]
 
 [node name="StaticBodies" type="Node2D" parent="World" unique_id=1419105327]
@@ -50,6 +43,13 @@ y_sort_enabled = true
 
 [node name="Player" parent="World/YSortRoot" unique_id=733631145 instance=ExtResource("1_hyk8p")]
 position = Vector2(163, 95)
+
+[node name="PlayerCamera" parent="." unique_id=726282148 instance=ExtResource("2_l3cfh")]
+process_callback = 0
+
+[node name="SkyColorSprite" type="Sprite2D" parent="PlayerCamera" unique_id=1230093902]
+material = SubResource("ShaderMaterial_ouso4")
+texture = SubResource("ViewportTexture_b1x3f")
 
 [node name="UI" parent="." unique_id=1506874504 node_paths=PackedStringArray("decay_manager") instance=ExtResource("6_ow5a4")]
 decay_manager = NodePath("../DecayManager")
