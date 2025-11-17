@@ -36,6 +36,7 @@ func assign_light_and_get_id(light: Light, diameter: float, energy: float, hue: 
 	return new_light_sprite_id
 
 func release_light(light_id: int) -> void:
+	turn_off(light_id)
 	_active_light_pool.erase(light_id)
 	_inactive_light_pool[light_id] = get_light_sprite(light_id)
 
@@ -45,6 +46,12 @@ func toggle_light(light_id: int) -> void:
 		light_sprite.hide()
 	else:
 		light_sprite.show()
+
+func turn_on(light_id: int) -> void:
+	get_light_sprite(light_id).show()
+
+func turn_off(light_id: int) -> void:
+	get_light_sprite(light_id).hide()
 
 func get_light_sprite(light_id: int) -> LightSprite:
 	return _light_pool[light_id]
