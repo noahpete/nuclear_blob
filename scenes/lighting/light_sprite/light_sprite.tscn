@@ -1,0 +1,12 @@
+[gd_scene load_steps=4 format=3 uid="uid://dcmm1luw2lklo"]
+
+[ext_resource type="Texture2D" uid="uid://cqhdxls22ecvg" path="res://assets/glow.webp" id="1_457ss"]
+[ext_resource type="Script" uid="uid://b6mlsr7ilcxyw" path="res://scenes/lighting/light_sprite/light_sprite.gd" id="2_o1x51"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_457ss"]
+blend_mode = 1
+
+[node name="LightSprite" type="Sprite2D" unique_id=29137615]
+material = SubResource("CanvasItemMaterial_457ss")
+texture = ExtResource("1_457ss")
+script = ExtResource("2_o1x51")

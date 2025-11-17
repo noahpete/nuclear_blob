@@ -5,8 +5,10 @@ static var instance: Main
 
 @onready var world: Node2D = $World
 @onready var y_sort_origin: Node2D = $World/YSortOrigin
+@onready var light_sub_viewport: LightSubViewport = $LightSubViewport
 
 func _ready() -> void:
 	if instance != null:
 		push_error("Only one instance of Main is allowed")
+		return
 	instance = self
