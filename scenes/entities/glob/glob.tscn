@@ -1,16 +1,10 @@
-[gd_scene load_steps=4 format=3 uid="uid://buyg2u6ftbuc4"]
+[gd_scene load_steps=3 format=3 uid="uid://buyg2u6ftbuc4"]
 
 [ext_resource type="Texture2D" uid="uid://lhkp8nvo84ll" path="res://scenes/entities/player/glob.png" id="1_5bqib"]
-[ext_resource type="Texture2D" uid="uid://cqhdxls22ecvg" path="res://assets/glow.webp" id="2_xl6gl"]
-
-[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_xl6gl"]
-blend_mode = 1
+[ext_resource type="Script" uid="uid://cguw3132m22ow" path="res://scenes/entities/glob/glob.gd" id="2_s2fpb"]
 
 [node name="Glob" type="Sprite2D" unique_id=14758827]
 texture = ExtResource("1_5bqib")
+script = ExtResource("2_s2fpb")
 
-[node name="Glow" type="Sprite2D" parent="." unique_id=1308028602]
-modulate = Color(0.26666668, 0.88235295, 0.7019608, 0.27058825)
-material = SubResource("CanvasItemMaterial_xl6gl")
-scale = Vector2(0.2, 0.2)
-texture = ExtResource("2_xl6gl")
+[node name="LifeTimer" type="Timer" parent="." unique_id=608144989]

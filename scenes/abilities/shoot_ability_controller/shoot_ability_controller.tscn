@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://dm0pr40hihdw2"]
+
+[ext_resource type="Script" uid="uid://dlenva6bytv0f" path="res://scenes/abilities/shoot_ability_controller/shoot_ability_controller.gd" id="1_831jm"]
+
+[node name="ShootAbilityController" type="Node" unique_id=2128148816]
+script = ExtResource("1_831jm")
+
+[node name="FireRateTimer" type="Timer" parent="." unique_id=1062210774]
+wait_time = 0.25
+one_shot = true

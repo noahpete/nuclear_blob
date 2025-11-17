@@ -12,6 +12,7 @@ static var instance: Player
 @onready var body_globs: GPUParticles2D = $Visuals/BodyGlobs
 @onready var eyes_sprite_2d: Sprite2D = $Visuals/EyesSprite2D
 @onready var dash_ability_controller: DashAbilityController = $Abilities/DashAbilityController
+@onready var shoot_ability_controller: ShootAbilityController = $Abilities/ShootAbilityController
 
 func _ready() -> void:
 	if instance:
@@ -37,6 +38,8 @@ func _physics_process(delta: float) -> void:
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("dash"):
 		dash_ability_controller.dash(velocity.normalized())
+	if event.is_action_pressed("shoot"):
+		shoot_ability_controller.shoot(global_position.direction_to(get_global_mouse_position()))
 
 func _update_skew(delta: float) -> void:
 	var target_skew := deg_to_rad(Input.get_axis("left", "right") * 5)

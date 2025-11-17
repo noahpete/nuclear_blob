@@ -3,7 +3,6 @@ extends Node
 
 const DASH_ABILITY = preload("uid://c2smnlbex4blt")
 
-@export var parent: CharacterBody2D
 @export var dash_distance: float = 8.0
 @export var dash_duration: float = 0.2
 @export var dash_cooldown: float = 1.0
@@ -28,7 +27,7 @@ func _process(delta: float) -> void:
 			return
 
 		if current_dash_ability:
-			current_dash_ability.global_position = parent.global_position
+			current_dash_ability.global_position = owner.global_position
 
 		# Get current input for steering
 		var input_direction := Input.get_vector("left", "right", "up", "down")
@@ -43,16 +42,13 @@ func _process(delta: float) -> void:
 		# Calculate velocity (allow steering if there's input, otherwise use stored direction)
 		var dash_speed := dash_initial_speed * speed_multiplier
 		if not input_direction.is_zero_approx():
-			parent.velocity += input_direction * dash_speed
+			owner.velocity += input_direction * dash_speed
 
-		parent.move_and_slide()
+		owner.move_and_slide()
 
 func dash(direction: Vector2) -> void:
-	if parent == null:
-		push_error("DashAbilityController has no parent")
 	if direction.is_zero_approx():
 		return
-
 	if not cooldown_timer.is_stopped():
 		return
 
@@ -63,9 +59,9 @@ func dash(direction: Vector2) -> void:
 
 	cooldown_timer.start()
 
-	parent.velocity += direction.normalized() * dash_initial_speed
+	owner.velocity += direction.normalized() * dash_initial_speed
 
 	current_dash_ability = DASH_ABILITY.instantiate()
 	Main.instance.y_sort_origin.add_child(current_dash_ability, true)
-	current_dash_ability.global_position = parent.global_position
+	current_dash_ability.global_position = owner.global_position
 	current_dash_ability.destroy_timer.start(dash_duration * 0.6)

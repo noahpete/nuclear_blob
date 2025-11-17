@@ -11,6 +11,7 @@ var line_point_queue: Array[Vector2]
 
 func _ready() -> void:
 	destroy_timer.timeout.connect(_on_destroy_timer_timeout)
+	hitbox_component.area_entered.connect(_on_hitbox_enter)
 
 func _process(_delta: float) -> void:
 	line_point_queue.push_front(global_position)
@@ -27,3 +28,8 @@ func _on_destroy_timer_timeout() -> void:
 		.set_trans(Tween.TRANS_CUBIC)\
 		.set_ease(Tween.EASE_OUT)
 	opacity_tween.tween_callback(queue_free)
+
+func _on_hitbox_enter() -> void:
+	print('here')
+	hitbox_component.monitoring = false
+	hitbox_component.monitorable = false
