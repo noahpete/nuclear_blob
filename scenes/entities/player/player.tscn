@@ -1,11 +1,10 @@
-[gd_scene load_steps=18 format=3 uid="uid://ubcbq426qntu"]
+[gd_scene load_steps=17 format=3 uid="uid://ubcbq426qntu"]
 
 [ext_resource type="Script" uid="uid://dub2ajnceaf0f" path="res://scenes/entities/player/player.gd" id="1_8afob"]
 [ext_resource type="PackedScene" uid="uid://beor57ripam04" path="res://scenes/abilities/dash_ability_controller/dash_ability_controller.tscn" id="2_1murt"]
 [ext_resource type="Texture2D" uid="uid://qy5r42vctva0" path="res://scenes/entities/player/player_body.png" id="2_dovo2"]
 [ext_resource type="Shader" uid="uid://5iltq3s2rogi" path="res://resources/border.gdshader" id="2_lvxji"]
 [ext_resource type="PackedScene" uid="uid://dm0pr40hihdw2" path="res://scenes/abilities/shoot_ability_controller/shoot_ability_controller.tscn" id="3_1murt"]
-[ext_resource type="Texture2D" uid="uid://cqhdxls22ecvg" path="res://assets/glow.webp" id="3_75vfm"]
 [ext_resource type="Texture2D" uid="uid://lhkp8nvo84ll" path="res://scenes/entities/player/glob.png" id="3_gmlin"]
 [ext_resource type="PackedScene" uid="uid://bt7fhktqolmdo" path="res://scenes/lighting/light/light.tscn" id="5_5sj0x"]
 [ext_resource type="Texture2D" uid="uid://bj788wkatxe0n" path="res://scenes/entities/player/player_eyes.png" id="5_p47bc"]
@@ -96,14 +95,6 @@ libraries = {
 [node name="DashAbilityController" parent="Abilities" unique_id=656836596 instance=ExtResource("2_1murt")]
 
 [node name="ShootAbilityController" parent="Abilities" unique_id=2128148816 instance=ExtResource("3_1murt")]
-
-[node name="PointLight2D" type="PointLight2D" parent="." unique_id=613515093]
-visible = false
-scale = Vector2(0.5, 0.5)
-color = Color(0.24705882, 0.85490197, 0.6745098, 1)
-energy = 0.8
-texture = ExtResource("3_75vfm")
-offset = Vector2(0, -8)
 
 [node name="Visuals" type="CanvasGroup" parent="." unique_id=1194068647]
 z_index = 1
