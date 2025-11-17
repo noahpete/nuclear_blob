@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://wrbxwpd8qym2"]
+[gd_scene load_steps=13 format=3 uid="uid://wrbxwpd8qym2"]
 
 [ext_resource type="Script" uid="uid://143welu2vjvf" path="res://scenes/entities/rat/rat.gd" id="1_dhrd7"]
 [ext_resource type="Texture2D" uid="uid://uahisbxv6w5g" path="res://scenes/entities/rat/rat_body.png" id="1_ycvpf"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://dm2ird4tu5dpy" path="res://scenes/components/health_component/health_component.tscn" id="2_bqiwj"]
 [ext_resource type="Texture2D" uid="uid://c05147h0som5a" path="res://scenes/entities/rat/rat_tail.png" id="2_msx1r"]
 [ext_resource type="Texture2D" uid="uid://dyltgvq6rpo2h" path="res://scenes/entities/rat/rat_head.png" id="3_dhrd7"]
+[ext_resource type="PackedScene" uid="uid://bt7fhktqolmdo" path="res://scenes/lighting/light/light.tscn" id="7_myt5n"]
 
 [sub_resource type="Animation" id="Animation_dhrd7"]
 length = 0.001
@@ -182,6 +183,12 @@ texture = ExtResource("2_msx1r")
 [node name="RatHead" type="Sprite2D" parent="Visuals" unique_id=916558857]
 position = Vector2(5, -3)
 texture = ExtResource("3_dhrd7")
+
+[node name="Light" parent="Visuals" unique_id=208953761 instance=ExtResource("7_myt5n")]
+position = Vector2(6, -2)
+hue = Color(0.26666668, 0.88235295, 0.7019608, 1)
+on_by_default = true
+energy = 0.8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=149080143]
 position = Vector2(0, -5)

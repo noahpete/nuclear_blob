@@ -1,17 +1,17 @@
 [gd_scene load_steps=4 format=3 uid="uid://buyg2u6ftbuc4"]
 
 [ext_resource type="Texture2D" uid="uid://lhkp8nvo84ll" path="res://scenes/entities/player/glob.png" id="1_5bqib"]
-[ext_resource type="Script" uid="uid://cguw3132m22ow" path="res://scenes/entities/glob/glob.gd" id="2_s2fpb"]
+[ext_resource type="Script" uid="uid://c5ojm2dr0nkwn" path="res://scenes/entities/glob_projectile/glob_projectile.gd" id="2_dvtml"]
 [ext_resource type="PackedScene" uid="uid://bt7fhktqolmdo" path="res://scenes/lighting/light/light.tscn" id="3_s2fpb"]
 
-[node name="Glob" type="Sprite2D" unique_id=14758827]
+[node name="GlobProjectile" type="Sprite2D" unique_id=14758827]
 texture = ExtResource("1_5bqib")
-script = ExtResource("2_s2fpb")
+script = ExtResource("2_dvtml")
 
 [node name="LifeTimer" type="Timer" parent="." unique_id=608144989]
+autostart = true
 
 [node name="Light" parent="." unique_id=208953761 instance=ExtResource("3_s2fpb")]
 hue = Color(0.26666668, 0.88235295, 0.7019608, 1)
 on_by_default = true
-diameter = 0.2
 energy = 0.8
