@@ -4,26 +4,27 @@ extends SubViewport
 const LIGHT_SPRITE = preload("uid://dcmm1luw2lklo")
 const LIGHT_POOL_INITIAL_SIZE: int = 32
 const LIGHT_POOL_MAX_SIZE: int = 1024
-const LIGHT_OFFSET: Vector2 = Vector2(160, 84)
-
-@onready var light_container: Node2D = $LightContainer
 
 var _next_light_id: int = 0
 var _light_pool: Dictionary[int, LightSprite]
 var _inactive_light_pool: Dictionary[int, LightSprite]
 var _active_light_pool: Dictionary[int, LightSprite]
 
+@onready var light_container: Node2D = $LightContainer
+
 func _ready() -> void:
 	_expand_pool(LIGHT_POOL_INITIAL_SIZE)
 	_ready_deferred.call_deferred()
 
 func _ready_deferred() -> void:
+	size = Main.instance.get_viewport().get_visible_rect().size
 	canvas_transform = Main.instance.get_viewport().get_canvas_transform()
+
 func _process(_delta: float) -> void:
 	canvas_transform = Main.instance.get_viewport().get_canvas_transform()
 	for light in _active_light_pool.values():
 		var light_sprite = light as LightSprite
-		light_sprite.global_position = light_sprite.light_source.global_position + LIGHT_OFFSET
+		light_sprite.global_position = light_sprite.light_source.global_position
 
 func assign_light_and_get_id(light: Light, diameter: float, energy: float, hue: Color) -> int:
 	var new_light_sprite_id := _get_next_light_sprite_id()
@@ -34,7 +35,7 @@ func assign_light_and_get_id(light: Light, diameter: float, energy: float, hue: 
 	light_sprite.set_hue(hue)
 	return new_light_sprite_id
 
-func release_light_(light_id: int) -> void:
+func release_light(light_id: int) -> void:
 	_active_light_pool.erase(light_id)
 	_inactive_light_pool[light_id] = get_light_sprite(light_id)
 

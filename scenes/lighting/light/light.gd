@@ -18,7 +18,7 @@ func _ready_deferred() -> void:
 		toggle()
 
 func _exit_tree() -> void:
-	Main.instance.light_sub_viewport.release_light_(_light_id)
+	Main.instance.light_sub_viewport.release_light.call_deferred(_light_id)
 
 func toggle() -> void:
 	on = !on
