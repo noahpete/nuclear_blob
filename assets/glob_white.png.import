@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://lhkp8nvo84ll"
-path="res://.godot/imported/glob.png-5ad8b60791e076e6cf60819ddbc4f7de.ctex"
+uid="uid://b21xaipkf0fns"
+path="res://.godot/imported/glob_white.png-94901474c44f3dc6d33b0f31760bf05e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://scenes/entities/player/glob.png"
-dest_files=["res://.godot/imported/glob.png-5ad8b60791e076e6cf60819ddbc4f7de.ctex"]
+source_file="res://assets/glob_white.png"
+dest_files=["res://.godot/imported/glob_white.png-94901474c44f3dc6d33b0f31760bf05e.ctex"]
 
 [params]
 

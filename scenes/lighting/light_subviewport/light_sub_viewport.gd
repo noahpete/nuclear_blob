@@ -41,7 +41,6 @@ func release_light(light_id: int) -> void:
 	light_sprite.release_light()
 	_active_light_pool.erase(light_id)
 	_inactive_light_pool[light_id] = light_sprite
-	Log.info("Light released")
 
 func toggle_light(light_id: int) -> void:
 	var light_sprite := get_light_sprite(light_id)
@@ -54,7 +53,6 @@ func turn_on(light_id: int) -> void:
 	get_light_sprite(light_id).show()
 
 func turn_off(light_id: int) -> void:
-	Log.info("Turning off light")
 	get_light_sprite(light_id).hide()
 
 func set_light_energy(light_id: int, energy: float) -> void:

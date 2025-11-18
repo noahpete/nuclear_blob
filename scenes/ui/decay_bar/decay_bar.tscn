@@ -1,9 +1,50 @@
-[gd_scene load_steps=2 format=3 uid="uid://y2u0j6hxafrl"]
+[gd_scene load_steps=11 format=3 uid="uid://y2u0j6hxafrl"]
 
 [ext_resource type="Script" uid="uid://deigkeltp8kjw" path="res://scenes/ui/decay_bar/decay_bar.gd" id="1_y6ail"]
+[ext_resource type="Theme" uid="uid://bp7gihsracsyc" path="res://resources/theme.tres" id="2_8mt12"]
+[ext_resource type="Texture2D" uid="uid://facylhmthgjc" path="res://assets/arcade.png" id="3_uy85n"]
+[ext_resource type="Texture2D" uid="uid://b21xaipkf0fns" path="res://assets/glob_white.png" id="5_uy85n"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_hbl1l"]
+texture = ExtResource("3_uy85n")
+texture_margin_left = 3.0
+texture_margin_top = 3.0
+texture_margin_right = 1.0
+texture_margin_bottom = 3.0
+region_rect = Rect2(18, 66, 9, 12)
+
+[sub_resource type="Gradient" id="Gradient_imkyo"]
+offsets = PackedFloat32Array(0.14, 0.15333334)
+colors = PackedColorArray(1, 1, 1, 1, 0.4117647, 1, 0.83137256, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_uy85n"]
+gradient = SubResource("Gradient_imkyo")
+
+[sub_resource type="Curve" id="Curve_imkyo"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.05687204, 1), 0.0, 0.0, 0, 0, Vector2(0.6279621, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_5sj0x"]
+curve = SubResource("Curve_imkyo")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_uy85n"]
+particle_flag_disable_z = true
+emission_shape_offset = Vector3(0, 0.5, 0)
+angle_min = -179.99998
+angle_max = 180.00002
+spread = 90.0
+initial_velocity_min = 100.0
+initial_velocity_max = 140.0
+gravity = Vector3(0, 160, 0)
+scale_min = 1.5999999
+scale_max = 2.3999999
+scale_curve = SubResource("CurveTexture_5sj0x")
+color_initial_ramp = SubResource("GradientTexture1D_uy85n")
 
 [node name="DecayBar" type="CanvasLayer" unique_id=1646004893]
 script = ExtResource("1_y6ail")
+
+[node name="ShakeAnimationComponent" type="Node" parent="." unique_id=1743291102]
 
 [node name="MarginContainer" type="MarginContainer" parent="." unique_id=979638506]
 anchors_preset = 15
@@ -12,12 +53,29 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
+theme = ExtResource("2_8mt12")
+theme_override_constants/margin_left = 200
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 200
 
 [node name="ProgressBar" type="ProgressBar" parent="MarginContainer" unique_id=1366517813]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(0, 8)
+custom_minimum_size = Vector2(0, 16)
 layout_mode = 2
 mouse_filter = 2
+theme = ExtResource("2_8mt12")
+theme_override_styles/fill = SubResource("StyleBoxTexture_hbl1l")
 max_value = 1.0
 value = 0.5
 show_percentage = false
+
+[node name="SparkGlobs" type="GPUParticles2D" parent="." unique_id=125226105]
+position = Vector2(322, 24)
+amount = 64
+texture = ExtResource("5_uy85n")
+lifetime = 0.6
+preprocess = 60.0
+fixed_fps = 0
+interpolate = false
+local_coords = true
+process_material = SubResource("ParticleProcessMaterial_uy85n")

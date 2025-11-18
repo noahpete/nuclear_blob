@@ -2,11 +2,12 @@ class_name DashAbilityController
 extends Node
 
 const DASH_ABILITY: PackedScene = preload("uid://c2smnlbex4blt")
-const DASH_SPEED_UPGRADE_AMOUNT: float = 0.1
 
 @export var dash_distance: float = 8.0
 @export var dash_duration: float = 0.2
 @export var dash_cooldown: float = 1.0
+@export_group("Upgrades")
+@export var dash_speed_upgrade_amount: float = 0.2
 
 var is_dashing: bool = false
 var base_dash_duration: float
@@ -68,9 +69,9 @@ func dash(direction: Vector2) -> void:
 	current_dash_ability = DASH_ABILITY.instantiate()
 	Main.instance.y_sort_root.add_child(current_dash_ability, true)
 	current_dash_ability.global_position = owner.global_position
-	current_dash_ability.destroy_timer.start(dash_duration * 0.6)
+	current_dash_ability.destroy_timer.start(dash_duration)
 
 func _on_ability_upgrade_added(upgrade: AbilityUpgrade, current_upgrades: Dictionary) -> void:
 	if upgrade.id == "dash_speed":
-		var percent_reduction = current_upgrades["dash_speed"]["quantity"] * DASH_SPEED_UPGRADE_AMOUNT
+		var percent_reduction = current_upgrades["dash_speed"]["quantity"] * dash_speed_upgrade_amount
 		dash_duration = base_dash_duration * (1 - percent_reduction)

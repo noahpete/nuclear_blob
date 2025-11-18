@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=4 uid="uid://da36exb4ldn5o"]
+[gd_scene load_steps=18 format=4 uid="uid://da36exb4ldn5o"]
 
 [ext_resource type="Script" uid="uid://b134behr4voh3" path="res://scenes/main/main.gd" id="1_6q06x"]
 [ext_resource type="PackedScene" uid="uid://ubcbq426qntu" path="res://scenes/entities/player/player.tscn" id="1_hyk8p"]
@@ -12,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://bny6vn555ibq4" path="res://scenes/lighting/light_subviewport/light_sub_viewport.tscn" id="5_yyfjg"]
 [ext_resource type="PackedScene" uid="uid://cnt5ehv70fhka" path="res://scenes/ui/ui.tscn" id="6_ow5a4"]
 [ext_resource type="Shader" uid="uid://d32278sheptfl" path="res://resources/sky_color.gdshader" id="7_a8run"]
+[ext_resource type="PackedScene" uid="uid://bt7fhktqolmdo" path="res://scenes/lighting/light/light.tscn" id="8_a8run"]
 [ext_resource type="PackedScene" uid="uid://cylsmrl1pesu6" path="res://scenes/entities/glob_pickup/glob_pickup.tscn" id="8_ouso4"]
 [ext_resource type="PackedScene" uid="uid://y2u0j6hxafrl" path="res://scenes/ui/decay_bar/decay_bar.tscn" id="12_blune"]
 
@@ -27,10 +28,9 @@ script = ExtResource("1_6q06x")
 
 [node name="DecayManager" parent="." unique_id=1581707433 instance=ExtResource("2_hujxm")]
 
-[node name="UpgradeManager" parent="." unique_id=643098125 node_paths=PackedStringArray("decay_manager", "interactable_ui") instance=ExtResource("3_blune")]
+[node name="UpgradeManager" parent="." unique_id=643098125 node_paths=PackedStringArray("decay_manager") instance=ExtResource("3_blune")]
 upgrade_pool = Array[ExtResource("4_7smn1")]([ExtResource("5_raeie")])
 decay_manager = NodePath("../DecayManager")
-interactable_ui = NodePath("../InteractableUI")
 
 [node name="EnemyManager" parent="." unique_id=339992762 node_paths=PackedStringArray("enemy_container") instance=ExtResource("1_k2fmo")]
 enemy_container = NodePath("../World/YSortRoot")
@@ -47,6 +47,138 @@ tile_map_data = PackedByteArray("AAABAAUAAQAAAAQAAAABAAYAAQAAAAQAAAACAAYAAQAAAAQ
 tile_set = ExtResource("1_iuonh")
 
 [node name="BackgroundLights" type="Node2D" parent="World/StaticBodies" unique_id=524581752]
+
+[node name="Light" parent="World/StaticBodies/BackgroundLights" unique_id=208953761 instance=ExtResource("8_a8run")]
+position = Vector2(-40, -23)
+hue = Color(0.4117647, 1, 0.83137256, 1)
+diameter = 0.8
+energy = 0.8
+
+[node name="Light2" parent="World/StaticBodies/BackgroundLights" unique_id=676100997 instance=ExtResource("8_a8run")]
+position = Vector2(88, -72)
+hue = Color(0.4117647, 1, 0.83137256, 1)
+diameter = 0.8
+energy = 0.8
+
+[node name="Light3" parent="World/StaticBodies/BackgroundLights" unique_id=410154675 instance=ExtResource("8_a8run")]
+position = Vector2(393, -86)
+hue = Color(0.4117647, 1, 0.83137256, 1)
+diameter = 0.8
+energy = 0.8
+
+[node name="Light4" parent="World/StaticBodies/BackgroundLights" unique_id=503664614 instance=ExtResource("8_a8run")]
+position = Vector2(504, -23)
+hue = Color(0.4117647, 1, 0.83137256, 1)
+diameter = 0.8
+energy = 0.8
+
+[node name="Light5" parent="World/StaticBodies/BackgroundLights" unique_id=1652214014 instance=ExtResource("8_a8run")]
+position = Vector2(584, -23)
+hue = Color(0.4117647, 1, 0.83137256, 1)
+diameter = 0.8
+energy = 0.8
+
+[node name="Light6" parent="World/StaticBodies/BackgroundLights" unique_id=1909474355 instance=ExtResource("8_a8run")]
+position = Vector2(696, -23)
+hue = Color(0.4117647, 1, 0.83137256, 1)
+diameter = 0.8
+energy = 0.8
+
+[node name="Light7" parent="World/StaticBodies/BackgroundLights" unique_id=1897205184 instance=ExtResource("8_a8run")]
+position = Vector2(791, -55)
+hue = Color(0.4117647, 1, 0.83137256, 1)
+diameter = 0.8
+energy = 0.8
+
+[node name="Light8" parent="World/StaticBodies/BackgroundLights" unique_id=1276694689 instance=ExtResource("8_a8run")]
+position = Vector2(1000, -7)
+hue = Color(0.4117647, 1, 0.83137256, 1)
+diameter = 0.8
+energy = 0.8
+
+[node name="Light9" parent="World/StaticBodies/BackgroundLights" unique_id=744540607 instance=ExtResource("8_a8run")]
+position = Vector2(1064, 233)
+hue = Color(0.4117647, 1, 0.83137256, 1)
+diameter = 0.8
+energy = 0.8
+
+[node name="Light10" parent="World/StaticBodies/BackgroundLights" unique_id=1972382685 instance=ExtResource("8_a8run")]
+position = Vector2(1065, 521)
+hue = Color(0.4117647, 1, 0.83137256, 1)
+diameter = 0.8
+energy = 0.8
+
+[node name="Light11" parent="World/StaticBodies/BackgroundLights" unique_id=2006289992 instance=ExtResource("8_a8run")]
+position = Vector2(1097, 713)
+hue = Color(0.4117647, 1, 0.83137256, 1)
+diameter = 0.8
+energy = 0.8
+
+[node name="Light12" parent="World/StaticBodies/BackgroundLights" unique_id=1047215689 instance=ExtResource("8_a8run")]
+position = Vector2(968, 793)
+hue = Color(0.4117647, 1, 0.83137256, 1)
+diameter = 0.8
+energy = 0.8
+
+[node name="Light13" parent="World/StaticBodies/BackgroundLights" unique_id=1788657731 instance=ExtResource("8_a8run")]
+position = Vector2(968, 809)
+hue = Color(0.4117647, 1, 0.83137256, 1)
+diameter = 0.8
+energy = 0.8
+
+[node name="Light14" parent="World/StaticBodies/BackgroundLights" unique_id=1841326189 instance=ExtResource("8_a8run")]
+position = Vector2(568, 793)
+hue = Color(0.4117647, 1, 0.83137256, 1)
+diameter = 0.8
+energy = 0.8
+
+[node name="Light15" parent="World/StaticBodies/BackgroundLights" unique_id=1474538859 instance=ExtResource("8_a8run")]
+position = Vector2(472, 793)
+hue = Color(0.4117647, 1, 0.83137256, 1)
+diameter = 0.8
+energy = 0.8
+
+[node name="Light16" parent="World/StaticBodies/BackgroundLights" unique_id=687463291 instance=ExtResource("8_a8run")]
+position = Vector2(217, 776)
+hue = Color(0.4117647, 1, 0.83137256, 1)
+diameter = 0.8
+energy = 0.8
+
+[node name="Light17" parent="World/StaticBodies/BackgroundLights" unique_id=1099698313 instance=ExtResource("8_a8run")]
+position = Vector2(-8, 777)
+hue = Color(0.4117647, 1, 0.83137256, 1)
+diameter = 0.8
+energy = 0.8
+
+[node name="Light18" parent="World/StaticBodies/BackgroundLights" unique_id=873875160 instance=ExtResource("8_a8run")]
+position = Vector2(-24, 602)
+hue = Color(0.4117647, 1, 0.83137256, 1)
+diameter = 0.8
+energy = 0.8
+
+[node name="Light19" parent="World/StaticBodies/BackgroundLights" unique_id=1463781439 instance=ExtResource("8_a8run")]
+position = Vector2(-55, 552)
+hue = Color(0.4117647, 1, 0.83137256, 1)
+diameter = 0.8
+energy = 0.8
+
+[node name="Light20" parent="World/StaticBodies/BackgroundLights" unique_id=2043365683 instance=ExtResource("8_a8run")]
+position = Vector2(-88, 361)
+hue = Color(0.4117647, 1, 0.83137256, 1)
+diameter = 0.8
+energy = 0.8
+
+[node name="Light21" parent="World/StaticBodies/BackgroundLights" unique_id=1536923453 instance=ExtResource("8_a8run")]
+position = Vector2(-103, 154)
+hue = Color(0.4117647, 1, 0.83137256, 1)
+diameter = 0.8
+energy = 0.8
+
+[node name="Light22" parent="World/StaticBodies/BackgroundLights" unique_id=1892938510 instance=ExtResource("8_a8run")]
+position = Vector2(-103, 154)
+hue = Color(0.4117647, 1, 0.83137256, 1)
+diameter = 0.8
+energy = 0.8
 
 [node name="BackgroundEffects" type="Node2D" parent="World" unique_id=1342082702]
 
@@ -80,5 +212,3 @@ decay_manager = NodePath("../DecayManager")
 
 [node name="DecayBar" parent="." unique_id=1646004893 node_paths=PackedStringArray("decay_manager") instance=ExtResource("12_blune")]
 decay_manager = NodePath("../DecayManager")
-
-[node name="InteractableUI" type="CanvasLayer" parent="." unique_id=1074461779]

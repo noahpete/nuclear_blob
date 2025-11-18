@@ -12,7 +12,7 @@ var current_upgrades: Dictionary[String, Dictionary] = {}
 func _ready() -> void:
 	decay_manager.level_up.connect(_on_level_up)
 
-func _on_level_up(current_level: int) -> void:
+func _on_level_up(_current_level: int) -> void:
 	var chosen_upgrade: AbilityUpgrade = upgrade_pool.pick_random()
 	if chosen_upgrade == null:
 		return

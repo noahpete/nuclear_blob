@@ -191,7 +191,6 @@ texture = ExtResource("3_dhrd7")
 [node name="Light" parent="Visuals" unique_id=208953761 instance=ExtResource("7_myt5n")]
 position = Vector2(6, -2)
 hue = Color(0.26666668, 0.88235295, 0.7019608, 1)
-on_by_default = true
 energy = 0.8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=149080143]

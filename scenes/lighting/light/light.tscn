@@ -4,3 +4,4 @@
 
 [node name="Light" type="Node2D" unique_id=208953761]
 script = ExtResource("1_oqwix")
+on_by_default = true

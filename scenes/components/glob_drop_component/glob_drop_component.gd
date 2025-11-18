@@ -3,7 +3,7 @@ extends Node
 
 const GLOB_PICKUP = preload("uid://cylsmrl1pesu6")
 
-@export_range(0, 1) var drop_rate: float = 0.4
+@export_range(0, 1) var drop_rate: float = 1.0
 @export var health_component: HealthComponent
 
 func _ready() -> void:

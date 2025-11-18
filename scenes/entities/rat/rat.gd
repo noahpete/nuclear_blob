@@ -27,9 +27,6 @@ func _process(_delta: float) -> void:
 
 	move_and_slide()
 
-func _exit_tree() -> void:
-	Log.info("Rat exited tree")
-
 func _get_direction_to_player() -> Vector2:
 	if Player.instance != null:
 		return (Player.instance.global_position - global_position).normalized()
@@ -45,7 +42,5 @@ func _spawn_death_particles() -> void:
 	background_node.add_child(particles, true)
 
 func _on_died() -> void:
-	Log.info("Rat died")
 	_spawn_death_particles()
 	queue_free()
-	Log.info("Rat queue_free called")
