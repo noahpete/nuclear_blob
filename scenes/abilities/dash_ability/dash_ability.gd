@@ -23,6 +23,7 @@ func _process(_delta: float) -> void:
 		line_2d.add_point(point)
 
 func _on_destroy_timer_timeout() -> void:
+	hitbox_component.monitoring = false
 	var opacity_tween := create_tween()
 	opacity_tween.tween_property(self, "modulate:a", 0, 0.4)\
 		.set_trans(Tween.TRANS_CUBIC)\

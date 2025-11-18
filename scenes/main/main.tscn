@@ -1,16 +1,17 @@
-[gd_scene load_steps=14 format=4 uid="uid://da36exb4ldn5o"]
+[gd_scene load_steps=15 format=4 uid="uid://da36exb4ldn5o"]
 
 [ext_resource type="Script" uid="uid://b134behr4voh3" path="res://scenes/main/main.gd" id="1_6q06x"]
 [ext_resource type="PackedScene" uid="uid://ubcbq426qntu" path="res://scenes/entities/player/player.tscn" id="1_hyk8p"]
 [ext_resource type="TileSet" uid="uid://da8kmxappkrvr" path="res://tileset.tres" id="1_iuonh"]
 [ext_resource type="PackedScene" uid="uid://b7irra2gfp663" path="res://scenes/managers/enemy_manager/enemy_manager.tscn" id="1_k2fmo"]
 [ext_resource type="PackedScene" uid="uid://bndcfaerkhymi" path="res://scenes/managers/decay_manager/decay_manager.tscn" id="2_hujxm"]
-[ext_resource type="PackedScene" uid="uid://dqp7u3mflaicu" path="res://scenes/player_camera/player_camera.tscn" id="2_l3cfh"]
-[ext_resource type="PackedScene" uid="uid://wrbxwpd8qym2" path="res://scenes/entities/rat/rat.tscn" id="3_k2fmo"]
+[ext_resource type="PackedScene" uid="uid://dqp7u3mflaicu" path="res://scenes/entities/player_camera/player_camera.tscn" id="2_l3cfh"]
 [ext_resource type="PackedScene" uid="uid://bny6vn555ibq4" path="res://scenes/lighting/light_subviewport/light_sub_viewport.tscn" id="5_yyfjg"]
 [ext_resource type="PackedScene" uid="uid://cnt5ehv70fhka" path="res://scenes/ui/ui.tscn" id="6_ow5a4"]
 [ext_resource type="Shader" uid="uid://d32278sheptfl" path="res://resources/sky_color.gdshader" id="7_a8run"]
 [ext_resource type="PackedScene" uid="uid://bt7fhktqolmdo" path="res://scenes/lighting/light/light.tscn" id="8_a8run"]
+[ext_resource type="PackedScene" uid="uid://cylsmrl1pesu6" path="res://scenes/entities/glob_pickup/glob_pickup.tscn" id="8_ouso4"]
+[ext_resource type="PackedScene" uid="uid://y2u0j6hxafrl" path="res://scenes/ui/decay_bar/decay_bar.tscn" id="12_blune"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ouso4"]
 shader = ExtResource("7_a8run")
@@ -156,17 +157,18 @@ y_sort_enabled = true
 [node name="Player" parent="World/YSortRoot" unique_id=733631145 instance=ExtResource("1_hyk8p")]
 position = Vector2(163, 95)
 
-[node name="Rat" parent="World/YSortRoot" unique_id=660716153 instance=ExtResource("3_k2fmo")]
-position = Vector2(70, 87)
+[node name="GlobPickup" parent="World/YSortRoot" unique_id=420754546 instance=ExtResource("8_ouso4")]
+position = Vector2(74, 72)
 
 [node name="PlayerCamera" parent="." unique_id=726282148 instance=ExtResource("2_l3cfh")]
 process_callback = 0
 
 [node name="SkyColorSprite" type="Sprite2D" parent="PlayerCamera" unique_id=1230093902]
-visible = false
 material = SubResource("ShaderMaterial_ouso4")
 texture = SubResource("ViewportTexture_b1x3f")
 
 [node name="UI" parent="." unique_id=1506874504 node_paths=PackedStringArray("decay_manager") instance=ExtResource("6_ow5a4")]
-visible = false
+decay_manager = NodePath("../DecayManager")
+
+[node name="DecayBar" parent="." unique_id=1646004893 node_paths=PackedStringArray("decay_manager") instance=ExtResource("12_blune")]
 decay_manager = NodePath("../DecayManager")

@@ -7,7 +7,7 @@ extends CanvasLayer
 
 func _process(_delta: float) -> void:
 	if decay_manager != null:
-		pass
+		label.text = "%02d" % decay_manager.current_decay
 
 func format_seconds_to_string(seconds: float) -> String:
 	var minutes = floor(seconds / 60)

@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://cphlwc7d8vso8"]
+
+[ext_resource type="Script" uid="uid://b5ccv3s5onggt" path="res://scenes/components/hover_animation_component/hover_animation_component.gd" id="1_gooxc"]
+
+[node name="HoverAnimationComponent" type="Node" unique_id=529054329]
+script = ExtResource("1_gooxc")
