@@ -101,6 +101,7 @@ z_index = 1
 material = SubResource("ShaderMaterial_p47bc")
 
 [node name="Light" parent="Visuals" unique_id=208953761 instance=ExtResource("5_5sj0x")]
+position = Vector2(0, -9)
 hue = Color(0.26666668, 0.88235295, 0.7019608, 1)
 on_by_default = true
 diameter = 4.0

@@ -37,7 +37,7 @@ func _physics_process(delta: float) -> void:
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("dash"):
-		dash_ability_controller.dash(velocity.normalized())
+		dash_ability_controller.dash(Input.get_vector("left", "right", "up", "down"))
 	if event.is_action_pressed("shoot"):
 		shoot_ability_controller.shoot(global_position.direction_to(get_global_mouse_position()))
 
