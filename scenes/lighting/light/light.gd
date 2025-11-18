@@ -16,7 +16,7 @@ func _ready() -> void:
 func _ready_deferred() -> void:
 	_light_id = Main.instance.light_sub_viewport.assign_light_and_get_id(self, diameter, energy, hue)
 	if on_by_default:
-		turn_on()
+		turn_on.call_deferred()
 
 func _process(_delta: float) -> void:
 	if _previous_energy != energy:
