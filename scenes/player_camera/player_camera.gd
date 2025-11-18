@@ -3,7 +3,10 @@ extends Camera2D
 
 var target_position: Vector2 = Vector2.ZERO
 
+@onready var sky_color_sprite: Sprite2D = $SkyColorSprite
+
 func _ready() -> void:
+	sky_color_sprite.visible = true
 	make_current()
 
 func _process(delta: float) -> void:

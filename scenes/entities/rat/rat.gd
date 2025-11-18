@@ -8,6 +8,7 @@ const MAX_VELOCITY = 75
 @onready var hurtbox_component: HurtboxComponent = $HurtboxComponent
 @onready var health_component: HealthComponent = $HealthComponent
 @onready var visuals: Node2D = $Visuals
+@onready var light: Light = $Visuals/Light
 
 func _ready() -> void:
 	health_component.died.connect(_on_died)

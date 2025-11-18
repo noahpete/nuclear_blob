@@ -78,7 +78,7 @@ turbulence_influence_min = 0.020000001
 turbulence_influence_max = 0.080000006
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_p47bc"]
-radius = 5.0
+radius = 3.1622777
 
 [node name="Player" type="CharacterBody2D" unique_id=733631145]
 collision_layer = 0
@@ -125,6 +125,5 @@ texture = ExtResource("5_p47bc")
 offset = Vector2(0, -8)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1525390777]
-visible = false
-position = Vector2(0, -5)
+position = Vector2(0, -3)
 shape = SubResource("CircleShape2D_p47bc")
