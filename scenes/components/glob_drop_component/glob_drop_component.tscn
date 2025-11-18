@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://baqlsf07a1bsl"]
+
+[ext_resource type="Script" uid="uid://cch046qykniey" path="res://scenes/components/glob_drop_component/glob_drop_component.gd" id="1_k3mhu"]
+
+[node name="GlobDropComponent" type="Node" unique_id=481289723]
+script = ExtResource("1_k3mhu")

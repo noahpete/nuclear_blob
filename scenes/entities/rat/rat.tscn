@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://wrbxwpd8qym2"]
+[gd_scene load_steps=14 format=3 uid="uid://wrbxwpd8qym2"]
 
 [ext_resource type="Script" uid="uid://143welu2vjvf" path="res://scenes/entities/rat/rat.gd" id="1_dhrd7"]
 [ext_resource type="Texture2D" uid="uid://uahisbxv6w5g" path="res://scenes/entities/rat/rat_body.png" id="1_ycvpf"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://dm2ird4tu5dpy" path="res://scenes/components/health_component/health_component.tscn" id="2_bqiwj"]
 [ext_resource type="Texture2D" uid="uid://c05147h0som5a" path="res://scenes/entities/rat/rat_tail.png" id="2_msx1r"]
 [ext_resource type="Texture2D" uid="uid://dyltgvq6rpo2h" path="res://scenes/entities/rat/rat_head.png" id="3_dhrd7"]
+[ext_resource type="PackedScene" uid="uid://baqlsf07a1bsl" path="res://scenes/components/glob_drop_component/glob_drop_component.tscn" id="3_fc87t"]
 [ext_resource type="PackedScene" uid="uid://bt7fhktqolmdo" path="res://scenes/lighting/light/light.tscn" id="7_myt5n"]
 
 [sub_resource type="Animation" id="Animation_dhrd7"]
@@ -147,7 +148,7 @@ _data = {
 radius = 13.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_dhrd7"]
-radius = 5.0
+radius = 4.0
 
 [node name="Rat" type="CharacterBody2D" unique_id=660716153]
 collision_layer = 8
@@ -161,6 +162,9 @@ libraries = {
 }
 
 [node name="HealthComponent" parent="." unique_id=452659684 instance=ExtResource("2_bqiwj")]
+
+[node name="GlobDropComponent" parent="." unique_id=481289723 node_paths=PackedStringArray("health_component") instance=ExtResource("3_fc87t")]
+health_component = NodePath("../HealthComponent")
 
 [node name="HurtboxComponent" parent="." unique_id=1402398024 node_paths=PackedStringArray("health_component") instance=ExtResource("2_4ybdi")]
 health_component = NodePath("../HealthComponent")
@@ -191,5 +195,5 @@ on_by_default = true
 energy = 0.8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=149080143]
-position = Vector2(0, -5)
+position = Vector2(0, -4)
 shape = SubResource("CircleShape2D_dhrd7")

@@ -1,0 +1,38 @@
+[gd_scene load_steps=7 format=3 uid="uid://cylsmrl1pesu6"]
+
+[ext_resource type="Shader" uid="uid://dmd8ma15d1ulh" path="res://resources/sway.gdshader" id="1_yah0a"]
+[ext_resource type="Texture2D" uid="uid://cn7t376bf8ksl" path="res://assets/glob_drop.png" id="2_emsad"]
+[ext_resource type="Script" uid="uid://duc67ys3mxkcy" path="res://scenes/entities/glob_pickup/glob_pickup.gd" id="2_kq7dt"]
+[ext_resource type="PackedScene" uid="uid://bt7fhktqolmdo" path="res://scenes/lighting/light/light.tscn" id="4_emsad"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_483rc"]
+shader = ExtResource("1_yah0a")
+shader_parameter/sway_speed = 1.0
+shader_parameter/sway_strength = 0.05000000074506
+shader_parameter/noise_scale = 3.7730001317175
+shader_parameter/time_offset = 0.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_sqty6"]
+radius = 13.0
+
+[node name="GlobPickup" type="Sprite2D" unique_id=420754546]
+material = SubResource("ShaderMaterial_483rc")
+texture = ExtResource("2_emsad")
+offset = Vector2(1, -2)
+script = ExtResource("2_kq7dt")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=863824711]
+collision_layer = 0
+collision_mask = 16
+monitoring = false
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1718318182]
+shape = SubResource("CircleShape2D_sqty6")
+
+[node name="Light" parent="." unique_id=208953761 instance=ExtResource("4_emsad")]
+position = Vector2(0, -2)
+hue = Color(0.4117647, 1, 0.83137256, 1)
+on_by_default = true
+diameter = 0.8
+energy = 0.8
