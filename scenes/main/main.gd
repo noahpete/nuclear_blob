@@ -7,6 +7,7 @@ static var instance: Main
 @onready var y_sort_root: Node2D = $World/YSortRoot
 @onready var background_effects: Node2D = $World/BackgroundEffects
 @onready var light_sub_viewport: LightSubViewport = $LightSubViewport
+@onready var game_camera: GameCamera = $GameCamera
 
 func _ready() -> void:
 	if instance != null:

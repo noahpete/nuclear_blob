@@ -73,5 +73,5 @@ func dash(direction: Vector2) -> void:
 
 func _on_ability_upgrade_added(upgrade: AbilityUpgrade, current_upgrades: Dictionary) -> void:
 	if upgrade.id == "dash_speed":
-		var percent_reduction = current_upgrades["dash_speed"]["quantity"] * dash_speed_upgrade_amount
-		dash_duration = base_dash_duration * (1 - percent_reduction)
+		dash_duration = base_dash_duration * pow(1 - dash_speed_upgrade_amount, current_upgrades["dash_speed"]["quantity"])
+		Log.info("Upgraded Dash Speed, duration=%s" % dash_duration)

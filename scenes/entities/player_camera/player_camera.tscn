@@ -1,6 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://dqp7u3mflaicu"]
-
-[ext_resource type="Script" uid="uid://brocpx0dfu3fn" path="res://scenes/entities/player_camera/player_camera.gd" id="1_ferba"]
-
-[node name="PlayerCamera" type="Camera2D" unique_id=726282148]
-script = ExtResource("1_ferba")

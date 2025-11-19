@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://boefiu860bisa"]
+
+[ext_resource type="Script" uid="uid://k8swihfo1t1s" path="res://scenes/components/shake_animation_component/shake_animation_component.gd" id="1_rd18i"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_hbl1l"]
+noise_type = 3
+
+[node name="ShakeAnimationComponent" type="Node" unique_id=823682991]
+script = ExtResource("1_rd18i")
+noise_texture = SubResource("FastNoiseLite_hbl1l")
