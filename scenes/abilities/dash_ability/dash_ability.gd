@@ -22,6 +22,9 @@ func _process(_delta: float) -> void:
 	for point in line_point_queue:
 		line_2d.add_point(point)
 
+	if destroy_timer.time_left < destroy_timer.wait_time * 0.6:
+		hitbox_component.monitorable = false
+
 func _on_destroy_timer_timeout() -> void:
 	hitbox_component.monitoring = false
 	var opacity_tween := create_tween()
