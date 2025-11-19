@@ -1,13 +1,13 @@
-[gd_scene load_steps=14 format=3 uid="uid://wrbxwpd8qym2"]
+[gd_scene load_steps=15 format=3 uid="uid://wrbxwpd8qym2"]
 
 [ext_resource type="Script" uid="uid://143welu2vjvf" path="res://scenes/entities/rat/rat.gd" id="1_dhrd7"]
-[ext_resource type="Texture2D" uid="uid://uahisbxv6w5g" path="res://scenes/entities/rat/rat_body.png" id="1_ycvpf"]
 [ext_resource type="PackedScene" uid="uid://bd6x8kbb5otsi" path="res://scenes/components/hurtbox_component/hurtbox_component.tscn" id="2_4ybdi"]
 [ext_resource type="PackedScene" uid="uid://dm2ird4tu5dpy" path="res://scenes/components/health_component/health_component.tscn" id="2_bqiwj"]
-[ext_resource type="Texture2D" uid="uid://c05147h0som5a" path="res://scenes/entities/rat/rat_tail.png" id="2_msx1r"]
-[ext_resource type="Texture2D" uid="uid://dyltgvq6rpo2h" path="res://scenes/entities/rat/rat_head.png" id="3_dhrd7"]
 [ext_resource type="PackedScene" uid="uid://baqlsf07a1bsl" path="res://scenes/components/glob_drop_component/glob_drop_component.tscn" id="3_fc87t"]
+[ext_resource type="PackedScene" uid="uid://cbsnxwy6gnsfv" path="res://scenes/components/death_component/death_component.tscn" id="4_qbcnn"]
+[ext_resource type="Shader" uid="uid://dmd8ma15d1ulh" path="res://resources/sway.gdshader" id="5_vgsrl"]
 [ext_resource type="PackedScene" uid="uid://bt7fhktqolmdo" path="res://scenes/lighting/light/light.tscn" id="7_myt5n"]
+[ext_resource type="Texture2D" uid="uid://bsh85q1ovlpep" path="res://scenes/entities/rat/rat.png" id="7_qbcnn"]
 
 [sub_resource type="Animation" id="Animation_dhrd7"]
 length = 0.001
@@ -147,6 +147,13 @@ _data = {
 [sub_resource type="CircleShape2D" id="CircleShape2D_4ybdi"]
 radius = 13.0
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qbcnn"]
+shader = ExtResource("5_vgsrl")
+shader_parameter/sway_speed = 1.0
+shader_parameter/sway_strength = 0.01
+shader_parameter/noise_scale = 5.0
+shader_parameter/time_offset = 0.0
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_dhrd7"]
 radius = 4.0
 
@@ -166,6 +173,10 @@ libraries = {
 [node name="GlobDropComponent" parent="." unique_id=481289723 node_paths=PackedStringArray("health_component") instance=ExtResource("3_fc87t")]
 health_component = NodePath("../HealthComponent")
 
+[node name="DeathComponent" parent="." unique_id=1363527081 node_paths=PackedStringArray("health_component", "sprites") instance=ExtResource("4_qbcnn")]
+health_component = NodePath("../HealthComponent")
+sprites = [NodePath("../Visuals/RatBody"), NodePath("../Visuals/RatTail"), NodePath("../Visuals/RatHead")]
+
 [node name="HurtboxComponent" parent="." unique_id=1402398024 node_paths=PackedStringArray("health_component") instance=ExtResource("2_4ybdi")]
 health_component = NodePath("../HealthComponent")
 
@@ -174,19 +185,26 @@ position = Vector2(0, -7)
 shape = SubResource("CircleShape2D_4ybdi")
 
 [node name="Visuals" type="Node2D" parent="." unique_id=664246584]
+material = SubResource("ShaderMaterial_qbcnn")
 
 [node name="RatBody" type="Sprite2D" parent="Visuals" unique_id=1715529847]
 position = Vector2(0, -5)
-texture = ExtResource("1_ycvpf")
+texture = ExtResource("7_qbcnn")
+region_enabled = true
+region_rect = Rect2(18, 4, 13, 9)
 
 [node name="RatTail" type="Sprite2D" parent="Visuals" unique_id=573788366]
 position = Vector2(-4, -9)
 rotation = 0.7158233
-texture = ExtResource("2_msx1r")
+texture = ExtResource("7_qbcnn")
+region_enabled = true
+region_rect = Rect2(4, 3, 6, 11)
 
 [node name="RatHead" type="Sprite2D" parent="Visuals" unique_id=916558857]
 position = Vector2(5, -3)
-texture = ExtResource("3_dhrd7")
+texture = ExtResource("7_qbcnn")
+region_enabled = true
+region_rect = Rect2(36, 5, 9, 7)
 
 [node name="Light" parent="Visuals" unique_id=208953761 instance=ExtResource("7_myt5n")]
 position = Vector2(6, -2)
