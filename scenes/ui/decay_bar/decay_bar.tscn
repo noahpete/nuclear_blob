@@ -92,9 +92,11 @@ curve = SubResource("Curve_imkyo")
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_uy85n"]
 particle_flag_disable_z = true
 emission_shape_offset = Vector3(0, 0.5, 0)
+emission_shape = 1
+emission_sphere_radius = 8.0
 angle_min = -179.99998
 angle_max = 180.00002
-spread = 90.0
+spread = 60.0
 initial_velocity_min = 100.0
 initial_velocity_max = 140.0
 gravity = Vector3(0, 160, 0)

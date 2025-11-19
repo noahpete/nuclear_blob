@@ -173,9 +173,9 @@ libraries = {
 [node name="GlobDropComponent" parent="." unique_id=481289723 node_paths=PackedStringArray("health_component") instance=ExtResource("3_fc87t")]
 health_component = NodePath("../HealthComponent")
 
-[node name="DeathComponent" parent="." unique_id=1363527081 node_paths=PackedStringArray("health_component", "sprites") instance=ExtResource("4_qbcnn")]
+[node name="DeathComponent" parent="." unique_id=1363527081 node_paths=PackedStringArray("health_component") instance=ExtResource("4_qbcnn")]
 health_component = NodePath("../HealthComponent")
-sprites = [NodePath("../Visuals/RatBody"), NodePath("../Visuals/RatTail"), NodePath("../Visuals/RatHead")]
+sprite_atlas_texture = ExtResource("7_qbcnn")
 
 [node name="HurtboxComponent" parent="." unique_id=1402398024 node_paths=PackedStringArray("health_component") instance=ExtResource("2_4ybdi")]
 health_component = NodePath("../HealthComponent")

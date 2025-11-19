@@ -3,13 +3,14 @@ extends Node
 
 const NOISE_GROWTH: float = 500.0
 
+@export var enabled: bool
 @export var noise_texture: FastNoiseLite
 @export var shake_strength: float = 8.0
 
 var original_position: Vector2
 var noise_offset_x: float
 var noise_offset_y: float
-var current_shake_percentage: float = 1.0
+var current_shake_percentage: float = 0.0
 
 func _ready() -> void:
 	var parent := get_parent()
@@ -21,6 +22,8 @@ func _ready() -> void:
 		original_position = (parent as Node2D).position
 
 func _process(delta: float) -> void:
+	if !enabled:
+		return
 	if current_shake_percentage == 0:
 		return
 
