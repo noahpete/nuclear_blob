@@ -1,9 +1,71 @@
-[gd_scene load_steps=11 format=3 uid="uid://y2u0j6hxafrl"]
+[gd_scene load_steps=15 format=3 uid="uid://y2u0j6hxafrl"]
 
 [ext_resource type="Script" uid="uid://deigkeltp8kjw" path="res://scenes/ui/decay_bar/decay_bar.gd" id="1_y6ail"]
 [ext_resource type="Theme" uid="uid://bp7gihsracsyc" path="res://resources/theme.tres" id="2_8mt12"]
+[ext_resource type="Script" uid="uid://ba1r7xtjjxqur" path="res://scripts/passthrough_container.gd" id="3_hbl1l"]
 [ext_resource type="Texture2D" uid="uid://facylhmthgjc" path="res://assets/arcade.png" id="3_uy85n"]
 [ext_resource type="Texture2D" uid="uid://b21xaipkf0fns" path="res://assets/glob_white.png" id="5_uy85n"]
+
+[sub_resource type="Animation" id="Animation_uy85n"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MarginContainer/Container/Control/ProgressBar:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MarginContainer/Container/Control/ProgressBar:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_hbl1l"]
+resource_name = "level_up"
+step = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MarginContainer/Container/Control/ProgressBar:rotation")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MarginContainer/Container/Control/ProgressBar:scale")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_j44lw"]
+_data = {
+&"RESET": SubResource("Animation_uy85n"),
+&"level_up": SubResource("Animation_hbl1l")
+}
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_hbl1l"]
 texture = ExtResource("3_uy85n")
@@ -44,7 +106,10 @@ color_initial_ramp = SubResource("GradientTexture1D_uy85n")
 [node name="DecayBar" type="CanvasLayer" unique_id=1646004893]
 script = ExtResource("1_y6ail")
 
-[node name="ShakeAnimationComponent" type="Node" parent="." unique_id=1743291102]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1532930289]
+libraries = {
+&"": SubResource("AnimationLibrary_j44lw")
+}
 
 [node name="MarginContainer" type="MarginContainer" parent="." unique_id=979638506]
 anchors_preset = 15
@@ -58,10 +123,25 @@ theme_override_constants/margin_left = 200
 theme_override_constants/margin_top = 16
 theme_override_constants/margin_right = 200
 
-[node name="ProgressBar" type="ProgressBar" parent="MarginContainer" unique_id=1366517813]
+[node name="Container" type="Container" parent="MarginContainer" unique_id=1649917935]
+layout_mode = 2
+size_flags_vertical = 0
+mouse_filter = 2
+script = ExtResource("3_hbl1l")
+center_pivot_offset = true
+
+[node name="Control" type="Control" parent="MarginContainer/Container" unique_id=1808941241]
+layout_mode = 2
+size_flags_vertical = 0
+mouse_filter = 2
+
+[node name="ProgressBar" type="ProgressBar" parent="MarginContainer/Container/Control" unique_id=1366517813]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 16)
-layout_mode = 2
+layout_mode = 0
+offset_right = 240.0
+offset_bottom = 16.0
+pivot_offset = Vector2(120, 8)
 mouse_filter = 2
 theme = ExtResource("2_8mt12")
 theme_override_styles/fill = SubResource("StyleBoxTexture_hbl1l")
@@ -77,5 +157,4 @@ lifetime = 0.6
 preprocess = 60.0
 fixed_fps = 0
 interpolate = false
-local_coords = true
 process_material = SubResource("ParticleProcessMaterial_uy85n")
