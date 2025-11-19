@@ -1,9 +1,10 @@
-[gd_scene load_steps=16 format=3 uid="uid://wrbxwpd8qym2"]
+[gd_scene load_steps=17 format=3 uid="uid://wrbxwpd8qym2"]
 
 [ext_resource type="Script" uid="uid://143welu2vjvf" path="res://scenes/entities/enemies/rat/rat.gd" id="1_dhrd7"]
 [ext_resource type="PackedScene" uid="uid://bd6x8kbb5otsi" path="res://scenes/components/hurtbox_component/hurtbox_component.tscn" id="2_4ybdi"]
 [ext_resource type="PackedScene" uid="uid://dm2ird4tu5dpy" path="res://scenes/components/health_component/health_component.tscn" id="2_bqiwj"]
 [ext_resource type="PackedScene" uid="uid://baqlsf07a1bsl" path="res://scenes/components/glob_drop_component/glob_drop_component.tscn" id="3_fc87t"]
+[ext_resource type="PackedScene" uid="uid://cfakp22gnrqai" path="res://scenes/components/follow_player_component/follow_player_component.tscn" id="4_asb7w"]
 [ext_resource type="PackedScene" uid="uid://cbsnxwy6gnsfv" path="res://scenes/components/death_component/death_component.tscn" id="4_qbcnn"]
 [ext_resource type="Shader" uid="uid://dmd8ma15d1ulh" path="res://resources/sway.gdshader" id="5_vgsrl"]
 [ext_resource type="PackedScene" uid="uid://bt7fhktqolmdo" path="res://scenes/lighting/light/light.tscn" id="7_myt5n"]
@@ -58,7 +59,7 @@ tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(-4, -9)]
+"values": [Vector2(6, -4)]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
@@ -222,6 +223,10 @@ libraries = {
 [node name="GlobDropComponent" parent="." unique_id=481289723 node_paths=PackedStringArray("health_component") instance=ExtResource("3_fc87t")]
 health_component = NodePath("../HealthComponent")
 
+[node name="FollowPlayerComponent" parent="." unique_id=219659236 node_paths=PackedStringArray("animation_player", "visuals") instance=ExtResource("4_asb7w")]
+animation_player = NodePath("../AnimationPlayer")
+visuals = NodePath("../Visuals")
+
 [node name="DeathComponent" parent="." unique_id=1363527081 node_paths=PackedStringArray("health_component") instance=ExtResource("4_qbcnn")]
 health_component = NodePath("../HealthComponent")
 sprite_atlas_texture = ExtResource("7_qbcnn")
@@ -247,7 +252,7 @@ texture = ExtResource("7_qbcnn")
 region_rect = Rect2(4, 3, 6, 11)
 
 [node name="RatHeadFlashSprite" parent="Visuals" unique_id=1579926059 instance=ExtResource("8_rupkw")]
-position = Vector2(-4, -9)
+position = Vector2(6, -4)
 texture = ExtResource("7_qbcnn")
 region_rect = Rect2(36, 5, 9, 7)
 
