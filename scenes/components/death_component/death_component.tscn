@@ -1,8 +1,7 @@
-[gd_scene load_steps=14 format=3 uid="uid://cbsnxwy6gnsfv"]
+[gd_scene load_steps=13 format=3 uid="uid://cbsnxwy6gnsfv"]
 
 [ext_resource type="Script" uid="uid://dtrl4xbhbgoxo" path="res://scenes/components/death_component/death_component.gd" id="1_gv6il"]
 [ext_resource type="Texture2D" uid="uid://urq5hnnqcosp" path="res://assets/particles.png" id="2_8ee4n"]
-[ext_resource type="Texture2D" uid="uid://bsh85q1ovlpep" path="res://scenes/entities/enemies/rat/rat.png" id="2_1834d"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_lffis"]
 particles_animation = true
@@ -70,7 +69,6 @@ script = ExtResource("1_gv6il")
 material = SubResource("CanvasItemMaterial_lffis")
 emitting = false
 amount = 3
-texture = ExtResource("2_1834d")
 lifetime = 0.6
 one_shot = true
 explosiveness = 1.0

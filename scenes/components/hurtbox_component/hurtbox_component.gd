@@ -4,8 +4,6 @@ extends Area2D
 signal hit
 
 @export var health_component: HealthComponent
-@export_group("Options")
-@export var flash_visuals_on_hit: bool = true
 @export var shake_camera_on_hit: bool = true
 
 var shake_tween: Tween

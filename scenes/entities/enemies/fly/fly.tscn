@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://xvdq76hjgmyc"]
+[gd_scene load_steps=15 format=3 uid="uid://xvdq76hjgmyc"]
 
 [ext_resource type="Script" uid="uid://b56j76kt276a1" path="res://scenes/entities/enemies/fly/fly.gd" id="1_dc2m1"]
 [ext_resource type="Texture2D" uid="uid://dpcrvkou5kjq2" path="res://scenes/entities/enemies/fly/fly.png" id="1_lmw38"]
@@ -7,7 +7,6 @@
 [ext_resource type="PackedScene" uid="uid://cfakp22gnrqai" path="res://scenes/components/follow_player_component/follow_player_component.tscn" id="4_2nmo0"]
 [ext_resource type="PackedScene" uid="uid://bt7fhktqolmdo" path="res://scenes/lighting/light/light.tscn" id="4_hverb"]
 [ext_resource type="PackedScene" uid="uid://cbsnxwy6gnsfv" path="res://scenes/components/death_component/death_component.tscn" id="4_nq8be"]
-[ext_resource type="Texture2D" uid="uid://bsh85q1ovlpep" path="res://scenes/entities/enemies/rat/rat.png" id="5_c527f"]
 [ext_resource type="PackedScene" uid="uid://b6nblfljn46gc" path="res://scenes/components/flash_sprite_component/flash_sprite_component.tscn" id="5_j62g4"]
 [ext_resource type="PackedScene" uid="uid://bd6x8kbb5otsi" path="res://scenes/components/hurtbox_component/hurtbox_component.tscn" id="6_os3s7"]
 
@@ -247,7 +246,7 @@ flip_visuals = true
 
 [node name="DeathComponent" parent="." unique_id=1363527081 node_paths=PackedStringArray("health_component") instance=ExtResource("4_nq8be")]
 health_component = NodePath("../HealthComponent")
-sprite_atlas_texture = ExtResource("5_c527f")
+sprite_atlas_texture = ExtResource("1_lmw38")
 
 [node name="HurtboxComponent" parent="." unique_id=1402398024 node_paths=PackedStringArray("health_component") instance=ExtResource("6_os3s7")]
 health_component = NodePath("../HealthComponent")
