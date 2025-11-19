@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dtrl4xbhbgoxo" path="res://scenes/components/death_component/death_component.gd" id="1_gv6il"]
 [ext_resource type="Texture2D" uid="uid://urq5hnnqcosp" path="res://assets/particles.png" id="2_8ee4n"]
-[ext_resource type="Texture2D" uid="uid://bsh85q1ovlpep" path="res://scenes/entities/rat/rat.png" id="2_1834d"]
+[ext_resource type="Texture2D" uid="uid://bsh85q1ovlpep" path="res://scenes/entities/enemies/rat/rat.png" id="2_1834d"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_lffis"]
 particles_animation = true

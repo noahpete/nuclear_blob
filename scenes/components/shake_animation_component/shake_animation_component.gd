@@ -6,11 +6,11 @@ const NOISE_GROWTH: float = 500.0
 @export var enabled: bool
 @export var noise_texture: FastNoiseLite
 @export var shake_strength: float = 8.0
+@export var current_shake_percentage: float = 0.0
 
 var original_position: Vector2
 var noise_offset_x: float
 var noise_offset_y: float
-var current_shake_percentage: float = 0.0
 
 func _ready() -> void:
 	var parent := get_parent()
@@ -41,4 +41,4 @@ func _process(delta: float) -> void:
 	elif parent is Camera2D:
 		(parent as Camera2D).offset = Vector2(offset_sample_x, offset_sample_y) * shake_strength
 	elif parent is Node2D:
-		(parent as Node2D).position = original_position + Vector2(offset_sample_x, offset_sample_y) * shake_strength
+		(parent as Node2D).position += Vector2(offset_sample_x, offset_sample_y) * shake_strength

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bsh85q1ovlpep"
-path="res://.godot/imported/rat.png-6cdd101baa95a682e08ff4395f987055.ctex"
+uid="uid://dpcrvkou5kjq2"
+path="res://.godot/imported/fly.png-f8eea64cd077a1acd41829849b1e8a11.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://scenes/entities/rat/rat.png"
-dest_files=["res://.godot/imported/rat.png-6cdd101baa95a682e08ff4395f987055.ctex"]
+source_file="res://scenes/entities/enemies/fly/fly.png"
+dest_files=["res://.godot/imported/fly.png-f8eea64cd077a1acd41829849b1e8a11.ctex"]
 
 [params]
 

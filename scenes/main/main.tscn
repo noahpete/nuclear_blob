@@ -13,7 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://cnt5ehv70fhka" path="res://scenes/ui/ui.tscn" id="6_ow5a4"]
 [ext_resource type="Shader" uid="uid://d32278sheptfl" path="res://resources/sky_color.gdshader" id="7_a8run"]
 [ext_resource type="PackedScene" uid="uid://bt7fhktqolmdo" path="res://scenes/lighting/light/light.tscn" id="8_a8run"]
-[ext_resource type="PackedScene" uid="uid://cylsmrl1pesu6" path="res://scenes/entities/glob_pickup/glob_pickup.tscn" id="8_ouso4"]
+[ext_resource type="PackedScene" uid="uid://xvdq76hjgmyc" path="res://scenes/entities/enemies/fly/fly.tscn" id="11_hxu8e"]
 [ext_resource type="PackedScene" uid="uid://y2u0j6hxafrl" path="res://scenes/ui/decay_bar/decay_bar.tscn" id="12_blune"]
 [ext_resource type="PackedScene" uid="uid://boefiu860bisa" path="res://scenes/components/shake_animation_component/shake_animation_component.tscn" id="14_hxu8e"]
 
@@ -191,17 +191,8 @@ y_sort_enabled = true
 [node name="Player" parent="World/YSortRoot" unique_id=733631145 instance=ExtResource("1_hyk8p")]
 position = Vector2(163, 95)
 
-[node name="GlobPickup" parent="World/YSortRoot" unique_id=420754546 instance=ExtResource("8_ouso4")]
-position = Vector2(74, 72)
-
-[node name="GlobPickup2" parent="World/YSortRoot" unique_id=372862607 instance=ExtResource("8_ouso4")]
-position = Vector2(74, 72)
-
-[node name="GlobPickup3" parent="World/YSortRoot" unique_id=1820406131 instance=ExtResource("8_ouso4")]
-position = Vector2(74, 72)
-
-[node name="GlobPickup4" parent="World/YSortRoot" unique_id=584631353 instance=ExtResource("8_ouso4")]
-position = Vector2(74, 72)
+[node name="Fly" parent="World/YSortRoot" unique_id=232667843 instance=ExtResource("11_hxu8e")]
+position = Vector2(81, 99)
 
 [node name="GameCamera" parent="." unique_id=726282148 instance=ExtResource("2_l3cfh")]
 process_callback = 0

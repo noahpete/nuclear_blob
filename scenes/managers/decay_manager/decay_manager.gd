@@ -4,8 +4,8 @@ extends Node
 signal decay_updated(current_decay: float, target_decay: float)
 signal level_up(new_level: int)
 
-const TARGET_DECAY_GROWTH_FACTOR: float = 1.2
-const DECAY_RATE_FACTOR: float = 0.5
+const TARGET_DECAY_GROWTH_FACTOR: float = 1.4
+const DECAY_RATE_FACTOR: float = 0.8
 
 var current_decay: float = 10.0
 var target_decay: float = 12.0
