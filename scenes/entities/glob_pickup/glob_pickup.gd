@@ -2,6 +2,7 @@ class_name GlobPickup
 extends Sprite2D
 
 var tween: Tween
+var value: float = 8.0
 
 @onready var area_2d: Area2D = $Area2D
 @onready var light: Light = $Light
@@ -27,7 +28,7 @@ func _tween_collect(percent: float, start_position: Vector2) -> void:
 	scale = Vector2.ONE.lerp(Vector2.ZERO, percent)
 
 func _on_picked_up() -> void:
-	Events.glob_picked_up.emit(4)
+	Events.glob_picked_up.emit(value)
 	var energy_tween := create_tween()
 	energy_tween.tween_property(light, "energy", 0, 0.8)\
 		.set_trans(Tween.TRANS_CUBIC)\

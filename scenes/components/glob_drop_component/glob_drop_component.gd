@@ -4,6 +4,7 @@ extends Node
 const GLOB_PICKUP = preload("uid://cylsmrl1pesu6")
 
 @export var health_component: HealthComponent
+@export var drop_value: float = 10.0
 @export_range(0, 1) var drop_rate: float = 1.0
 
 func _ready() -> void:
@@ -17,5 +18,6 @@ func _on_died() -> void:
 
 	var spawn_position = (owner as Node2D).global_position
 	var glob_pickup: GlobPickup = GLOB_PICKUP.instantiate()
-	owner.get_parent().add_child(glob_pickup)
+	Main.instance.y_sort_root.add_child(glob_pickup)
 	glob_pickup.global_position = spawn_position
+	glob_pickup.value = drop_value
