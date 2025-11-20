@@ -27,7 +27,7 @@ func _tween_collect(percent: float, start_position: Vector2) -> void:
 	scale = Vector2.ONE.lerp(Vector2.ZERO, percent)
 
 func _on_picked_up() -> void:
-	Events.glob_picked_up.emit(1)
+	Events.glob_picked_up.emit(4)
 	var energy_tween := create_tween()
 	energy_tween.tween_property(light, "energy", 0, 0.8)\
 		.set_trans(Tween.TRANS_CUBIC)\

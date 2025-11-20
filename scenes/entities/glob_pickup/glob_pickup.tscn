@@ -33,6 +33,5 @@ shape = SubResource("CircleShape2D_sqty6")
 [node name="Light" parent="." unique_id=208953761 instance=ExtResource("4_emsad")]
 position = Vector2(0, -2)
 hue = Color(0.4117647, 1, 0.83137256, 1)
-on_by_default = true
 diameter = 0.8
 energy = 0.8

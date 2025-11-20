@@ -4,13 +4,12 @@ extends Node
 const UPGRADE_SCREEN = preload("uid://m8mtvpnedqvk")
 
 @export var upgrade_pool: Array[AbilityUpgrade]
-@export var decay_manager: DecayManager
 @export var interactable_ui: CanvasLayer
 
 var current_upgrades: Dictionary[String, Dictionary] = {}
 
 func _ready() -> void:
-	decay_manager.level_up.connect(_on_level_up)
+	Events.level_up.connect(_on_level_up)
 
 func _on_level_up(_current_level: int) -> void:
 	var chosen_upgrade: AbilityUpgrade = upgrade_pool.pick_random()

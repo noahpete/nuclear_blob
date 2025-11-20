@@ -1,7 +1,11 @@
 extends Node
 
+signal level_up(new_level: int)
 signal glob_picked_up(amount: float)
 signal ability_upgrade_added(upgrade: AbilityUpgrade, current_upgrades: Dictionary)
+
+func emit_level_up(new_level: int) -> void:
+	level_up.emit(new_level)
 
 func emit_glob_picked_up(amount: float) -> void:
 	glob_picked_up.emit(amount)

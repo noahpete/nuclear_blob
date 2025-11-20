@@ -14,7 +14,7 @@
 [ext_resource type="Shader" uid="uid://d32278sheptfl" path="res://resources/sky_color.gdshader" id="7_a8run"]
 [ext_resource type="PackedScene" uid="uid://bt7fhktqolmdo" path="res://scenes/lighting/light/light.tscn" id="8_a8run"]
 [ext_resource type="PackedScene" uid="uid://xvdq76hjgmyc" path="res://scenes/entities/enemies/fly/fly.tscn" id="11_hxu8e"]
-[ext_resource type="PackedScene" uid="uid://y2u0j6hxafrl" path="res://scenes/ui/decay_bar/decay_bar.tscn" id="12_blune"]
+[ext_resource type="PackedScene" uid="uid://y2u0j6hxafrl" path="res://scenes/ui/decay_ui/decay_ui.tscn" id="12_blune"]
 [ext_resource type="PackedScene" uid="uid://boefiu860bisa" path="res://scenes/components/shake_animation_component/shake_animation_component.tscn" id="14_hxu8e"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_raeie"]

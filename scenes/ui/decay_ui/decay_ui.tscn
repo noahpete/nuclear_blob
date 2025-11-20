@@ -1,6 +1,6 @@
-[gd_scene load_steps=15 format=3 uid="uid://y2u0j6hxafrl"]
+[gd_scene load_steps=16 format=3 uid="uid://y2u0j6hxafrl"]
 
-[ext_resource type="Script" uid="uid://deigkeltp8kjw" path="res://scenes/ui/decay_bar/decay_bar.gd" id="1_y6ail"]
+[ext_resource type="Script" uid="uid://deigkeltp8kjw" path="res://scenes/ui/decay_ui/decay_ui.gd" id="1_y6ail"]
 [ext_resource type="Theme" uid="uid://bp7gihsracsyc" path="res://resources/theme.tres" id="2_8mt12"]
 [ext_resource type="Script" uid="uid://ba1r7xtjjxqur" path="res://scripts/passthrough_container.gd" id="3_hbl1l"]
 [ext_resource type="Texture2D" uid="uid://facylhmthgjc" path="res://assets/arcade.png" id="3_uy85n"]
@@ -11,8 +11,8 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("MarginContainer/Container/Control/ProgressBar:rotation")
-tracks/0/interp = 1
+tracks/0/path = NodePath("MarginContainer/ProgressBarContainer/Control/ProgressBar:rotation")
+tracks/0/interp = 2
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
@@ -23,10 +23,34 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("MarginContainer/Container/Control/ProgressBar:scale")
-tracks/1/interp = 1
+tracks/1/path = NodePath("MarginContainer/ProgressBarContainer/Control/ProgressBar:scale")
+tracks/1/interp = 2
 tracks/1/loop_wrap = true
 tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("LevelLabelContainer:rotation")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("LevelLabelContainer:scale")
+tracks/3/interp = 2
+tracks/3/loop_wrap = true
+tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
@@ -39,7 +63,7 @@ step = 0.01
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("MarginContainer/Container/Control/ProgressBar:rotation")
+tracks/0/path = NodePath("MarginContainer/ProgressBarContainer/Control/ProgressBar:rotation")
 tracks/0/interp = 2
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -51,7 +75,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("MarginContainer/Container/Control/ProgressBar:scale")
+tracks/1/path = NodePath("MarginContainer/ProgressBarContainer/Control/ProgressBar:scale")
 tracks/1/interp = 2
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -61,9 +85,39 @@ tracks/1/keys = {
 "values": [Vector2(1, 1)]
 }
 
+[sub_resource type="Animation" id="Animation_powpt"]
+resource_name = "default"
+loop_mode = 1
+step = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("LevelLabelContainer:scale")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.25, 1.25)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("LevelLabelContainer:rotation")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.5, 0.75),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [-0.13962634015954636, 0.13962634, -0.13962634, 0.13962634]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_j44lw"]
 _data = {
 &"RESET": SubResource("Animation_uy85n"),
+&"default": SubResource("Animation_powpt"),
 &"level_up": SubResource("Animation_hbl1l")
 }
 
@@ -91,9 +145,9 @@ curve = SubResource("Curve_imkyo")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_uy85n"]
 particle_flag_disable_z = true
-emission_shape_offset = Vector3(0, 0.5, 0)
+emission_shape_offset = Vector3(4, 0.5, 0)
 emission_shape = 1
-emission_sphere_radius = 8.0
+emission_sphere_radius = 6.0
 angle_min = -179.99998
 angle_max = 180.00002
 spread = 60.0
@@ -105,13 +159,14 @@ scale_max = 2.3999999
 scale_curve = SubResource("CurveTexture_5sj0x")
 color_initial_ramp = SubResource("GradientTexture1D_uy85n")
 
-[node name="DecayBar" type="CanvasLayer" unique_id=1646004893]
+[node name="DecayUI" type="CanvasLayer" unique_id=1646004893]
 script = ExtResource("1_y6ail")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1532930289]
 libraries = {
 &"": SubResource("AnimationLibrary_j44lw")
 }
+autoplay = &"default"
 
 [node name="MarginContainer" type="MarginContainer" parent="." unique_id=979638506]
 anchors_preset = 15
@@ -125,19 +180,19 @@ theme_override_constants/margin_left = 200
 theme_override_constants/margin_top = 16
 theme_override_constants/margin_right = 200
 
-[node name="Container" type="Container" parent="MarginContainer" unique_id=1649917935]
+[node name="ProgressBarContainer" type="Container" parent="MarginContainer" unique_id=1649917935]
 layout_mode = 2
 size_flags_vertical = 0
 mouse_filter = 2
 script = ExtResource("3_hbl1l")
 center_pivot_offset = true
 
-[node name="Control" type="Control" parent="MarginContainer/Container" unique_id=1808941241]
+[node name="Control" type="Control" parent="MarginContainer/ProgressBarContainer" unique_id=1808941241]
 layout_mode = 2
 size_flags_vertical = 0
 mouse_filter = 2
 
-[node name="ProgressBar" type="ProgressBar" parent="MarginContainer/Container/Control" unique_id=1366517813]
+[node name="ProgressBar" type="ProgressBar" parent="MarginContainer/ProgressBarContainer/Control" unique_id=1366517813]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 16)
 layout_mode = 0
@@ -151,8 +206,9 @@ max_value = 1.0
 value = 0.5
 show_percentage = false
 
-[node name="SparkGlobs" type="GPUParticles2D" parent="." unique_id=125226105]
-position = Vector2(322, 24)
+[node name="SparkGlobs" type="GPUParticles2D" parent="MarginContainer/ProgressBarContainer/Control/ProgressBar" unique_id=125226105]
+unique_name_in_owner = true
+position = Vector2(122, 8)
 amount = 64
 texture = ExtResource("5_uy85n")
 lifetime = 0.6
@@ -160,3 +216,21 @@ preprocess = 60.0
 fixed_fps = 0
 interpolate = false
 process_material = SubResource("ParticleProcessMaterial_uy85n")
+
+[node name="LevelLabelContainer" type="Node2D" parent="." unique_id=200058759]
+unique_name_in_owner = true
+
+[node name="LevelLabel" type="Label" parent="LevelLabelContainer" unique_id=1825315994]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(64, 0)
+offset_left = -32.0
+offset_top = -16.0
+offset_right = 32.0
+offset_bottom = 16.0
+pivot_offset_ratio = Vector2(0.5, 0.5)
+theme = ExtResource("2_8mt12")
+theme_override_constants/outline_size = 8
+theme_override_font_sizes/font_size = 32
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
