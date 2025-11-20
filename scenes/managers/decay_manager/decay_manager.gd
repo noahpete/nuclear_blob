@@ -5,10 +5,10 @@ signal decay_updated(current_decay: float, target_decay: float)
 
 const TARGET_DECAY_GROWTH_FACTOR: float = 1.4
 const DECAY_DECAY_GROWTH_FACTOR: float = TARGET_DECAY_GROWTH_FACTOR + 0.1
-const DECAY_RATE_FACTOR: float = 0.8
 
 var current_decay: float = 10.0
 var target_decay: float = 12.0
+var decay_rate_factor: float = 0.8
 var current_level: int = 0
 var signal_paused: bool = false
 
@@ -18,7 +18,7 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	if not signal_paused:
-		current_decay = max(0, current_decay - delta * DECAY_RATE_FACTOR)
+		current_decay = max(0, current_decay - delta * decay_rate_factor)
 		decay_updated.emit(current_decay, target_decay)
 
 func update_decay(amount: float) -> void:
@@ -32,6 +32,7 @@ func _level_up() -> void:
 	current_level += 1
 	Log.info("Level up to level %s" % current_level)
 	target_decay *= TARGET_DECAY_GROWTH_FACTOR
+	decay_rate_factor *= DECAY_DECAY_GROWTH_FACTOR
 	Events.level_up.emit(current_level)
 
 	signal_paused = true
