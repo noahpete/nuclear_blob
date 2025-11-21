@@ -1,10 +1,11 @@
-[gd_scene load_steps=16 format=3 uid="uid://y2u0j6hxafrl"]
+[gd_scene load_steps=17 format=3 uid="uid://y2u0j6hxafrl"]
 
 [ext_resource type="Script" uid="uid://deigkeltp8kjw" path="res://scenes/ui/decay_ui/decay_ui.gd" id="1_y6ail"]
 [ext_resource type="Theme" uid="uid://bp7gihsracsyc" path="res://resources/theme.tres" id="2_8mt12"]
 [ext_resource type="Script" uid="uid://ba1r7xtjjxqur" path="res://scripts/passthrough_container.gd" id="3_hbl1l"]
 [ext_resource type="Texture2D" uid="uid://facylhmthgjc" path="res://assets/arcade.png" id="3_uy85n"]
 [ext_resource type="Texture2D" uid="uid://b21xaipkf0fns" path="res://assets/glob_white.png" id="5_uy85n"]
+[ext_resource type="PackedScene" uid="uid://boefiu860bisa" path="res://scenes/components/shake_animation_component/shake_animation_component.tscn" id="6_jcc6f"]
 
 [sub_resource type="Animation" id="Animation_uy85n"]
 length = 0.001
@@ -216,6 +217,11 @@ preprocess = 60.0
 fixed_fps = 0
 interpolate = false
 process_material = SubResource("ParticleProcessMaterial_uy85n")
+
+[node name="ShakeAnimationComponent" parent="MarginContainer/ProgressBarContainer/Control/ProgressBar" unique_id=823682991 instance=ExtResource("6_jcc6f")]
+enabled = true
+shake_strength = 0.0
+current_shake_percentage = 1.0
 
 [node name="LevelLabelContainer" type="Node2D" parent="." unique_id=200058759]
 unique_name_in_owner = true

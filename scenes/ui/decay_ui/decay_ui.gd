@@ -1,4 +1,4 @@
-class_name DecayBar
+class_name DecayUI
 extends CanvasLayer
 
 @export var decay_manager: DecayManager
@@ -32,3 +32,13 @@ func _on_decay_updated(current_decay: float, target_decay: float) -> void:
 
 func _on_level_up(new_level: int) -> void:
 	level_label.text = str(new_level)
+
+	match new_level:
+		1:
+			progress_bar.get_node("ShakeAnimationComponent").shake_strength = 2
+		5:
+			progress_bar.get_node("ShakeAnimationComponent").shake_strength = 4
+		10:
+			progress_bar.get_node("ShakeAnimationComponent").shake_strength = 6
+		20:
+			progress_bar.get_node("ShakeAnimationComponent").shake_strength = 8

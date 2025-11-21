@@ -223,6 +223,7 @@ autoplay = &"move"
 
 [node name="GlobDropComponent" parent="." unique_id=481289723 node_paths=PackedStringArray("health_component") instance=ExtResource("3_fc87t")]
 health_component = NodePath("../HealthComponent")
+drop_value = 8.0
 
 [node name="VelocityComponent" parent="." unique_id=652698686 instance=ExtResource("5_cewce")]
 

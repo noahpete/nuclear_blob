@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=4 uid="uid://da36exb4ldn5o"]
+[gd_scene load_steps=20 format=4 uid="uid://da36exb4ldn5o"]
 
 [ext_resource type="Script" uid="uid://b134behr4voh3" path="res://scenes/main/main.gd" id="1_6q06x"]
 [ext_resource type="PackedScene" uid="uid://ubcbq426qntu" path="res://scenes/entities/player/player.tscn" id="1_hyk8p"]
@@ -17,6 +17,8 @@
 [ext_resource type="PackedScene" uid="uid://y2u0j6hxafrl" path="res://scenes/ui/decay_ui/decay_ui.tscn" id="12_blune"]
 [ext_resource type="PackedScene" uid="uid://boefiu860bisa" path="res://scenes/components/shake_animation_component/shake_animation_component.tscn" id="14_hxu8e"]
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_hxu8e"]
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_raeie"]
 shader = ExtResource("7_a8run")
 shader_parameter/sky_color = Color(0.19793725, 0.19793722, 0.19793722, 1)
@@ -27,11 +29,15 @@ viewport_path = NodePath("LightSubViewport")
 [node name="Main" type="Node" unique_id=1200418792]
 script = ExtResource("1_6q06x")
 
+[node name="UI" parent="." unique_id=1506874504 instance=ExtResource("6_ow5a4")]
+
+[node name="DecayBar" parent="." unique_id=1646004893 node_paths=PackedStringArray("decay_manager") instance=ExtResource("12_blune")]
+decay_manager = NodePath("../DecayManager")
+
 [node name="DecayManager" parent="." unique_id=1581707433 instance=ExtResource("2_hujxm")]
 
-[node name="UpgradeManager" parent="." unique_id=643098125 node_paths=PackedStringArray("decay_manager") instance=ExtResource("3_blune")]
+[node name="UpgradeManager" parent="." unique_id=643098125 instance=ExtResource("3_blune")]
 upgrade_pool = Array[ExtResource("4_7smn1")]([ExtResource("5_raeie")])
-decay_manager = NodePath("../DecayManager")
 
 [node name="EnemyManager" parent="." unique_id=339992762 node_paths=PackedStringArray("enemy_container") instance=ExtResource("1_k2fmo")]
 enemy_container = NodePath("../World/YSortRoot")
@@ -189,6 +195,7 @@ energy = 0.8
 y_sort_enabled = true
 
 [node name="Player" parent="World/YSortRoot" unique_id=733631145 instance=ExtResource("1_hyk8p")]
+material = SubResource("ShaderMaterial_hxu8e")
 position = Vector2(163, 95)
 
 [node name="Fly" parent="World/YSortRoot" unique_id=232667843 instance=ExtResource("11_hxu8e")]
@@ -204,8 +211,3 @@ texture = SubResource("ViewportTexture_hxu8e")
 
 [node name="ShakeAnimationComponent" parent="GameCamera" unique_id=823682991 instance=ExtResource("14_hxu8e")]
 enabled = true
-
-[node name="UI" parent="." unique_id=1506874504 instance=ExtResource("6_ow5a4")]
-
-[node name="DecayBar" parent="." unique_id=1646004893 node_paths=PackedStringArray("decay_manager") instance=ExtResource("12_blune")]
-decay_manager = NodePath("../DecayManager")

@@ -239,6 +239,7 @@ max_health = 8.0
 
 [node name="GlobDropComponent" parent="." unique_id=481289723 node_paths=PackedStringArray("health_component") instance=ExtResource("3_2nmo0")]
 health_component = NodePath("../HealthComponent")
+drop_value = 6.0
 
 [node name="VelocityComponent" parent="." unique_id=652698686 instance=ExtResource("4_t1bmj")]
 max_speed = 120

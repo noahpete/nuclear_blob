@@ -1,0 +1,38 @@
+[gd_scene load_steps=7 format=3 uid="uid://cy74e717f5wrk"]
+
+[ext_resource type="Script" uid="uid://d2roc80bx33ms" path="res://scenes/background_globs/background_globs.gd" id="1_ye3kf"]
+[ext_resource type="Shader" uid="uid://dmd8ma15d1ulh" path="res://resources/sway.gdshader" id="2_s2euv"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ye3kf"]
+shader = ExtResource("2_s2euv")
+shader_parameter/sway_speed = 1.0
+shader_parameter/sway_strength = 0.01
+shader_parameter/noise_scale = 5.0
+shader_parameter/time_offset = 0.0
+
+[sub_resource type="Gradient" id="Gradient_2te7g"]
+offsets = PackedFloat32Array(0.19292927, 0.21717173, 0.45555556, 0.48989898, 0.510101)
+colors = PackedColorArray(0.14509805, 0.58431375, 0.41568628, 1, 0.26666668, 0.88235295, 0.7019608, 1, 0.416964, 0.97505015, 0.7962044, 1, 0.26666668, 0.88235295, 0.7019608, 1, 0.4117647, 1, 0.83137256, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_dctf8"]
+frequency = 0.0203
+fractal_octaves = 2
+fractal_lacunarity = 1.5
+fractal_gain = 4.0
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_dctf8"]
+noise = SubResource("FastNoiseLite_dctf8")
+color_ramp = SubResource("Gradient_2te7g")
+invert = true
+
+[node name="BackgroundGlobs" type="CanvasLayer" unique_id=1573514306]
+script = ExtResource("1_ye3kf")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=901589465]
+material = SubResource("ShaderMaterial_ye3kf")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("NoiseTexture2D_dctf8")
