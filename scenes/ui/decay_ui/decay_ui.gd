@@ -9,11 +9,13 @@ var target_percent: float = 0.0
 @onready var spark_globs: GPUParticles2D = %SparkGlobs
 @onready var level_label_container: Node2D = %LevelLabelContainer
 @onready var level_label: Label = %LevelLabel
+@onready var animation_player: AnimationPlayer = $AnimationPlayer
 
 func _ready() -> void:
 	target_percent = progress_bar.value
 	decay_manager.decay_updated.connect(_on_decay_updated)
 	Events.level_up.connect(_on_level_up)
+	Events.player_died.connect(_on_player_died)
 
 func _physics_process(delta: float) -> void:
 	progress_bar.value = lerp(progress_bar.value, target_percent, delta * 10)
@@ -42,3 +44,21 @@ func _on_level_up(new_level: int) -> void:
 			progress_bar.get_node("ShakeAnimationComponent").shake_strength = 6
 		20:
 			progress_bar.get_node("ShakeAnimationComponent").shake_strength = 8
+
+func _on_player_died(level: int) -> void:
+	animation_player.play("RESET")
+	animation_player.seek(0.0, true)
+
+	await get_tree().create_timer(1.0).timeout
+
+	var viewport_size := get_viewport().get_visible_rect().size
+	var center_position := viewport_size / 2.0
+
+	var tween := create_tween()
+	tween.set_parallel(true)
+	tween.tween_property(level_label_container, "global_position", center_position, 1.0)\
+		.set_trans(Tween.TRANS_CUBIC)\
+		.set_ease(Tween.EASE_OUT)
+	tween.tween_property(level_label_container, "scale", Vector2(2, 2), 1.0)\
+		.set_trans(Tween.TRANS_CUBIC)\
+		.set_ease(Tween.EASE_OUT)

@@ -14,3 +14,10 @@ func _ready() -> void:
 		push_error("Only one instance of Main is allowed")
 		return
 	instance = self
+	Events.player_died.connect(_on_player_died)
+
+func _on_player_died(level: int) -> void:
+	var tween := create_tween()
+	tween.tween_property(Engine, "time_scale", 0.1, 4.0)\
+		.set_trans(Tween.TRANS_CUBIC)\
+		.set_ease(Tween.EASE_OUT)
