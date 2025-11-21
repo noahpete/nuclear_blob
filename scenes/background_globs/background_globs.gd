@@ -1,7 +1,5 @@
 class_name BackgroundGlobs
-extends CanvasLayer
-
-@onready var texture_rect: TextureRect = $TextureRect
+extends TextureRect
 
 func _process(delta: float) -> void:
-	texture_rect.texture.noise.offset.y += -delta * 10
+	texture.noise.offset.y += -delta * 10

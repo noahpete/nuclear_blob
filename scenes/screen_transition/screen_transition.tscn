@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://b5ucksvm6dc8k"]
+
+[ext_resource type="Script" uid="uid://cxg2wqirltcy8" path="res://scenes/screen_transition/screen_transition.gd" id="1_ye3kf"]
+
+[sub_resource type="Gradient" id="Gradient_7nkmq"]
+colors = PackedColorArray(0, 0, 0, 1, 1, 1, 1, 0)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_dctf8"]
+noise_type = 3
+frequency = 0.02
+fractal_octaves = 2
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_s2euv"]
+noise = SubResource("FastNoiseLite_dctf8")
+color_ramp = SubResource("Gradient_7nkmq")
+
+[node name="ScreenTransition" type="CanvasLayer" unique_id=2003451389]
+visible = false
+script = ExtResource("1_ye3kf")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=2058743632]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("NoiseTexture2D_s2euv")

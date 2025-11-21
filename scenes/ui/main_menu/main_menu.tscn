@@ -1,0 +1,56 @@
+[gd_scene load_steps=5 format=3 uid="uid://shj0dnrasdc2"]
+
+[ext_resource type="PackedScene" uid="uid://cy74e717f5wrk" path="res://scenes/background_globs/background_globs.tscn" id="1_1ch07"]
+[ext_resource type="Theme" uid="uid://bp7gihsracsyc" path="res://resources/theme.tres" id="1_e8t4i"]
+[ext_resource type="Script" uid="uid://cjvuxxerrpt72" path="res://scenes/ui/main_menu/main_menu.gd" id="2_cmwxi"]
+[ext_resource type="Texture2D" uid="uid://bakikp6mpeuvg" path="res://resources/green_noise.tres" id="3_qt1dd"]
+
+[node name="MainMenu" type="Control" unique_id=480106297]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_e8t4i")
+script = ExtResource("2_cmwxi")
+
+[node name="BackgroundGlobs" parent="." unique_id=1573514306 instance=ExtResource("1_1ch07")]
+layout_mode = 1
+texture = ExtResource("3_qt1dd")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1363195520]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -50.0
+offset_top = -20.0
+offset_right = 50.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TitleLabel" type="Label" parent="VBoxContainer" unique_id=1903850002]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0.16862746, 0.18431373, 0.19607843, 1)
+theme_override_constants/outline_size = 8
+theme_override_font_sizes/font_size = 32
+text = "Nuclear Blob"
+
+[node name="PlayButton" type="Button" parent="VBoxContainer" unique_id=1844859674]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(72, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Play"
+
+[node name="QuitButton" type="Button" parent="VBoxContainer" unique_id=1460222346]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(72, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Quit"

@@ -1,7 +1,56 @@
-[gd_resource type="Theme" load_steps=5 format=3 uid="uid://bp7gihsracsyc"]
+[gd_resource type="Theme" load_steps=13 format=3 uid="uid://bp7gihsracsyc"]
 
 [ext_resource type="Texture2D" uid="uid://facylhmthgjc" path="res://assets/arcade.png" id="1_d4nwg"]
 [ext_resource type="FontFile" uid="uid://5rlvwh04nhew" path="res://assets/KarenFat.ttf" id="2_7ct1h"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_b751m"]
+texture = ExtResource("1_d4nwg")
+texture_margin_left = 3.0
+texture_margin_top = 2.0
+texture_margin_right = 3.0
+texture_margin_bottom = 6.0
+region_rect = Rect2(32, 32, 16, 16)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_owntx"]
+load_path = "res://.godot/imported/arcade.png-6b3f0080ba68f6bccce7a0de923cebbf.ctex"
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_aaf3v"]
+texture = SubResource("CompressedTexture2D_owntx")
+texture_margin_left = 3.0
+texture_margin_top = 2.0
+texture_margin_right = 3.0
+texture_margin_bottom = 6.0
+region_rect = Rect2(0, 31, 16, 17)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_yp2uj"]
+load_path = "res://.godot/imported/arcade.png-6b3f0080ba68f6bccce7a0de923cebbf.ctex"
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_dhnw2"]
+texture = SubResource("CompressedTexture2D_yp2uj")
+texture_margin_left = 3.0
+texture_margin_top = 2.0
+texture_margin_right = 3.0
+texture_margin_bottom = 6.0
+region_rect = Rect2(16, 48, 16, 16)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_7ct1h"]
+load_path = "res://.godot/imported/arcade.png-6b3f0080ba68f6bccce7a0de923cebbf.ctex"
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_owntx"]
+texture = SubResource("CompressedTexture2D_7ct1h")
+texture_margin_left = 3.0
+texture_margin_top = 2.0
+texture_margin_right = 3.0
+texture_margin_bottom = 6.0
+region_rect = Rect2(16, 32, 16, 16)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_yp2uj"]
+texture = ExtResource("1_d4nwg")
+texture_margin_left = 3.0
+texture_margin_top = 4.0
+texture_margin_right = 3.0
+texture_margin_bottom = 4.0
+region_rect = Rect2(0, 0, 16, 16)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_7ct1h"]
 texture = ExtResource("1_d4nwg")
@@ -21,9 +70,15 @@ region_rect = Rect2(18, 66, 12, 12)
 
 [resource]
 default_font = ExtResource("2_7ct1h")
+Button/colors/font_color = Color(1, 1, 1, 1)
+Button/styles/disabled = SubResource("StyleBoxTexture_b751m")
+Button/styles/hover = SubResource("StyleBoxTexture_aaf3v")
+Button/styles/normal = SubResource("StyleBoxTexture_dhnw2")
+Button/styles/pressed = SubResource("StyleBoxTexture_owntx")
 MarginContainer/constants/margin_bottom = 4
 MarginContainer/constants/margin_left = 4
 MarginContainer/constants/margin_right = 4
 MarginContainer/constants/margin_top = 4
+PanelContainer/styles/panel = SubResource("StyleBoxTexture_yp2uj")
 ProgressBar/styles/background = SubResource("StyleBoxTexture_7ct1h")
 ProgressBar/styles/fill = SubResource("StyleBoxTexture_886mr")

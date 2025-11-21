@@ -25,10 +25,7 @@ noise = SubResource("FastNoiseLite_dctf8")
 color_ramp = SubResource("Gradient_2te7g")
 invert = true
 
-[node name="BackgroundGlobs" type="CanvasLayer" unique_id=1573514306]
-script = ExtResource("1_ye3kf")
-
-[node name="TextureRect" type="TextureRect" parent="." unique_id=901589465]
+[node name="BackgroundGlobs" type="TextureRect" unique_id=901589465]
 material = SubResource("ShaderMaterial_ye3kf")
 anchors_preset = 15
 anchor_right = 1.0
@@ -36,3 +33,4 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = SubResource("NoiseTexture2D_dctf8")
+script = ExtResource("1_ye3kf")
