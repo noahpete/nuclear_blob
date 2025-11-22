@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bkly4qmi2j24q"
-path="res://.godot/imported/cloud_icon.png-c7e012350f45c09a6ec2166bb5f562da.ctex"
+uid="uid://cdoknr5fyh7ss"
+path="res://.godot/imported/spray_icon.png-e6613714c1e26fcaebeab58206715ec1.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/cloud_icon.png"
-dest_files=["res://.godot/imported/cloud_icon.png-c7e012350f45c09a6ec2166bb5f562da.ctex"]
+source_file="res://assets/icons/spray_icon.png"
+dest_files=["res://.godot/imported/spray_icon.png-e6613714c1e26fcaebeab58206715ec1.ctex"]
 
 [params]
 

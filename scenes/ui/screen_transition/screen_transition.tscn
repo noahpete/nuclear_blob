@@ -18,6 +18,7 @@ color_ramp = SubResource("Gradient_7nkmq")
 [node name="ScreenTransition" type="CanvasLayer" unique_id=2003451389]
 process_mode = 3
 process_priority = -1
+visible = false
 script = ExtResource("1_ye3kf")
 
 [node name="TextureRect" type="TextureRect" parent="." unique_id=2058743632]

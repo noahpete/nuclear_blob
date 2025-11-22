@@ -10,7 +10,7 @@ func _ready() -> void:
 	ScreenTransition.to_transparent()
 	gpu_particles_2d.emitting = true
 	var tween := create_tween()
-	tween.tween_property(gpu_particles_2d, "position", Vector2(320, 360), 2)\
+	tween.tween_property(gpu_particles_2d, "position", Vector2(320, 360), 1.6)\
 		.set_trans(Tween.TRANS_CUBIC)\
 		.set_ease(Tween.EASE_IN)
 

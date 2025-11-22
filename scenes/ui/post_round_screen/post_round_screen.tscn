@@ -70,7 +70,12 @@ visibility_rect = Rect2(-320, -320, 640, 640)
 local_coords = true
 process_material = SubResource("ParticleProcessMaterial_bjm25")
 
-[node name="GlobContainerTextureRect" type="TextureRect" parent="." unique_id=120714789]
+[node name="GlobContainer" type="Control" parent="." unique_id=1001609004]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="GlobContainerTextureRect" type="TextureRect" parent="GlobContainer" unique_id=120714789]
 z_index = 2
 layout_mode = 1
 anchors_preset = 7
@@ -78,16 +83,17 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -64.0
-offset_top = -64.0
-offset_right = 64.0
+offset_left = 236.0
+offset_top = 256.0
+offset_right = 364.0
+offset_bottom = 320.0
 grow_horizontal = 2
 grow_vertical = 0
 texture = ExtResource("4_6k7w3")
 expand_mode = 3
 stretch_mode = 5
 
-[node name="GlobContainerMaskTextureRect" type="TextureRect" parent="." unique_id=1899411158]
+[node name="GlobContainerMaskTextureRect" type="TextureRect" parent="GlobContainer" unique_id=1899411158]
 clip_children = 1
 z_index = 3
 layout_mode = 1
@@ -96,25 +102,21 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -64.0
-offset_top = -63.0
-offset_right = 64.0
-offset_bottom = 1.0
+offset_left = 236.0
+offset_top = 257.0
+offset_right = 364.0
+offset_bottom = 321.0
 grow_horizontal = 2
 grow_vertical = 0
 texture = ExtResource("5_yl3ne")
 expand_mode = 3
 stretch_mode = 5
 
-[node name="Liquid" parent="GlobContainerMaskTextureRect" unique_id=802954304 instance=ExtResource("6_esa2c")]
+[node name="Liquid" parent="GlobContainer/GlobContainerMaskTextureRect" unique_id=802954304 instance=ExtResource("6_esa2c")]
 unique_name_in_owner = true
 position = Vector2(10, 57)
 liquid_size = Vector2(128, 64)
 wave_energy_loss = 0.01
 
-[node name="AbilityTree" parent="." unique_id=1850353781 instance=ExtResource("8_wa01e")]
-layout_mode = 0
-offset_left = 320.0
-offset_top = 322.0
-offset_right = 320.0
-offset_bottom = 322.0
+[node name="AbilityTree" parent="GlobContainer" unique_id=1850353781 instance=ExtResource("8_wa01e")]
+position = Vector2(320, 320)
