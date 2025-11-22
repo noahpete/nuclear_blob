@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://d2roc80bx33ms" path="res://scenes/effect/background_globs/background_globs.gd" id="1_ye3kf"]
 [ext_resource type="Texture2D" uid="uid://ckbdfxxt5yg5t" path="res://resources/dark_gray_noise.tres" id="2_3tdar"]
-[ext_resource type="Shader" uid="uid://dmd8ma15d1ulh" path="res://resources/sway.gdshader" id="2_s2euv"]
+[ext_resource type="Shader" uid="uid://dmd8ma15d1ulh" path="res://resources/shaders/sway.gdshader" id="2_s2euv"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ye3kf"]
 shader = ExtResource("2_s2euv")

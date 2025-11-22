@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dub2ajnceaf0f" path="res://scenes/entities/player/player.gd" id="1_8afob"]
 [ext_resource type="Texture2D" uid="uid://qy5r42vctva0" path="res://scenes/entities/player/player_body.png" id="2_dovo2"]
-[ext_resource type="Shader" uid="uid://5iltq3s2rogi" path="res://resources/border.gdshader" id="2_lvxji"]
+[ext_resource type="Shader" uid="uid://5iltq3s2rogi" path="res://resources/shaders/border.gdshader" id="2_lvxji"]
 [ext_resource type="PackedScene" uid="uid://dm0pr40hihdw2" path="res://scenes/abilities/shoot_ability_controller/shoot_ability_controller.tscn" id="3_1murt"]
 [ext_resource type="PackedScene" uid="uid://bd6x8kbb5otsi" path="res://scenes/components/hurtbox_component/hurtbox_component.tscn" id="3_5sj0x"]
 [ext_resource type="Texture2D" uid="uid://lhkp8nvo84ll" path="res://assets/glob.png" id="3_gmlin"]

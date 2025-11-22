@@ -1,8 +1,8 @@
 [gd_scene load_steps=14 format=3 uid="uid://dyr5f8ibveaix"]
 
 [ext_resource type="Script" uid="uid://c40w0ww3fqfip" path="res://scenes/entities/ability_tree_node/ability_tree_node.gd" id="1_he6mp"]
-[ext_resource type="Shader" uid="uid://cihq4jbvcmy1s" path="res://resources/line_sway.gdshader" id="4_6skot"]
-[ext_resource type="Shader" uid="uid://dmd8ma15d1ulh" path="res://resources/sway.gdshader" id="4_c4thr"]
+[ext_resource type="Shader" uid="uid://cihq4jbvcmy1s" path="res://resources/shaders/line_sway.gdshader" id="4_6skot"]
+[ext_resource type="Shader" uid="uid://dmd8ma15d1ulh" path="res://resources/shaders/sway.gdshader" id="4_c4thr"]
 [ext_resource type="Texture2D" uid="uid://b0ipjkckrublt" path="res://assets/icons/dash_icon.png" id="6_s1pa4"]
 
 [sub_resource type="Animation" id="Animation_s1pa4"]

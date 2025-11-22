@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://cylsmrl1pesu6"]
 
-[ext_resource type="Shader" uid="uid://dmd8ma15d1ulh" path="res://resources/sway.gdshader" id="1_yah0a"]
+[ext_resource type="Shader" uid="uid://dmd8ma15d1ulh" path="res://resources/shaders/sway.gdshader" id="1_yah0a"]
 [ext_resource type="Texture2D" uid="uid://cn7t376bf8ksl" path="res://assets/glob_drop.png" id="2_emsad"]
 [ext_resource type="Script" uid="uid://duc67ys3mxkcy" path="res://scenes/entities/glob_pickup/glob_pickup.gd" id="2_kq7dt"]
 [ext_resource type="PackedScene" uid="uid://bt7fhktqolmdo" path="res://scenes/effect/lighting/light/light.tscn" id="4_emsad"]

@@ -36,7 +36,7 @@ func apply_upgrade(upgrade: AbilityUpgrade) -> void:
 func _pick_upgrades() -> Array[AbilityUpgrade]:
 	var chosen_upgrades: Array[AbilityUpgrade] = []
 	var filtered_upgrades = upgrade_pool.duplicate()
-	for i in range(2):
+	for i in range(3):
 		var chosen_upgrade: AbilityUpgrade = filtered_upgrades.pick_random()
 		if chosen_upgrade == null:
 			break
@@ -62,6 +62,8 @@ func _on_level_up(_current_level: int) -> void:
 	upgrade_screen.upgrade_selected.connect(_on_upgrade_selected)
 
 func _on_ability_upgrade_unlock(ability_upgrade: AbilityUpgrade) -> void:
+	if ability_upgrade.ability_controller_scene == null:
+		return
 	match ability_upgrade.parent_ability_id:
 		"dash":
 			_try_add_upgrade_to_pool(dash_upgrade_pool)
