@@ -1,7 +1,8 @@
-[gd_scene load_steps=11 format=3 uid="uid://38lgapsanr1h"]
+[gd_scene load_steps=12 format=3 uid="uid://38lgapsanr1h"]
 
 [ext_resource type="Script" uid="uid://kjod5lhaapjp" path="res://scenes/ui/post_round_screen/post_round_screen.gd" id="1_bjm25"]
 [ext_resource type="Texture2D" uid="uid://bi1ar0i8jlnfx" path="res://assets/glob_large.png" id="1_qt32q"]
+[ext_resource type="Theme" uid="uid://bp7gihsracsyc" path="res://resources/theme.tres" id="1_wa01e"]
 [ext_resource type="Texture2D" uid="uid://c3s4ghrfd8r0l" path="res://assets/glob_container.png" id="4_6k7w3"]
 [ext_resource type="Texture2D" uid="uid://bb7nbrv4xpm2t" path="res://assets/glob_container_mask.png" id="5_yl3ne"]
 [ext_resource type="PackedScene" uid="uid://c1ah0bp8fhwd" path="res://scenes/effect/liquid/liquid.tscn" id="6_esa2c"]
@@ -41,6 +42,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("1_wa01e")
 script = ExtResource("1_bjm25")
 
 [node name="BackgroundGlobs" parent="." unique_id=901589465 instance=ExtResource("7_qyk5q")]
@@ -70,12 +72,12 @@ visibility_rect = Rect2(-320, -320, 640, 640)
 local_coords = true
 process_material = SubResource("ParticleProcessMaterial_bjm25")
 
-[node name="GlobContainer" type="Control" parent="." unique_id=1001609004]
+[node name="GlobContainerAndTree" type="Control" parent="." unique_id=1001609004]
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="GlobContainerTextureRect" type="TextureRect" parent="GlobContainer" unique_id=120714789]
+[node name="GlobContainerTextureRect" type="TextureRect" parent="GlobContainerAndTree" unique_id=120714789]
 z_index = 2
 layout_mode = 1
 anchors_preset = 7
@@ -93,7 +95,7 @@ texture = ExtResource("4_6k7w3")
 expand_mode = 3
 stretch_mode = 5
 
-[node name="GlobContainerMaskTextureRect" type="TextureRect" parent="GlobContainer" unique_id=1899411158]
+[node name="GlobContainerMaskTextureRect" type="TextureRect" parent="GlobContainerAndTree" unique_id=1899411158]
 clip_children = 1
 z_index = 3
 layout_mode = 1
@@ -112,11 +114,104 @@ texture = ExtResource("5_yl3ne")
 expand_mode = 3
 stretch_mode = 5
 
-[node name="Liquid" parent="GlobContainer/GlobContainerMaskTextureRect" unique_id=802954304 instance=ExtResource("6_esa2c")]
+[node name="Liquid" parent="GlobContainerAndTree/GlobContainerMaskTextureRect" unique_id=802954304 instance=ExtResource("6_esa2c")]
 unique_name_in_owner = true
 position = Vector2(10, 57)
 liquid_size = Vector2(128, 64)
 wave_energy_loss = 0.01
 
-[node name="AbilityTree" parent="GlobContainer" unique_id=1850353781 instance=ExtResource("8_wa01e")]
+[node name="AbilityTree" parent="GlobContainerAndTree" unique_id=1850353781 instance=ExtResource("8_wa01e")]
 position = Vector2(320, 320)
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1552183946]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 32
+theme_override_constants/margin_top = 120
+theme_override_constants/margin_right = 32
+
+[node name="RoundStatisticsContainer" type="PanelContainer" parent="MarginContainer" unique_id=883619104]
+custom_minimum_size = Vector2(160, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/RoundStatisticsContainer" unique_id=1828310686]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/RoundStatisticsContainer/MarginContainer" unique_id=76714200]
+layout_mode = 2
+
+[node name="StatisticsLabel" type="Label" parent="MarginContainer/RoundStatisticsContainer/MarginContainer/VBoxContainer" unique_id=1067127183]
+layout_mode = 2
+text = "Statistics"
+horizontal_alignment = 1
+
+[node name="TimeHBoxContainer" type="HBoxContainer" parent="MarginContainer/RoundStatisticsContainer/MarginContainer/VBoxContainer" unique_id=1621970891]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/RoundStatisticsContainer/MarginContainer/VBoxContainer/TimeHBoxContainer" unique_id=1210055514]
+layout_mode = 2
+text = "Time:"
+
+[node name="Amount" type="Label" parent="MarginContainer/RoundStatisticsContainer/MarginContainer/VBoxContainer/TimeHBoxContainer" unique_id=664308917]
+custom_minimum_size = Vector2(98, 0)
+layout_mode = 2
+text = "4"
+horizontal_alignment = 2
+
+[node name="LevelHBoxContainer" type="HBoxContainer" parent="MarginContainer/RoundStatisticsContainer/MarginContainer/VBoxContainer" unique_id=1923974601]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/RoundStatisticsContainer/MarginContainer/VBoxContainer/LevelHBoxContainer" unique_id=1841494408]
+layout_mode = 2
+text = "Level reached:"
+
+[node name="Amount" type="Label" parent="MarginContainer/RoundStatisticsContainer/MarginContainer/VBoxContainer/LevelHBoxContainer" unique_id=183642051]
+custom_minimum_size = Vector2(25, 0)
+layout_mode = 2
+text = "4"
+horizontal_alignment = 2
+
+[node name="KillsHBoxContainer" type="HBoxContainer" parent="MarginContainer/RoundStatisticsContainer/MarginContainer/VBoxContainer" unique_id=1659046255]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/RoundStatisticsContainer/MarginContainer/VBoxContainer/KillsHBoxContainer" unique_id=1628526930]
+layout_mode = 2
+text = "Kills:"
+
+[node name="Amount" type="Label" parent="MarginContainer/RoundStatisticsContainer/MarginContainer/VBoxContainer/KillsHBoxContainer" unique_id=950513415]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+text = "4"
+horizontal_alignment = 2
+
+[node name="UpgradeContainer" type="PanelContainer" parent="MarginContainer" unique_id=382081872]
+custom_minimum_size = Vector2(160, 92)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/UpgradeContainer" unique_id=1859173431]
+layout_mode = 2
+
+[node name="SelectAnAbilityLabel" type="Label" parent="MarginContainer/UpgradeContainer/MarginContainer" unique_id=423599347]
+layout_mode = 2
+text = "Select an Upgrade"
+horizontal_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/UpgradeContainer/MarginContainer" unique_id=541073548]
+visible = false
+layout_mode = 2
+
+[node name="AbilityLabel" type="Label" parent="MarginContainer/UpgradeContainer/MarginContainer/VBoxContainer" unique_id=1047163102]
+layout_mode = 2
+text = "Ability"
+horizontal_alignment = 1

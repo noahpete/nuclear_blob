@@ -1,13 +1,14 @@
 class_name Rat
 extends CharacterBody2D
 
+@onready var health_component: HealthComponent = $HealthComponent
 @onready var velocity_component: VelocityComponent = $VelocityComponent
 @onready var hurtbox_component: HurtboxComponent = $HurtboxComponent
 @onready var visuals: Node2D = $Visuals
 
 func _ready() -> void:
 	hurtbox_component.hit.connect(_on_hit)
-
+	health_component.died.connect(_on_died)
 
 func _process(_delta: float) -> void:
 	velocity_component.accelerate_to_player()
@@ -22,3 +23,6 @@ func _on_hit() -> void:
 		if child is FlashSpriteComponent:
 			var flash_sprite: FlashSpriteComponent = child
 			flash_sprite.flash()
+
+func _on_died() -> void:
+	GameState.round_kills += 1

@@ -6,7 +6,7 @@ signal decay_updated(current_decay: float, target_decay: float)
 const TARGET_DECAY_GROWTH_FACTOR: float = 1.4
 const DECAY_DECAY_GROWTH_FACTOR: float = TARGET_DECAY_GROWTH_FACTOR + 0.1
 
-var current_decay: float = 1.0
+var current_decay: float = 10.0
 var target_decay: float = 12.0
 var decay_rate_factor: float = 0.8
 var current_level: int = 0
