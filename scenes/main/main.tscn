@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=4 uid="uid://da36exb4ldn5o"]
+[gd_scene load_steps=19 format=4 uid="uid://da36exb4ldn5o"]
 
 [ext_resource type="Script" uid="uid://b134behr4voh3" path="res://scenes/main/main.gd" id="1_6q06x"]
 [ext_resource type="PackedScene" uid="uid://ubcbq426qntu" path="res://scenes/entities/player/player.tscn" id="1_hyk8p"]
@@ -8,12 +8,11 @@
 [ext_resource type="PackedScene" uid="uid://dqp7u3mflaicu" path="res://scenes/entities/game_camera/game_camera.tscn" id="2_l3cfh"]
 [ext_resource type="PackedScene" uid="uid://s5vavydsql14" path="res://scenes/managers/upgrade_manager/upgrade_manager.tscn" id="3_blune"]
 [ext_resource type="Script" uid="uid://ch11bkvw0okee" path="res://resources/upgrades/ability_upgrade.gd" id="4_7smn1"]
-[ext_resource type="PackedScene" uid="uid://b5ucksvm6dc8k" path="res://scenes/screen_transition/screen_transition.tscn" id="4_nvumn"]
 [ext_resource type="Resource" uid="uid://c616yq4c2tds8" path="res://resources/upgrades/dash_speed.tres" id="5_raeie"]
-[ext_resource type="PackedScene" uid="uid://bny6vn555ibq4" path="res://scenes/lighting/light_subviewport/light_sub_viewport.tscn" id="5_yyfjg"]
+[ext_resource type="PackedScene" uid="uid://bny6vn555ibq4" path="res://scenes/effect/lighting/light_subviewport/light_sub_viewport.tscn" id="5_yyfjg"]
 [ext_resource type="PackedScene" uid="uid://cnt5ehv70fhka" path="res://scenes/ui/ui.tscn" id="6_ow5a4"]
 [ext_resource type="Shader" uid="uid://d32278sheptfl" path="res://resources/sky_color.gdshader" id="7_a8run"]
-[ext_resource type="PackedScene" uid="uid://bt7fhktqolmdo" path="res://scenes/lighting/light/light.tscn" id="8_a8run"]
+[ext_resource type="PackedScene" uid="uid://bt7fhktqolmdo" path="res://scenes/effect/lighting/light/light.tscn" id="8_a8run"]
 [ext_resource type="PackedScene" uid="uid://y2u0j6hxafrl" path="res://scenes/ui/decay_ui/decay_ui.tscn" id="12_blune"]
 [ext_resource type="PackedScene" uid="uid://boefiu860bisa" path="res://scenes/components/shake_animation_component/shake_animation_component.tscn" id="14_hxu8e"]
 
@@ -33,8 +32,6 @@ script = ExtResource("1_6q06x")
 
 [node name="DecayBar" parent="." unique_id=1646004893 node_paths=PackedStringArray("decay_manager") instance=ExtResource("12_blune")]
 decay_manager = NodePath("../DecayManager")
-
-[node name="ScreenTransition" parent="." unique_id=2003451389 instance=ExtResource("4_nvumn")]
 
 [node name="DecayManager" parent="." unique_id=1581707433 instance=ExtResource("2_hujxm")]
 

@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://lhkp8nvo84ll" path="res://assets/glob.png" id="1_5bqib"]
 [ext_resource type="Script" uid="uid://c5ojm2dr0nkwn" path="res://scenes/entities/glob_projectile/glob_projectile.gd" id="2_dvtml"]
-[ext_resource type="PackedScene" uid="uid://bt7fhktqolmdo" path="res://scenes/lighting/light/light.tscn" id="3_s2fpb"]
+[ext_resource type="PackedScene" uid="uid://bt7fhktqolmdo" path="res://scenes/effect/lighting/light/light.tscn" id="3_s2fpb"]
 
 [node name="GlobProjectile" type="Sprite2D" unique_id=14758827]
 texture = ExtResource("1_5bqib")

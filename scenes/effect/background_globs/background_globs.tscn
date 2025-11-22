@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=3 uid="uid://cy74e717f5wrk"]
+
+[ext_resource type="Script" uid="uid://d2roc80bx33ms" path="res://scenes/effect/background_globs/background_globs.gd" id="1_ye3kf"]
+[ext_resource type="Texture2D" uid="uid://ckbdfxxt5yg5t" path="res://resources/dark_gray_noise.tres" id="2_3tdar"]
+[ext_resource type="Shader" uid="uid://dmd8ma15d1ulh" path="res://resources/sway.gdshader" id="2_s2euv"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ye3kf"]
+shader = ExtResource("2_s2euv")
+shader_parameter/sway_speed = 1.0
+shader_parameter/sway_strength = 0.01
+shader_parameter/noise_scale = 5.0
+shader_parameter/time_offset = 0.0
+
+[node name="BackgroundGlobs" type="TextureRect" unique_id=901589465]
+material = SubResource("ShaderMaterial_ye3kf")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_3tdar")
+script = ExtResource("1_ye3kf")

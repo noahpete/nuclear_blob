@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://bny6vn555ibq4"]
 
-[ext_resource type="Script" uid="uid://dhbmeyew8yv4v" path="res://scenes/lighting/light_subviewport/light_sub_viewport.gd" id="1_njxf2"]
+[ext_resource type="Script" uid="uid://dhbmeyew8yv4v" path="res://scenes/effect/lighting/light_subviewport/light_sub_viewport.gd" id="1_njxf2"]
 
 [node name="LightSubViewport" type="SubViewport" unique_id=273128356]
 disable_3d = true

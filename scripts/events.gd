@@ -1,12 +1,16 @@
 extends Node
 
 signal player_died(level: int)
+signal end_main_scene()
 signal level_up(new_level: int)
 signal glob_picked_up(amount: float)
 signal ability_upgrade_added(upgrade: AbilityUpgrade, current_upgrades: Dictionary)
 
 func emit_player_died() -> void:
 	player_died.emit()
+
+func emit_end_main_scene() -> void:
+	end_main_scene.emit()
 
 func emit_level_up(new_level: int) -> void:
 	level_up.emit(new_level)

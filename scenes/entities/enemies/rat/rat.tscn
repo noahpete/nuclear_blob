@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://cbsnxwy6gnsfv" path="res://scenes/components/death_component/death_component.tscn" id="4_qbcnn"]
 [ext_resource type="PackedScene" uid="uid://daav2he4lefjr" path="res://scenes/components/velocity_component/velocity_component.tscn" id="5_cewce"]
 [ext_resource type="Shader" uid="uid://dmd8ma15d1ulh" path="res://resources/sway.gdshader" id="5_vgsrl"]
-[ext_resource type="PackedScene" uid="uid://bt7fhktqolmdo" path="res://scenes/lighting/light/light.tscn" id="7_myt5n"]
+[ext_resource type="PackedScene" uid="uid://bt7fhktqolmdo" path="res://scenes/effect/lighting/light/light.tscn" id="7_myt5n"]
 [ext_resource type="Texture2D" uid="uid://bsh85q1ovlpep" path="res://scenes/entities/enemies/rat/rat.png" id="7_qbcnn"]
 [ext_resource type="PackedScene" uid="uid://b6nblfljn46gc" path="res://scenes/components/flash_sprite_component/flash_sprite_component.tscn" id="8_rupkw"]
 

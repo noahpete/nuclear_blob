@@ -1,0 +1,120 @@
+[gd_scene load_steps=11 format=3 uid="uid://38lgapsanr1h"]
+
+[ext_resource type="Script" uid="uid://kjod5lhaapjp" path="res://scenes/ui/post_round_screen/post_round_screen.gd" id="1_bjm25"]
+[ext_resource type="Texture2D" uid="uid://bi1ar0i8jlnfx" path="res://assets/glob_large.png" id="1_qt32q"]
+[ext_resource type="Texture2D" uid="uid://c3s4ghrfd8r0l" path="res://assets/glob_container.png" id="4_6k7w3"]
+[ext_resource type="Texture2D" uid="uid://bb7nbrv4xpm2t" path="res://assets/glob_container_mask.png" id="5_yl3ne"]
+[ext_resource type="PackedScene" uid="uid://c1ah0bp8fhwd" path="res://scenes/effect/liquid/liquid.tscn" id="6_esa2c"]
+[ext_resource type="PackedScene" uid="uid://cy74e717f5wrk" path="res://scenes/effect/background_globs/background_globs.tscn" id="7_qyk5q"]
+[ext_resource type="PackedScene" uid="uid://nxsecflji2n1" path="res://scenes/entities/ability_tree/ability_tree.tscn" id="8_wa01e"]
+
+[sub_resource type="Curve" id="Curve_bi8bv"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.06545454, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.014308333), -3.0604184, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_6k7w3"]
+curve = SubResource("Curve_bi8bv")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_bjm25"]
+particle_flag_disable_z = true
+angle_min = -360.0
+angle_max = 360.00003
+direction = Vector3(0, 1, 0)
+spread = 180.0
+initial_velocity_min = 260.0
+initial_velocity_max = 340.0
+angular_velocity_min = 19.999983
+angular_velocity_max = 59.99998
+gravity = Vector3(0, 0, 0)
+linear_accel_min = 14.999997
+linear_accel_max = 24.999998
+radial_accel_min = -340.0
+radial_accel_max = -260.0
+damping_min = 90.00001
+damping_max = 110.00001
+scale_curve = SubResource("CurveTexture_6k7w3")
+
+[node name="PostRoundScreen" type="Control" unique_id=774949163]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_bjm25")
+
+[node name="BackgroundGlobs" parent="." unique_id=901589465 instance=ExtResource("7_qyk5q")]
+layout_mode = 0
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_right = 700.0
+offset_bottom = 700.0
+grow_horizontal = 1
+grow_vertical = 1
+
+[node name="CanvasGroup" type="CanvasGroup" parent="." unique_id=77159905]
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="CanvasGroup" unique_id=1376015729]
+unique_name_in_owner = true
+position = Vector2(320, 180)
+emitting = false
+amount = 32
+texture = ExtResource("1_qt32q")
+lifetime = 3.0
+one_shot = true
+explosiveness = 1.0
+fixed_fps = 0
+interpolate = false
+visibility_rect = Rect2(-320, -320, 640, 640)
+local_coords = true
+process_material = SubResource("ParticleProcessMaterial_bjm25")
+
+[node name="GlobContainerTextureRect" type="TextureRect" parent="." unique_id=120714789]
+z_index = 2
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -64.0
+offset_top = -64.0
+offset_right = 64.0
+grow_horizontal = 2
+grow_vertical = 0
+texture = ExtResource("4_6k7w3")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="GlobContainerMaskTextureRect" type="TextureRect" parent="." unique_id=1899411158]
+clip_children = 1
+z_index = 3
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -64.0
+offset_top = -63.0
+offset_right = 64.0
+offset_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+texture = ExtResource("5_yl3ne")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="Liquid" parent="GlobContainerMaskTextureRect" unique_id=802954304 instance=ExtResource("6_esa2c")]
+unique_name_in_owner = true
+position = Vector2(10, 57)
+liquid_size = Vector2(128, 64)
+wave_energy_loss = 0.01
+
+[node name="AbilityTree" parent="." unique_id=1850353781 instance=ExtResource("8_wa01e")]
+layout_mode = 0
+offset_left = 320.0
+offset_top = 322.0
+offset_right = 320.0
+offset_bottom = 322.0

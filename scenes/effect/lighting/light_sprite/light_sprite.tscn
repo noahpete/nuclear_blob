@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://dcmm1luw2lklo"]
 
-[ext_resource type="Script" uid="uid://b6mlsr7ilcxyw" path="res://scenes/lighting/light_sprite/light_sprite.gd" id="2_o1x51"]
+[ext_resource type="Script" uid="uid://b6mlsr7ilcxyw" path="res://scenes/effect/lighting/light_sprite/light_sprite.gd" id="2_o1x51"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_457ss"]
 

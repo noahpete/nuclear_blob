@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://b5ucksvm6dc8k"]
 
-[ext_resource type="Script" uid="uid://cxg2wqirltcy8" path="res://scenes/screen_transition/screen_transition.gd" id="1_ye3kf"]
+[ext_resource type="Script" uid="uid://cxg2wqirltcy8" path="res://scenes/ui/screen_transition/screen_transition.gd" id="1_ye3kf"]
 
 [sub_resource type="Gradient" id="Gradient_7nkmq"]
 colors = PackedColorArray(0, 0, 0, 1, 1, 1, 1, 0)
@@ -15,6 +15,8 @@ noise = SubResource("FastNoiseLite_dctf8")
 color_ramp = SubResource("Gradient_7nkmq")
 
 [node name="ScreenTransition" type="CanvasLayer" unique_id=2003451389]
+process_mode = 3
+process_priority = -1
 visible = false
 script = ExtResource("1_ye3kf")
 

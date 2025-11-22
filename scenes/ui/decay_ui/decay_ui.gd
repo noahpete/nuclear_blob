@@ -46,19 +46,27 @@ func _on_level_up(new_level: int) -> void:
 			progress_bar.get_node("ShakeAnimationComponent").shake_strength = 8
 
 func _on_player_died(level: int) -> void:
+	Log.info("DecayUI: _on_player_died")
 	animation_player.play("RESET")
 	animation_player.seek(0.0, true)
-
 	await get_tree().create_timer(1.0).timeout
-
-	var viewport_size := get_viewport().get_visible_rect().size
-	var center_position := viewport_size / 2.0
-
+	var center_position := get_viewport().get_visible_rect().size / 2.0
 	var tween := create_tween()
 	tween.set_parallel(true)
 	tween.tween_property(level_label_container, "global_position", center_position, 1.0)\
 		.set_trans(Tween.TRANS_CUBIC)\
 		.set_ease(Tween.EASE_OUT)
 	tween.tween_property(level_label_container, "scale", Vector2(2, 2), 1.0)\
+		.set_trans(Tween.TRANS_CUBIC)\
+		.set_ease(Tween.EASE_OUT)
+	tween.tween_property(spark_globs, "modulate:a", 0.0, 1.0)\
+		.set_trans(Tween.TRANS_CUBIC)\
+		.set_ease(Tween.EASE_OUT)
+	tween.tween_property(progress_bar, "modulate:a", 0.0, 1.0)\
+		.set_trans(Tween.TRANS_CUBIC)\
+		.set_ease(Tween.EASE_OUT)
+	await get_tree().create_timer(0.4).timeout
+	var color_tween := create_tween()
+	color_tween.tween_property(level_label, "theme_override_colors/font_color", Color(0.412, 1.0, 0.831, 1.0), 0.8)\
 		.set_trans(Tween.TRANS_CUBIC)\
 		.set_ease(Tween.EASE_OUT)

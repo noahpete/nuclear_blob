@@ -1,0 +1,29 @@
+[gd_scene load_steps=2 format=3 uid="uid://nxsecflji2n1"]
+
+[ext_resource type="PackedScene" uid="uid://dyr5f8ibveaix" path="res://scenes/entities/ability_tree_node/ability_tree_node.tscn" id="1_ec83h"]
+
+[node name="AbilityTree" type="Control" unique_id=1850353781]
+layout_mode = 3
+anchors_preset = 0
+
+[node name="AbilityTreeNode" parent="." unique_id=1718034372 instance=ExtResource("1_ec83h")]
+layout_mode = 0
+
+[node name="AbilityTreeNode" parent="AbilityTreeNode" unique_id=1864544927 instance=ExtResource("1_ec83h")]
+layout_mode = 0
+offset_left = -85.0
+offset_top = -72.0
+offset_right = -85.0
+offset_bottom = -72.0
+
+[node name="AbilityTreeNode2" parent="AbilityTreeNode" unique_id=69999793 instance=ExtResource("1_ec83h")]
+layout_mode = 0
+offset_top = -110.0
+offset_bottom = -110.0
+
+[node name="AbilityTreeNode3" parent="AbilityTreeNode" unique_id=1087325389 instance=ExtResource("1_ec83h")]
+layout_mode = 0
+offset_left = 85.0
+offset_top = -72.0
+offset_right = 85.0
+offset_bottom = -72.0

@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://bt7fhktqolmdo"]
 
-[ext_resource type="Script" uid="uid://do65cqbr4mup7" path="res://scenes/lighting/light/light.gd" id="1_oqwix"]
+[ext_resource type="Script" uid="uid://do65cqbr4mup7" path="res://scenes/effect/lighting/light/light.gd" id="1_oqwix"]
 
 [node name="Light" type="Node2D" unique_id=208953761]
 script = ExtResource("1_oqwix")

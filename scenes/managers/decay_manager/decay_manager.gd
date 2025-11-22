@@ -6,7 +6,7 @@ signal decay_updated(current_decay: float, target_decay: float)
 const TARGET_DECAY_GROWTH_FACTOR: float = 1.4
 const DECAY_DECAY_GROWTH_FACTOR: float = TARGET_DECAY_GROWTH_FACTOR + 0.1
 
-var current_decay: float = 10.0
+var current_decay: float = 1.0
 var target_decay: float = 12.0
 var decay_rate_factor: float = 0.8
 var current_level: int = 0
@@ -22,6 +22,7 @@ func _process(delta: float) -> void:
 		decay_updated.emit(current_decay, target_decay)
 		if current_decay <= 0.1:
 			Events.player_died.emit(current_level)
+			paused = true
 
 func update_decay(amount: float) -> void:
 	if not paused:
@@ -29,7 +30,6 @@ func update_decay(amount: float) -> void:
 		decay_updated.emit(current_decay, target_decay)
 	if current_decay >= target_decay:
 		_level_up()
-
 
 func _level_up() -> void:
 	current_level += 1

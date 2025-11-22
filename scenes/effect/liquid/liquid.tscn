@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://c1ah0bp8fhwd"]
+
+[ext_resource type="Script" uid="uid://g6exvvpgnhxp" path="res://scenes/effect/liquid/liquid.gd" id="1_g204e"]
+
+[node name="Liquid" type="Node2D" unique_id=802954304]
+script = ExtResource("1_g204e")
