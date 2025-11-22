@@ -1,10 +1,10 @@
-[gd_scene load_steps=18 format=3 uid="uid://ubcbq426qntu"]
+[gd_scene load_steps=19 format=3 uid="uid://ubcbq426qntu"]
 
 [ext_resource type="Script" uid="uid://dub2ajnceaf0f" path="res://scenes/entities/player/player.gd" id="1_8afob"]
-[ext_resource type="PackedScene" uid="uid://beor57ripam04" path="res://scenes/abilities/dash_ability_controller/dash_ability_controller.tscn" id="2_1murt"]
 [ext_resource type="Texture2D" uid="uid://qy5r42vctva0" path="res://scenes/entities/player/player_body.png" id="2_dovo2"]
 [ext_resource type="Shader" uid="uid://5iltq3s2rogi" path="res://resources/border.gdshader" id="2_lvxji"]
 [ext_resource type="PackedScene" uid="uid://dm0pr40hihdw2" path="res://scenes/abilities/shoot_ability_controller/shoot_ability_controller.tscn" id="3_1murt"]
+[ext_resource type="PackedScene" uid="uid://bd6x8kbb5otsi" path="res://scenes/components/hurtbox_component/hurtbox_component.tscn" id="3_5sj0x"]
 [ext_resource type="Texture2D" uid="uid://lhkp8nvo84ll" path="res://assets/glob.png" id="3_gmlin"]
 [ext_resource type="PackedScene" uid="uid://bt7fhktqolmdo" path="res://scenes/effect/lighting/light/light.tscn" id="5_5sj0x"]
 [ext_resource type="Texture2D" uid="uid://bj788wkatxe0n" path="res://scenes/entities/player/player_eyes.png" id="5_p47bc"]
@@ -51,6 +51,9 @@ _data = {
 [sub_resource type="CircleShape2D" id="CircleShape2D_1murt"]
 radius = 32.0
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_5sj0x"]
+radius = 5.0
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_p47bc"]
 shader = ExtResource("2_lvxji")
 shader_parameter/outline_width = 0.5000000074506
@@ -94,18 +97,24 @@ libraries = {
 }
 
 [node name="Abilities" type="Node" parent="." unique_id=1219733044]
-
-[node name="DashAbilityController" parent="Abilities" unique_id=656836596 instance=ExtResource("2_1murt")]
+unique_name_in_owner = true
 
 [node name="ShootAbilityController" parent="Abilities" unique_id=2128148816 instance=ExtResource("3_1murt")]
 
-[node name="Area2D" type="Area2D" parent="." unique_id=636212757]
+[node name="PickupArea2D" type="Area2D" parent="." unique_id=636212757]
 collision_layer = 16
 collision_mask = 0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1168430985]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PickupArea2D" unique_id=1168430985]
 position = Vector2(0, -3)
 shape = SubResource("CircleShape2D_1murt")
+
+[node name="HurtboxComponent" parent="." unique_id=1402398024 instance=ExtResource("3_5sj0x")]
+collision_mask = 32
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtboxComponent" unique_id=1592126848]
+position = Vector2(0, -3)
+shape = SubResource("CircleShape2D_5sj0x")
 
 [node name="Visuals" type="CanvasGroup" parent="." unique_id=1194068647]
 z_index = 1

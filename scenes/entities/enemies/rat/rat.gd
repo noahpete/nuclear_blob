@@ -18,11 +18,12 @@ func _process(_delta: float) -> void:
 	if move_sign != 0:
 		visuals.scale = Vector2(move_sign, 1)
 
-func _on_hit() -> void:
+func _on_hit(hitbox_component: HitboxComponent) -> void:
 	for child in visuals.get_children():
 		if child is FlashSpriteComponent:
 			var flash_sprite: FlashSpriteComponent = child
 			flash_sprite.flash()
+	health_component.damage(hitbox_component.damage)
 
 func _on_died() -> void:
 	GameState.round_kills += 1

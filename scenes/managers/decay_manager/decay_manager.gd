@@ -6,6 +6,8 @@ signal decay_updated(current_decay: float, target_decay: float)
 const TARGET_DECAY_GROWTH_FACTOR: float = 1.4
 const DECAY_DECAY_GROWTH_FACTOR: float = TARGET_DECAY_GROWTH_FACTOR + 0.1
 
+static var instance: DecayManager
+
 var current_decay: float = 10.0
 var target_decay: float = 12.0
 var decay_rate_factor: float = 0.8
@@ -13,6 +15,10 @@ var current_level: int = 0
 var paused: bool = false
 
 func _ready() -> void:
+	if instance:
+		push_error("Cannot have multiple instances of DecayManager")
+		return
+	instance = self
 	decay_updated.emit(current_decay, target_decay)
 	Events.glob_picked_up.connect(_on_glob_picked_up)
 

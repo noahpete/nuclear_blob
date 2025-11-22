@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="AbilityUpgrade" load_steps=3 format=3 uid="uid://4crb86eptc6d"]
+
+[ext_resource type="PackedScene" uid="uid://beor57ripam04" path="res://scenes/abilities/dash_ability_controller/dash_ability_controller.tscn" id="1_mksoc"]
+[ext_resource type="Script" uid="uid://ch11bkvw0okee" path="res://resources/upgrades/ability_upgrade.gd" id="1_yuouk"]
+
+[resource]
+script = ExtResource("1_yuouk")
+ability_controller_scene = ExtResource("1_mksoc")
+parent_ability_id = "dash"
+id = "dash_distance"
+name = "Dash Distance"
+description = "Increase Dash's damage by 10%."
+metadata/_custom_type_script = "uid://ch11bkvw0okee"

@@ -1,0 +1,29 @@
+[gd_resource type="Resource" script_class="AbilityUpgrade" load_steps=4 format=3 uid="uid://do4qx0spwssdk"]
+
+[ext_resource type="Script" uid="uid://ch11bkvw0okee" path="res://resources/upgrades/ability_upgrade.gd" id="1_4g1u1"]
+[ext_resource type="Script" uid="uid://dlenva6bytv0f" path="res://scenes/abilities/shoot_ability_controller/shoot_ability_controller.gd" id="1_txhg7"]
+
+[sub_resource type="PackedScene" id="PackedScene_edhua"]
+_bundled = {
+"conn_count": 0,
+"conns": PackedInt32Array(),
+"editable_instances": [],
+"id_paths": [PackedInt32Array()],
+"names": PackedStringArray("ShootAbilityController", "Node", "script", "FireRateTimer", "Timer", "wait_time", "one_shot"),
+"node_count": 2,
+"node_ids": PackedInt32Array(2128148816, 1062210774),
+"node_paths": [NodePath(".")],
+"nodes": PackedInt32Array(-1, -1, 1, 0, -1, 1, 2, 0, 0, 1073741824, 0, 4, 3, -1, 2, 5, 1, 6, 2, 0),
+"variants": [ExtResource("1_txhg7"), 0.25, true],
+"version": 3
+}
+
+[resource]
+script = ExtResource("1_4g1u1")
+ability_controller_scene = SubResource("PackedScene_edhua")
+parent_ability_id = "shoot"
+id = "shoot_split"
+name = "Glob Splitter"
+max_quantity = 5
+description = "Increase the amount of Globs fired with each shot."
+metadata/_custom_type_script = "uid://ch11bkvw0okee"

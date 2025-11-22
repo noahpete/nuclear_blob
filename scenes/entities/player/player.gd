@@ -11,13 +11,16 @@ static var instance: Player
 @onready var visuals: CanvasGroup = $Visuals
 @onready var body_globs: GPUParticles2D = $Visuals/BodyGlobs
 @onready var eyes_sprite_2d: Sprite2D = $Visuals/EyesSprite2D
-@onready var dash_ability_controller: DashAbilityController = $Abilities/DashAbilityController
 @onready var shoot_ability_controller: ShootAbilityController = $Abilities/ShootAbilityController
+@onready var hurtbox_component: HurtboxComponent = $HurtboxComponent
+@onready var abilities: Node = %Abilities
 
 func _ready() -> void:
 	if instance:
 		push_error("Only one Player can exist!")
 	instance = self
+	Events.ability_upgrade_added.connect(_on_ability_upgrade_added)
+	hurtbox_component.hit.connect(_on_hurtbox_hit)
 
 func _physics_process(delta: float) -> void:
 	var input_vector := Input.get_vector("left", "right", "up", "down")
@@ -36,8 +39,6 @@ func _physics_process(delta: float) -> void:
 	position = position.round()
 
 func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("dash"):
-		dash_ability_controller.dash(Input.get_vector("left", "right", "up", "down"))
 	if event.is_action_pressed("shoot"):
 		shoot_ability_controller.shoot(global_position.direction_to(get_global_mouse_position()))
 
@@ -52,3 +53,9 @@ func _update_globs(delta: float) -> void:
 func _update_eyes(delta: float) -> void:
 	var target_position := Input.get_vector("left", "right", "up", "down") * 2
 	eyes_sprite_2d.position = lerp(eyes_sprite_2d.position, target_position, delta * 10)
+
+func _on_ability_upgrade_added(ability_upgrade: AbilityUpgrade, current_upgrades: Dictionary) -> void:
+	abilities.add_child(ability_upgrade.ability_controller_scene.instantiate())
+
+func _on_hurtbox_hit(hitbox_component: HitboxComponent) -> void:
+	DecayManager.instance.update_decay(-DecayManager.instance.target_decay * 0.1)

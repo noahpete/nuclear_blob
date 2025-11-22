@@ -216,9 +216,21 @@ layout_mode = 2
 text = "Ability"
 horizontal_alignment = 1
 
-[node name="RestartButton" type="Button" parent="MarginContainer" unique_id=578083762]
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer" unique_id=118671679]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+
+[node name="RestartButton" type="Button" parent="MarginContainer/HBoxContainer" unique_id=578083762]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 8
 text = "Restart"
+
+[node name="MainMenuButton" type="Button" parent="MarginContainer/HBoxContainer" unique_id=582479966]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+text = "Main Menu"

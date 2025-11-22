@@ -1,8 +1,12 @@
-[gd_scene load_steps=4 format=3 uid="uid://buyg2u6ftbuc4"]
+[gd_scene load_steps=6 format=3 uid="uid://buyg2u6ftbuc4"]
 
 [ext_resource type="Texture2D" uid="uid://lhkp8nvo84ll" path="res://assets/glob.png" id="1_5bqib"]
 [ext_resource type="Script" uid="uid://c5ojm2dr0nkwn" path="res://scenes/entities/glob_projectile/glob_projectile.gd" id="2_dvtml"]
 [ext_resource type="PackedScene" uid="uid://bt7fhktqolmdo" path="res://scenes/effect/lighting/light/light.tscn" id="3_s2fpb"]
+[ext_resource type="PackedScene" uid="uid://bj6s8fpr2cm3u" path="res://scenes/components/hitbox_component/hitbox_component.tscn" id="4_mn8ue"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_f0x8h"]
+radius = 3.0
 
 [node name="GlobProjectile" type="Sprite2D" unique_id=14758827]
 texture = ExtResource("1_5bqib")
@@ -15,5 +19,11 @@ autostart = true
 
 [node name="Light" parent="." unique_id=208953761 instance=ExtResource("3_s2fpb")]
 hue = Color(0.26666668, 0.88235295, 0.7019608, 1)
-on_by_default = true
 energy = 0.8
+
+[node name="HitboxComponent" parent="." unique_id=849292559 instance=ExtResource("4_mn8ue")]
+collision_layer = 256
+damage = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent" unique_id=119276733]
+shape = SubResource("CircleShape2D_f0x8h")

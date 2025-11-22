@@ -4,6 +4,7 @@ extends Control
 const MAX_LEVEL: float = 30
 
 var main: PackedScene
+var main_menu: PackedScene
 
 @onready var gpu_particles_2d: GPUParticles2D = %GPUParticles2D
 @onready var liquid: Liquid = %Liquid
@@ -11,11 +12,14 @@ var main: PackedScene
 @onready var level_h_box_container: HBoxContainer = %LevelHBoxContainer
 @onready var kills_h_box_container: HBoxContainer = %KillsHBoxContainer
 @onready var restart_button: Button = %RestartButton
+@onready var main_menu_button: Button = %MainMenuButton
 
 func _ready() -> void:
 	main = load("uid://da36exb4ldn5o")
+	main_menu = load("uid://shj0dnrasdc2")
 
 	restart_button.pressed.connect(_on_restart_button_pressed)
+	main_menu_button.pressed.connect(_on_main_menu_button_pressed)
 
 	time_h_box_container.get_node("Amount").text = str(int(GameState.round_time_msec/60000.0)).pad_zeros(2)+":"+str(int(GameState.round_time_msec/1000.0)).pad_zeros(2)
 	level_h_box_container.get_node("Amount").text = str(GameState.round_level_reached)
@@ -46,4 +50,9 @@ func _ready() -> void:
 func _on_restart_button_pressed() -> void:
 	await ScreenTransition.to_black()
 	get_tree().change_scene_to_packed(main)
+	ScreenTransition.to_transparent()
+
+func _on_main_menu_button_pressed() -> void:
+	await ScreenTransition.to_black()
+	get_tree().change_scene_to_packed(main_menu)
 	ScreenTransition.to_transparent()

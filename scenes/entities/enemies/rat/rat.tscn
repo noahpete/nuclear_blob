@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://wrbxwpd8qym2"]
+[gd_scene load_steps=18 format=3 uid="uid://wrbxwpd8qym2"]
 
 [ext_resource type="Script" uid="uid://143welu2vjvf" path="res://scenes/entities/enemies/rat/rat.gd" id="1_dhrd7"]
 [ext_resource type="PackedScene" uid="uid://bd6x8kbb5otsi" path="res://scenes/components/hurtbox_component/hurtbox_component.tscn" id="2_4ybdi"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://cbsnxwy6gnsfv" path="res://scenes/components/death_component/death_component.tscn" id="4_qbcnn"]
 [ext_resource type="PackedScene" uid="uid://daav2he4lefjr" path="res://scenes/components/velocity_component/velocity_component.tscn" id="5_cewce"]
 [ext_resource type="Shader" uid="uid://dmd8ma15d1ulh" path="res://resources/sway.gdshader" id="5_vgsrl"]
+[ext_resource type="PackedScene" uid="uid://bj6s8fpr2cm3u" path="res://scenes/components/hitbox_component/hitbox_component.tscn" id="7_cewce"]
 [ext_resource type="PackedScene" uid="uid://bt7fhktqolmdo" path="res://scenes/effect/lighting/light/light.tscn" id="7_myt5n"]
 [ext_resource type="Texture2D" uid="uid://bsh85q1ovlpep" path="res://scenes/entities/enemies/rat/rat.png" id="7_qbcnn"]
 [ext_resource type="PackedScene" uid="uid://b6nblfljn46gc" path="res://scenes/components/flash_sprite_component/flash_sprite_component.tscn" id="8_rupkw"]
@@ -194,6 +195,9 @@ _data = {
 &"move": SubResource("Animation_msx1r")
 }
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_dhrd7"]
+radius = 6.0
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_4ybdi"]
 radius = 13.0
 
@@ -203,9 +207,6 @@ shader_parameter/sway_speed = 1.0
 shader_parameter/sway_strength = 0.01
 shader_parameter/noise_scale = 5.0
 shader_parameter/time_offset = 0.0
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_dhrd7"]
-radius = 4.0
 
 [node name="Rat" type="CharacterBody2D" unique_id=660716153]
 collision_layer = 8
@@ -231,7 +232,15 @@ drop_value = 8.0
 health_component = NodePath("../HealthComponent")
 sprite_atlas_texture = ExtResource("7_qbcnn")
 
+[node name="HitboxComponent" parent="." unique_id=849292559 instance=ExtResource("7_cewce")]
+collision_layer = 32
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent" unique_id=1712676843]
+position = Vector2(0, -4)
+shape = SubResource("CircleShape2D_dhrd7")
+
 [node name="HurtboxComponent" parent="." unique_id=1402398024 node_paths=PackedStringArray("health_component") instance=ExtResource("2_4ybdi")]
+collision_mask = 260
 health_component = NodePath("../HealthComponent")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtboxComponent" unique_id=438991880]

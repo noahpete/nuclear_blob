@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="AbilityUpgrade" load_steps=3 format=3 uid="uid://chtad3cudp1lb"]
+
+[ext_resource type="PackedScene" uid="uid://beor57ripam04" path="res://scenes/abilities/dash_ability_controller/dash_ability_controller.tscn" id="1_cuack"]
+[ext_resource type="Script" uid="uid://ch11bkvw0okee" path="res://resources/upgrades/ability_upgrade.gd" id="2_u8hg8"]
+
+[resource]
+script = ExtResource("2_u8hg8")
+ability_controller_scene = ExtResource("1_cuack")
+parent_ability_id = "dash"
+id = "dash_ability"
+name = "Dash Ability"
+max_quantity = 1
+description = "Dash in the direction of your movement."
+metadata/_custom_type_script = "uid://ch11bkvw0okee"

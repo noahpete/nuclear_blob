@@ -1,10 +1,14 @@
-[gd_resource type="Resource" script_class="AbilityUpgrade" load_steps=2 format=3 uid="uid://c616yq4c2tds8"]
+[gd_resource type="Resource" script_class="AbilityUpgrade" load_steps=3 format=3 uid="uid://c616yq4c2tds8"]
 
 [ext_resource type="Script" uid="uid://ch11bkvw0okee" path="res://resources/upgrades/ability_upgrade.gd" id="1_4j8d8"]
+[ext_resource type="PackedScene" uid="uid://beor57ripam04" path="res://scenes/abilities/dash_ability_controller/dash_ability_controller.tscn" id="1_x07ga"]
 
 [resource]
 script = ExtResource("1_4j8d8")
+ability_controller_scene = ExtResource("1_x07ga")
+parent_ability_id = "dash"
 id = "dash_speed"
 name = "Dash Quickness"
-description = "Increase the speed of the Dash Ability by 10%."
+max_quantity = 8
+description = "Increase the speed of the Dash Ability by 20%."
 metadata/_custom_type_script = "uid://ch11bkvw0okee"

@@ -7,11 +7,13 @@ var direction: Vector2 = Vector2.ZERO
 
 @onready var life_timer: Timer = $LifeTimer
 @onready var light: Light = $Light
+@onready var hitbox_component: HitboxComponent = $HitboxComponent
 
 func _ready() -> void:
 	_grow()
 	_start_rotation()
 	life_timer.timeout.connect(_on_life_timer_timeout)
+	hitbox_component.hit_hurtbox.connect(_on_hit_hurtbox)
 
 func _physics_process(delta: float) -> void:
 	global_position += direction * SPEED * delta
@@ -57,4 +59,7 @@ func _shrink() -> void:
 
 func _on_life_timer_timeout() -> void:
 	await _shrink()
+	queue_free()
+
+func _on_hit_hurtbox(_hurtbox_component: HurtboxComponent) -> void:
 	queue_free()
