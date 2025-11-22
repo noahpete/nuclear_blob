@@ -1,6 +1,11 @@
-[gd_scene load_steps=2 format=3 uid="uid://s5vavydsql14"]
+[gd_scene load_steps=6 format=3 uid="uid://s5vavydsql14"]
 
 [ext_resource type="Script" uid="uid://da587hx883jse" path="res://scenes/managers/upgrade_manager/upgrade_manager.gd" id="1_qeb3t"]
+[ext_resource type="Script" uid="uid://ch11bkvw0okee" path="res://resources/upgrades/ability_upgrade.gd" id="2_mht1q"]
+[ext_resource type="Resource" uid="uid://coirpi32ke8uy" path="res://resources/upgrades/shoot/shoot_damage.tres" id="3_46kkg"]
+[ext_resource type="Resource" uid="uid://cdpekx2w1roc" path="res://resources/upgrades/shoot/shoot_rate.tres" id="4_qg61f"]
+[ext_resource type="Resource" uid="uid://mh3lwim6u1tn" path="res://resources/upgrades/shoot/shoot_velocity.tres" id="5_1soku"]
 
 [node name="UpgradeManager" type="Node" unique_id=643098125]
 script = ExtResource("1_qeb3t")
+starting_upgrade_pool = Array[ExtResource("2_mht1q")]([ExtResource("3_46kkg"), ExtResource("4_qg61f"), ExtResource("5_1soku")])

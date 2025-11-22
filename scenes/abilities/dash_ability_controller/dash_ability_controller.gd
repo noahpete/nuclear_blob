@@ -34,7 +34,6 @@ func _process(delta: float) -> void:
 		if current_dash_ability:
 			current_dash_ability.global_position = owner.global_position
 
-		# Get current input for steering
 		var input_direction := Input.get_vector("left", "right", "up", "down")
 		if input_direction.length() > 0:
 			input_direction = input_direction.normalized()
@@ -57,7 +56,6 @@ func dash(direction: Vector2) -> void:
 	if not cooldown_timer.is_stopped():
 		return
 
-	# Calculate initial speed based on distance and duration
 	dash_initial_speed = dash_distance / dash_duration
 	is_dashing = true
 	dash_timer = dash_duration

@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=4 uid="uid://da36exb4ldn5o"]
+[gd_scene load_steps=18 format=4 uid="uid://da36exb4ldn5o"]
 
 [ext_resource type="Script" uid="uid://b134behr4voh3" path="res://scenes/main/main.gd" id="1_6q06x"]
 [ext_resource type="PackedScene" uid="uid://ubcbq426qntu" path="res://scenes/entities/player/player.tscn" id="1_hyk8p"]
@@ -11,11 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://bny6vn555ibq4" path="res://scenes/effect/lighting/light_subviewport/light_sub_viewport.tscn" id="5_yyfjg"]
 [ext_resource type="PackedScene" uid="uid://cnt5ehv70fhka" path="res://scenes/ui/ui.tscn" id="6_ow5a4"]
 [ext_resource type="Shader" uid="uid://d32278sheptfl" path="res://resources/shaders/sky_color.gdshader" id="7_a8run"]
-[ext_resource type="Resource" uid="uid://coirpi32ke8uy" path="res://resources/upgrades/shoot_damage.tres" id="7_ou6is"]
 [ext_resource type="PackedScene" uid="uid://bt7fhktqolmdo" path="res://scenes/effect/lighting/light/light.tscn" id="8_a8run"]
-[ext_resource type="Resource" uid="uid://do4qx0spwssdk" path="res://resources/upgrades/shoot_split.tres" id="8_necax"]
-[ext_resource type="Resource" uid="uid://cdpekx2w1roc" path="res://resources/upgrades/shoot_rate.tres" id="9_r4lks"]
-[ext_resource type="Resource" uid="uid://d0fndx1umhdiw" path="res://resources/upgrades/shoot_penetration.tres" id="10_pg34l"]
 [ext_resource type="PackedScene" uid="uid://y2u0j6hxafrl" path="res://scenes/ui/decay_ui/decay_ui.tscn" id="12_blune"]
 [ext_resource type="PackedScene" uid="uid://boefiu860bisa" path="res://scenes/components/shake_animation_component/shake_animation_component.tscn" id="14_hxu8e"]
 
@@ -39,7 +35,6 @@ decay_manager = NodePath("../DecayManager")
 [node name="DecayManager" parent="." unique_id=1581707433 instance=ExtResource("2_hujxm")]
 
 [node name="UpgradeManager" parent="." unique_id=643098125 instance=ExtResource("3_blune")]
-starting_upgrade_pool = Array[ExtResource("4_7smn1")]([ExtResource("7_ou6is"), ExtResource("8_necax"), ExtResource("9_r4lks"), ExtResource("10_pg34l")])
 dash_upgrade_pool = Array[ExtResource("4_7smn1")]([null, null, null])
 
 [node name="EnemyManager" parent="." unique_id=339992762 node_paths=PackedStringArray("enemy_container") instance=ExtResource("1_k2fmo")]

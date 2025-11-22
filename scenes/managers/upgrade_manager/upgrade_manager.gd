@@ -62,7 +62,7 @@ func _on_level_up(_current_level: int) -> void:
 	upgrade_screen.upgrade_selected.connect(_on_upgrade_selected)
 
 func _on_ability_upgrade_unlock(ability_upgrade: AbilityUpgrade) -> void:
-	if ability_upgrade.ability_controller_scene == null:
+	if not ability_upgrade is Ability:
 		return
 	match ability_upgrade.parent_ability_id:
 		"dash":

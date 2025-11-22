@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="AbilityUpgrade" load_steps=2 format=3 uid="uid://3t8m68hrktmd"]
+
+[ext_resource type="Script" uid="uid://ch11bkvw0okee" path="res://resources/upgrades/ability_upgrade.gd" id="1_kgq24"]
+
+[resource]
+script = ExtResource("1_kgq24")
+parent_ability_id = "shoot"
+id = "shoot_penetration"
+name = "Full Glob Jacket"
+description = "Allow Globs to penetrate through Enemies."
+metadata/_custom_type_script = "uid://ch11bkvw0okee"

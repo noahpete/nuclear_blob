@@ -34,6 +34,5 @@ func _on_destroy_timer_timeout() -> void:
 	opacity_tween.tween_callback(queue_free)
 
 func _on_hitbox_enter() -> void:
-	print('here')
 	hitbox_component.monitoring = false
 	hitbox_component.monitorable = false

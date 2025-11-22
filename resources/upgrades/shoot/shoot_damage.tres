@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="AbilityUpgrade" load_steps=2 format=3 uid="uid://coirpi32ke8uy"]
+
+[ext_resource type="Script" uid="uid://ch11bkvw0okee" path="res://resources/upgrades/ability_upgrade.gd" id="1_2cxiy"]
+
+[resource]
+script = ExtResource("1_2cxiy")
+parent_ability_id = "shoot"
+id = "shoot_damage"
+name = "Heavy Globs"
+description = "Increase the damage of the Glob Shot Ability by 15%."
+metadata/_custom_type_script = "uid://ch11bkvw0okee"

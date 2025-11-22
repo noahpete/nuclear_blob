@@ -38,10 +38,6 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 	position = position.round()
 
-func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("shoot"):
-		shoot_ability_controller.shoot(global_position.direction_to(get_global_mouse_position()))
-
 func _update_skew(delta: float) -> void:
 	var target_skew := deg_to_rad(Input.get_axis("left", "right") * 5)
 	visuals.skew = lerp(visuals.skew, target_skew, delta * 10)
@@ -55,7 +51,8 @@ func _update_eyes(delta: float) -> void:
 	eyes_sprite_2d.position = lerp(eyes_sprite_2d.position, target_position, delta * 10)
 
 func _on_ability_upgrade_added(ability_upgrade: AbilityUpgrade, current_upgrades: Dictionary) -> void:
-	abilities.add_child(ability_upgrade.ability_controller_scene.instantiate())
+	if ability_upgrade is Ability:
+		abilities.add_child(ability_upgrade.ability_controller_scene.instantiate())
 
 func _on_hurtbox_hit(hitbox_component: HitboxComponent) -> void:
 	DecayManager.instance.update_decay(-DecayManager.instance.target_decay * 0.1)
