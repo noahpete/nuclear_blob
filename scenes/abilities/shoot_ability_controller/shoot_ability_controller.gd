@@ -11,6 +11,7 @@ var additional_fire_rate_percent: float = 1.0
 var additional_velocity_percent: float = 1.0
 
 @onready var fire_rate_timer: Timer = $FireRateTimer
+@onready var audio_stream_player: AudioStreamPlayer = $AudioStreamPlayer
 
 func _ready() -> void:
 	Events.ability_upgrade_added.connect(_on_ability_upgrade_added)
@@ -28,6 +29,7 @@ func shoot(direction: Vector2) -> void:
 	glob_projectile.initialize(direction)
 	glob_projectile.hitbox_component.damage = base_damage * additional_damage_percent
 	glob_projectile.velocity = base_velocity * additional_velocity_percent
+	audio_stream_player.play()
 	fire_rate_timer.start(base_fire_rate_time * additional_fire_rate_percent)
 
 func _on_ability_upgrade_added(upgrade: AbilityUpgrade, current_upgrades: Dictionary) -> void:

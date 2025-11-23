@@ -4,3 +4,4 @@ extends AbilityUpgrade
 @export var ability_controller_scene: PackedScene
 @export var ability_icon_texture: Texture2D
 @export var cost: int
+@export var upgrade_pool: Array[AbilityUpgrade]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://wrbxwpd8qym2"]
+[gd_scene load_steps=22 format=3 uid="uid://wrbxwpd8qym2"]
 
 [ext_resource type="Script" uid="uid://143welu2vjvf" path="res://scenes/entities/enemies/rat/rat.gd" id="1_dhrd7"]
 [ext_resource type="PackedScene" uid="uid://bd6x8kbb5otsi" path="res://scenes/components/hurtbox_component/hurtbox_component.tscn" id="2_4ybdi"]
@@ -13,6 +13,8 @@
 [ext_resource type="PackedScene" uid="uid://b6nblfljn46gc" path="res://scenes/components/flash_sprite_component/flash_sprite_component.tscn" id="8_rupkw"]
 [ext_resource type="PackedScene" uid="uid://c8l41k3ooaqgs" path="res://scenes/components/random_stream_player_2d_component/random_stream_player_2d_component.tscn" id="9_syf4u"]
 [ext_resource type="AudioStream" uid="uid://c7b0lcs0513vb" path="res://assets/sounds/mouse_squeak_hit.mp3" id="10_hchw8"]
+[ext_resource type="AudioStream" uid="uid://cyiyqr0wo0cah" path="res://assets/sounds/rat_death_1.mp3" id="11_p5lof"]
+[ext_resource type="AudioStream" uid="uid://chxtsafya36v2" path="res://assets/sounds/rat_death_4.mp3" id="12_mklqs"]
 
 [sub_resource type="Animation" id="Animation_dhrd7"]
 length = 0.001
@@ -249,8 +251,11 @@ health_component = NodePath("../HealthComponent")
 position = Vector2(0, -7)
 shape = SubResource("CircleShape2D_4ybdi")
 
-[node name="RandomStreamPlayer2DComponent" parent="." unique_id=1249991441 instance=ExtResource("9_syf4u")]
+[node name="HitRandomStreamPlayer2DComponent" parent="." unique_id=1249991441 instance=ExtResource("9_syf4u")]
 streams = Array[AudioStream]([ExtResource("10_hchw8")])
+
+[node name="DeathRandomStreamPlayer2DComponent" parent="." unique_id=1533814474 instance=ExtResource("9_syf4u")]
+streams = Array[AudioStream]([ExtResource("11_p5lof"), ExtResource("12_mklqs")])
 
 [node name="Visuals" type="Node2D" parent="." unique_id=664246584]
 material = SubResource("ShaderMaterial_qbcnn")

@@ -18,6 +18,8 @@ static var instance: Player
 @onready var shoot_ability_controller: ShootAbilityController = $Abilities/ShootAbilityController
 @onready var hurtbox_component: HurtboxComponent = $HurtboxComponent
 @onready var abilities: Node = %Abilities
+@onready var audio_stream_player: AudioStreamPlayer = $AudioStreamPlayer
+@onready var hurt_audio_stream_player: AudioStreamPlayer = $HurtAudioStreamPlayer
 
 func _ready() -> void:
 	if instance:
@@ -40,6 +42,8 @@ func _physics_process(delta: float) -> void:
 	_update_globs(delta)
 
 	velocity = velocity.lerp(input_vector * MAX_VELOCITY, 1 - exp(-ACCELERATION_SMOOTHING * delta))
+	if !velocity.is_zero_approx() and !audio_stream_player.playing:
+		audio_stream_player.play()
 	move_and_slide()
 	position = position.round()
 
@@ -81,3 +85,4 @@ func _on_ability_upgrade_added(ability_upgrade: AbilityUpgrade, _current_upgrade
 
 func _on_hurtbox_hit(_hitbox_component: HitboxComponent) -> void:
 	DecayManager.instance.update_decay(-DecayManager.instance.target_decay * 0.1)
+	hurt_audio_stream_player.play()

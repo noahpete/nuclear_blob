@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://xvdq76hjgmyc"]
+[gd_scene load_steps=19 format=3 uid="uid://xvdq76hjgmyc"]
 
 [ext_resource type="Script" uid="uid://b56j76kt276a1" path="res://scenes/entities/enemies/fly/fly.gd" id="1_dc2m1"]
 [ext_resource type="Texture2D" uid="uid://dpcrvkou5kjq2" path="res://scenes/entities/enemies/fly/fly.png" id="1_lmw38"]
@@ -9,6 +9,9 @@
 [ext_resource type="PackedScene" uid="uid://daav2he4lefjr" path="res://scenes/components/velocity_component/velocity_component.tscn" id="4_t1bmj"]
 [ext_resource type="PackedScene" uid="uid://b6nblfljn46gc" path="res://scenes/components/flash_sprite_component/flash_sprite_component.tscn" id="5_j62g4"]
 [ext_resource type="PackedScene" uid="uid://bd6x8kbb5otsi" path="res://scenes/components/hurtbox_component/hurtbox_component.tscn" id="6_os3s7"]
+[ext_resource type="PackedScene" uid="uid://bj6s8fpr2cm3u" path="res://scenes/components/hitbox_component/hitbox_component.tscn" id="7_2nmo0"]
+[ext_resource type="PackedScene" uid="uid://c8l41k3ooaqgs" path="res://scenes/components/random_stream_player_2d_component/random_stream_player_2d_component.tscn" id="9_c527f"]
+[ext_resource type="AudioStream" uid="uid://dh8tsf3aj0tqd" path="res://scenes/entities/enemies/fly/fly_buzz.mp3" id="10_os3s7"]
 
 [sub_resource type="Animation" id="Animation_dc2m1"]
 length = 0.001
@@ -217,6 +220,9 @@ _data = {
 &"move": SubResource("Animation_lmw38")
 }
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_nq8be"]
+radius = 5.0
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_c22mv"]
 radius = 13.0
 
@@ -249,12 +255,22 @@ acceleration = 1.0
 health_component = NodePath("../HealthComponent")
 sprite_atlas_texture = ExtResource("1_lmw38")
 
+[node name="HitboxComponent" parent="." unique_id=849292559 instance=ExtResource("7_2nmo0")]
+collision_layer = 32
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent" unique_id=1185464879]
+position = Vector2(0, -8)
+shape = SubResource("CircleShape2D_nq8be")
+
 [node name="HurtboxComponent" parent="." unique_id=1402398024 node_paths=PackedStringArray("health_component") instance=ExtResource("6_os3s7")]
 health_component = NodePath("../HealthComponent")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtboxComponent" unique_id=2055804420]
 position = Vector2(0, -10)
 shape = SubResource("CircleShape2D_c22mv")
+
+[node name="HitRandomStreamPlayer2DComponent" parent="." unique_id=1249991441 instance=ExtResource("9_c527f")]
+streams = Array[AudioStream]([ExtResource("10_os3s7")])
 
 [node name="Visuals" type="Node2D" parent="." unique_id=1850219965]
 

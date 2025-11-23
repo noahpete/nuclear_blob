@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://iqiye2rppqo1"]
+
+[ext_resource type="Script" uid="uid://bgf4yci1met3p" path="res://scenes/autoloads/global_audio.gd" id="1_qyyvk"]
+[ext_resource type="AudioStream" uid="uid://dq2yhlibauopj" path="res://assets/sounds/collect_coin_tone.mp3" id="2_a10rf"]
+[ext_resource type="AudioStream" uid="uid://b5u84tcmks5pi" path="res://assets/sounds/button.wav" id="3_oflhq"]
+
+[node name="GlobalAudio" type="Node" unique_id=1944947556]
+script = ExtResource("1_qyyvk")
+
+[node name="LevelUpAudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1260208534]
+stream = ExtResource("2_a10rf")
+volume_db = -5.0
+
+[node name="ButtonAudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=331814383]
+stream = ExtResource("3_oflhq")
+volume_db = -5.0

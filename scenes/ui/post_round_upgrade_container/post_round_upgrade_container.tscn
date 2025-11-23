@@ -4,13 +4,13 @@
 [ext_resource type="Theme" uid="uid://bp7gihsracsyc" path="res://resources/theme.tres" id="1_cibgb"]
 [ext_resource type="Texture2D" uid="uid://b0ipjkckrublt" path="res://assets/icons/dash_icon.png" id="4_s4368"]
 
+[sub_resource type="Animation" id="Animation_s4368"]
+length = 0.001
+
 [sub_resource type="Animation" id="Animation_p8b13"]
 resource_name = "default"
 loop_mode = 1
 step = 0.01
-
-[sub_resource type="Animation" id="Animation_s4368"]
-length = 0.001
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_s4368"]
 _data = {

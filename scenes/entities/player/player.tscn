@@ -1,12 +1,19 @@
-[gd_scene load_steps=19 format=3 uid="uid://ubcbq426qntu"]
+[gd_scene load_steps=28 format=3 uid="uid://ubcbq426qntu"]
 
 [ext_resource type="Script" uid="uid://dub2ajnceaf0f" path="res://scenes/entities/player/player.gd" id="1_8afob"]
+[ext_resource type="AudioStream" uid="uid://ukdsgr4jkvlp" path="res://assets/sounds/hit_1.wav" id="2_7wli1"]
 [ext_resource type="Texture2D" uid="uid://qy5r42vctva0" path="res://scenes/entities/player/player_body.png" id="2_dovo2"]
+[ext_resource type="AudioStream" uid="uid://ild835hqsij1" path="res://assets/sounds/cartoon_slime_bubbles_10.mp3" id="2_j0oqr"]
 [ext_resource type="Shader" uid="uid://5iltq3s2rogi" path="res://resources/shaders/border.gdshader" id="2_lvxji"]
 [ext_resource type="PackedScene" uid="uid://dm0pr40hihdw2" path="res://scenes/abilities/shoot_ability_controller/shoot_ability_controller.tscn" id="3_1murt"]
 [ext_resource type="PackedScene" uid="uid://bd6x8kbb5otsi" path="res://scenes/components/hurtbox_component/hurtbox_component.tscn" id="3_5sj0x"]
 [ext_resource type="Texture2D" uid="uid://lhkp8nvo84ll" path="res://assets/glob.png" id="3_gmlin"]
+[ext_resource type="AudioStream" uid="uid://byh5t3vux6t0a" path="res://assets/sounds/hit_2.wav" id="3_j0oqr"]
+[ext_resource type="AudioStream" uid="uid://c1d3mropjwke3" path="res://assets/sounds/cartoon_slime_bubles_5.mp3" id="3_xy2vv"]
+[ext_resource type="AudioStream" uid="uid://dvbccfmdfsuj0" path="res://assets/sounds/cartoon_slime_bubles_7.mp3" id="4_r4dfn"]
+[ext_resource type="AudioStream" uid="uid://c505o5voajo0m" path="res://assets/sounds/hit_3.wav" id="4_xy2vv"]
 [ext_resource type="PackedScene" uid="uid://bt7fhktqolmdo" path="res://scenes/effect/lighting/light/light.tscn" id="5_5sj0x"]
+[ext_resource type="AudioStream" uid="uid://dvm76uek35vhn" path="res://assets/sounds/cartoon_slime_bubles_8.mp3" id="5_70kwc"]
 [ext_resource type="Texture2D" uid="uid://bj788wkatxe0n" path="res://scenes/entities/player/player_eyes.png" id="5_p47bc"]
 
 [sub_resource type="Animation" id="Animation_gmlin"]
@@ -47,6 +54,21 @@ _data = {
 &"RESET": SubResource("Animation_gmlin"),
 &"move": SubResource("Animation_dovo2")
 }
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_yywfu"]
+random_pitch = 1.0656005
+streams_count = 4
+stream_0/stream = ExtResource("2_j0oqr")
+stream_1/stream = ExtResource("3_xy2vv")
+stream_2/stream = ExtResource("4_r4dfn")
+stream_3/stream = ExtResource("5_70kwc")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_70kwc"]
+random_pitch = 1.0656005
+streams_count = 3
+stream_0/stream = ExtResource("2_7wli1")
+stream_1/stream = ExtResource("3_j0oqr")
+stream_2/stream = ExtResource("4_xy2vv")
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_1murt"]
 radius = 32.0
@@ -95,6 +117,14 @@ script = ExtResource("1_8afob")
 libraries = {
 &"": SubResource("AnimationLibrary_lvxji")
 }
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1957196823]
+stream = SubResource("AudioStreamRandomizer_yywfu")
+volume_db = -10.0
+
+[node name="HurtAudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=402616689]
+stream = SubResource("AudioStreamRandomizer_70kwc")
+volume_db = -10.0
 
 [node name="Abilities" type="Node" parent="." unique_id=1219733044]
 unique_name_in_owner = true

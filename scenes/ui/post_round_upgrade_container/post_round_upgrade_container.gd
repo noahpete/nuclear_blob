@@ -11,6 +11,7 @@ var current_ability: Ability
 @onready var buy_button: Button = %BuyButton
 
 func _ready() -> void:
+	GlobalAudio.register_buttons([buy_button])
 	Events.post_round_ability_selected.connect(_on_post_round_ability_selected)
 	buy_button.pressed.connect(_on_post_round_ability_buy_button_pressed)
 

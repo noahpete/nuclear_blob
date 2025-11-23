@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://yeegtpukoj08"]
+
+[ext_resource type="AudioStream" uid="uid://boxy5tp4usa78" path="res://assets/3xBlast - Now This Is A Waterpark! (Looped).ogg" id="1_qt0np"]
+
+[node name="MusicPlayer" type="Node" unique_id=1031279045]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1529317821]
+stream = ExtResource("1_qt0np")
+volume_db = -10.0
+autoplay = true
+bus = &"Music"

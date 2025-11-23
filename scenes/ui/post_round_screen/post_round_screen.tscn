@@ -1,9 +1,11 @@
-[gd_scene load_steps=13 format=3 uid="uid://38lgapsanr1h"]
+[gd_scene load_steps=15 format=3 uid="uid://38lgapsanr1h"]
 
 [ext_resource type="Script" uid="uid://kjod5lhaapjp" path="res://scenes/ui/post_round_screen/post_round_screen.gd" id="1_bjm25"]
 [ext_resource type="Texture2D" uid="uid://bi1ar0i8jlnfx" path="res://assets/glob_large.png" id="1_qt32q"]
 [ext_resource type="Theme" uid="uid://bp7gihsracsyc" path="res://resources/theme.tres" id="1_wa01e"]
+[ext_resource type="AudioStream" uid="uid://c65gf0uqq2ost" path="res://assets/sounds/squelch_3.mp3" id="3_ee2b1"]
 [ext_resource type="Texture2D" uid="uid://c3s4ghrfd8r0l" path="res://assets/glob_container.png" id="4_6k7w3"]
+[ext_resource type="AudioStream" uid="uid://ch6d037o10bl8" path="res://assets/sounds/button_tick.mp3" id="5_umgs4"]
 [ext_resource type="Texture2D" uid="uid://bb7nbrv4xpm2t" path="res://assets/glob_container_mask.png" id="5_yl3ne"]
 [ext_resource type="PackedScene" uid="uid://c1ah0bp8fhwd" path="res://scenes/effect/liquid/liquid.tscn" id="6_esa2c"]
 [ext_resource type="PackedScene" uid="uid://cy74e717f5wrk" path="res://scenes/effect/background_globs/background_globs.tscn" id="7_qyk5q"]
@@ -47,6 +49,10 @@ mouse_filter = 2
 theme = ExtResource("1_wa01e")
 script = ExtResource("1_bjm25")
 
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=28232497]
+stream = ExtResource("3_ee2b1")
+bus = &"Sound Effects"
+
 [node name="BackgroundGlobs" parent="." unique_id=901589465 instance=ExtResource("7_qyk5q")]
 layout_mode = 0
 anchors_preset = 0
@@ -82,6 +88,11 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 1
+
+[node name="GlobContainerAudioStreamPlayer" type="AudioStreamPlayer" parent="GlobContainerAndTree" unique_id=1388738200]
+stream = ExtResource("5_umgs4")
+volume_db = -5.0
+bus = &"Sound Effects"
 
 [node name="GlobContainerTextureRect" type="TextureRect" parent="GlobContainerAndTree" unique_id=120714789]
 z_index = 2

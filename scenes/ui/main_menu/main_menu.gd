@@ -10,6 +10,10 @@ const MAIN: PackedScene = preload("uid://da36exb4ldn5o")
 func _ready() -> void:
 	play_button.pressed.connect(_on_play_button_pressed)
 	quit_button.pressed.connect(_on_quit_button_pressed)
+	GlobalAudio.register_buttons([
+		play_button,
+		quit_button
+	])
 
 func _on_play_button_pressed() -> void:
 	await ScreenTransition.to_black()

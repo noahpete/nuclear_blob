@@ -1,14 +1,18 @@
-[gd_resource type="Resource" script_class="Ability" load_steps=4 format=3 uid="uid://cdtgdvuhnvn3o"]
+[gd_resource type="Resource" script_class="Ability" load_steps=7 format=3 uid="uid://cdtgdvuhnvn3o"]
 
 [ext_resource type="PackedScene" uid="uid://dh6gc4trou3gv" path="res://scenes/abilities/spray_ability_controller/spray_ability_controller.tscn" id="1_0wqy1"]
 [ext_resource type="Script" uid="uid://dn47o4r71l2yb" path="res://resources/upgrades/ability.gd" id="2_ns2lp"]
 [ext_resource type="Texture2D" uid="uid://cdoknr5fyh7ss" path="res://assets/icons/spray_icon.png" id="2_qi6l7"]
+[ext_resource type="Script" uid="uid://ch11bkvw0okee" path="res://resources/upgrades/ability_upgrade.gd" id="4_cqlxy"]
+[ext_resource type="Resource" uid="uid://bwlwa8cyb71s7" path="res://resources/upgrades/spray/spray_damage.tres" id="5_781on"]
+[ext_resource type="Resource" uid="uid://ddjf5eb6y7f0t" path="res://resources/upgrades/spray/spray_cooldown.tres" id="6_3yina"]
 
 [resource]
 script = ExtResource("2_ns2lp")
 ability_controller_scene = ExtResource("1_0wqy1")
 ability_icon_texture = ExtResource("2_qi6l7")
 cost = 80
+upgrade_pool = Array[ExtResource("4_cqlxy")]([ExtResource("5_781on"), ExtResource("6_3yina")])
 parent_ability_id = "spray"
 id = "spray_ability"
 name = "Spray Ability"

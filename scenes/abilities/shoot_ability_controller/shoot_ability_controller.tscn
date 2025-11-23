@@ -1,6 +1,19 @@
-[gd_scene load_steps=2 format=3 uid="uid://dm0pr40hihdw2"]
+[gd_scene load_steps=7 format=3 uid="uid://dm0pr40hihdw2"]
 
 [ext_resource type="Script" uid="uid://dlenva6bytv0f" path="res://scenes/abilities/shoot_ability_controller/shoot_ability_controller.gd" id="1_831jm"]
+[ext_resource type="AudioStream" uid="uid://36imaar83nte" path="res://assets/sounds/bubble_pop_1.mp3" id="2_4gggm"]
+[ext_resource type="AudioStream" uid="uid://dpxtpsiupdueu" path="res://assets/sounds/bubble_pop_2.mp3" id="3_bcj4a"]
+[ext_resource type="AudioStream" uid="uid://bxhtagfdpm7er" path="res://assets/sounds/retro_bubble_pop_1.mp3" id="4_jblht"]
+[ext_resource type="AudioStream" uid="uid://bfqmvqh7dr7d3" path="res://assets/sounds/retro_bubble_pop_2.mp3" id="5_20rma"]
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_831jm"]
+random_pitch = 1.0656005
+random_volume_offset_db = 2.0
+streams_count = 4
+stream_0/stream = ExtResource("2_4gggm")
+stream_1/stream = ExtResource("3_bcj4a")
+stream_2/stream = ExtResource("4_jblht")
+stream_3/stream = ExtResource("5_20rma")
 
 [node name="ShootAbilityController" type="Node" unique_id=2128148816]
 script = ExtResource("1_831jm")
@@ -8,3 +21,7 @@ script = ExtResource("1_831jm")
 [node name="FireRateTimer" type="Timer" parent="." unique_id=1062210774]
 wait_time = 0.25
 one_shot = true
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=347364994]
+stream = SubResource("AudioStreamRandomizer_831jm")
+volume_db = -10.0

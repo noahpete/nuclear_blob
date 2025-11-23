@@ -14,6 +14,8 @@ var main_menu: PackedScene
 @onready var new_round_button: Button = %NewRoundButton
 @onready var main_menu_button: Button = %MainMenuButton
 @onready var glob_amount_label: Label = %GlobAmountLabel
+@onready var audio_stream_player: AudioStreamPlayer = $AudioStreamPlayer
+@onready var glob_container_audio_stream_player: AudioStreamPlayer = $GlobContainerAndTree/GlobContainerAudioStreamPlayer
 
 func _ready() -> void:
 	main = load("uid://da36exb4ldn5o")
@@ -21,6 +23,11 @@ func _ready() -> void:
 
 	new_round_button.pressed.connect(_on_new_round_button_pressed)
 	main_menu_button.pressed.connect(_on_main_menu_button_pressed)
+	Events.post_round_ability_purchased.connect(_on_ability_purchased)
+	GlobalAudio.register_buttons([
+		new_round_button,
+		main_menu_button
+	])
 
 	time_h_box_container.get_node("Amount").text = str(int(GameState.round_time_msec/60000.0)).pad_zeros(2)+":"+str(int(GameState.round_time_msec/1000.0)).pad_zeros(2)
 	level_h_box_container.get_node("Amount").text = str(GameState.round_level_reached)
@@ -29,6 +36,7 @@ func _ready() -> void:
 
 	ScreenTransition.to_transparent()
 	gpu_particles_2d.emitting = true
+	audio_stream_player.play()
 	var tween := create_tween()
 	tween.tween_property(gpu_particles_2d, "position", Vector2(320, 360), 1.6)\
 		.set_trans(Tween.TRANS_CUBIC)\
@@ -55,7 +63,13 @@ func _update_glob_amount_label(new_amount: int) -> void:
 		var initial_amount := int(glob_amount_label.text)
 		for i in range(new_amount - int(glob_amount_label.text)):
 			glob_amount_label.text = "%d" % (initial_amount + i + 1)
-			await get_tree().create_timer(min(0.4, 0.05 * i)).timeout
+			glob_container_audio_stream_player.play()
+			await get_tree().create_timer(min(0.2, 0.05 * i)).timeout
+	elif new_amount < int(glob_amount_label.text):
+		var initial_amount := int(glob_amount_label.text)
+		for i in range(initial_amount, new_amount, -1):
+			glob_amount_label.text = "%d" % i
+			await get_tree().create_timer(0.05).timeout
 
 func _on_new_round_button_pressed() -> void:
 	await ScreenTransition.to_black()
@@ -66,3 +80,6 @@ func _on_main_menu_button_pressed() -> void:
 	await ScreenTransition.to_black()
 	get_tree().change_scene_to_packed(main_menu)
 	ScreenTransition.to_transparent()
+
+func _on_ability_purchased(ability: Ability) -> void:
+	_update_glob_amount_label(int(glob_amount_label.text) - ability.cost)

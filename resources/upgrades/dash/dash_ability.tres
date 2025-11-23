@@ -1,14 +1,19 @@
-[gd_resource type="Resource" script_class="Ability" load_steps=4 format=3 uid="uid://chtad3cudp1lb"]
+[gd_resource type="Resource" script_class="Ability" load_steps=8 format=3 uid="uid://chtad3cudp1lb"]
 
 [ext_resource type="PackedScene" uid="uid://beor57ripam04" path="res://scenes/abilities/dash_ability_controller/dash_ability_controller.tscn" id="1_yktuw"]
 [ext_resource type="Texture2D" uid="uid://b0ipjkckrublt" path="res://assets/icons/dash_icon.png" id="2_6vvt6"]
 [ext_resource type="Script" uid="uid://dn47o4r71l2yb" path="res://resources/upgrades/ability.gd" id="2_k8asa"]
+[ext_resource type="Script" uid="uid://ch11bkvw0okee" path="res://resources/upgrades/ability_upgrade.gd" id="4_nieki"]
+[ext_resource type="Resource" uid="uid://c616yq4c2tds8" path="res://resources/upgrades/dash/dash_speed.tres" id="5_7eh2w"]
+[ext_resource type="Resource" uid="uid://4crb86eptc6d" path="res://resources/upgrades/dash/dash_damage.tres" id="6_ku0we"]
+[ext_resource type="Resource" uid="uid://cofbuh4acxvim" path="res://resources/upgrades/dash/dash_distance.tres" id="7_bi76c"]
 
 [resource]
 script = ExtResource("2_k8asa")
 ability_controller_scene = ExtResource("1_yktuw")
 ability_icon_texture = ExtResource("2_6vvt6")
 cost = 20
+upgrade_pool = Array[ExtResource("4_nieki")]([ExtResource("5_7eh2w"), ExtResource("6_ku0we"), ExtResource("7_bi76c")])
 parent_ability_id = "dash"
 id = "dash_ability"
 name = "Dash Ability"
