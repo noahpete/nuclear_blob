@@ -7,4 +7,4 @@ static var round_kills: int
 static var round_time_msec: int
 
 # Player data
-static var player_data: PlayerData
+static var player_data: PlayerData = PlayerData.new()

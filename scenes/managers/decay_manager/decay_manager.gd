@@ -11,7 +11,7 @@ static var instance: DecayManager
 var current_decay: float = 10.0
 var target_decay: float = 12.0
 var decay_rate_factor: float = 0.8
-var current_level: int = 0
+var current_level: int = 8
 var paused: bool = false
 
 func _ready() -> void:
@@ -20,6 +20,7 @@ func _ready() -> void:
 		return
 	instance = self
 	decay_updated.emit(current_decay, target_decay)
+	Events.level_up.emit(current_level)
 	Events.glob_picked_up.connect(_on_glob_picked_up)
 
 func _process(delta: float) -> void:

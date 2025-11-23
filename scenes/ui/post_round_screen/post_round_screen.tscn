@@ -74,9 +74,12 @@ local_coords = true
 process_material = SubResource("ParticleProcessMaterial_bjm25")
 
 [node name="GlobContainerAndTree" type="Control" parent="." unique_id=1001609004]
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 mouse_filter = 1
 
 [node name="GlobContainerTextureRect" type="TextureRect" parent="GlobContainerAndTree" unique_id=120714789]
@@ -87,10 +90,9 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = 236.0
-offset_top = 256.0
-offset_right = 364.0
-offset_bottom = 320.0
+offset_left = -64.0
+offset_top = -64.0
+offset_right = 64.0
 grow_horizontal = 2
 grow_vertical = 0
 texture = ExtResource("4_6k7w3")
@@ -106,10 +108,9 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = 236.0
-offset_top = 257.0
-offset_right = 364.0
-offset_bottom = 321.0
+offset_left = -64.0
+offset_top = -64.0
+offset_right = 64.0
 grow_horizontal = 2
 grow_vertical = 0
 texture = ExtResource("5_yl3ne")
@@ -127,6 +128,26 @@ wave_strength = 0.2
 
 [node name="AbilityTree" parent="GlobContainerAndTree" unique_id=1850353781 instance=ExtResource("8_wa01e")]
 position = Vector2(320, 320)
+
+[node name="GlobAmountLabel" type="Label" parent="GlobContainerAndTree" unique_id=623522452]
+unique_name_in_owner = true
+z_index = 5
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -20.0
+offset_top = -44.0
+offset_right = 20.0
+offset_bottom = -12.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/outline_size = 8
+theme_override_font_sizes/font_size = 24
+text = "4"
+horizontal_alignment = 1
 
 [node name="MarginContainer" type="MarginContainer" parent="." unique_id=1552183946]
 layout_mode = 1

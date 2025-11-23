@@ -27,6 +27,7 @@ func _ready() -> void:
 
 func _on_player_died(level: int) -> void:
 	GameState.round_level_reached = level
+	GameState.player_data.total_xp += level
 	GameState.round_time_msec = Time.get_ticks_msec()
 
 	await get_tree().create_timer(2).timeout

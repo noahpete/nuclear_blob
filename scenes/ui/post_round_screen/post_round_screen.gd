@@ -1,7 +1,7 @@
 class_name PostRoundScreen
 extends Control
 
-const MAX_LEVEL: float = 30
+const MAX_LEVEL_DISPLAYED: float = 30
 
 var main: PackedScene
 var main_menu: PackedScene
@@ -13,6 +13,7 @@ var main_menu: PackedScene
 @onready var kills_h_box_container: HBoxContainer = %KillsHBoxContainer
 @onready var restart_button: Button = %RestartButton
 @onready var main_menu_button: Button = %MainMenuButton
+@onready var glob_amount_label: Label = %GlobAmountLabel
 
 func _ready() -> void:
 	main = load("uid://da36exb4ldn5o")
@@ -32,11 +33,13 @@ func _ready() -> void:
 		.set_trans(Tween.TRANS_CUBIC)\
 		.set_ease(Tween.EASE_IN)
 
+
 	await get_tree().create_timer(2).timeout
+	_update_glob_amount_label()
 	liquid.splash(liquid.global_position + Vector2(liquid.liquid_size.x * randf(), 0), randi_range(150, 200) * liquid.splash_multiplier)
 	gpu_particles_2d.queue_free()
 
-	var fill_percent: float = min(1, GameState.round_level_reached / MAX_LEVEL)
+	var fill_percent: float = min(1, GameState.player_data.total_xp / MAX_LEVEL_DISPLAYED)
 	var position_tween := create_tween()
 	position_tween.tween_property(liquid, "position:y", liquid.position.y - 40 * fill_percent, 1)\
 		.set_trans(Tween.TRANS_CUBIC)\
@@ -46,6 +49,11 @@ func _ready() -> void:
 	liquid.splash(liquid.global_position + Vector2(liquid.liquid_size.x * randf(), 0), randi_range(100, 200) * liquid.splash_multiplier)
 	await get_tree().create_timer(0.5).timeout
 	liquid.splash(liquid.global_position + Vector2(liquid.liquid_size.x * randf(), 0), randi_range(100, 200) * liquid.splash_multiplier)
+
+func _update_glob_amount_label() -> void:
+	for i in range(5):
+		glob_amount_label.text = "%d" % (GameState.player_data.total_xp * 0.2 * (i + 1))
+		await get_tree().create_timer(0.1 * i).timeout
 
 func _on_restart_button_pressed() -> void:
 	await ScreenTransition.to_black()
