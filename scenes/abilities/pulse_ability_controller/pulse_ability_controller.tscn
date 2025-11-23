@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://b56blvbqrllkp"]
+
+[ext_resource type="Script" uid="uid://d1yvt4sxknavq" path="res://scenes/abilities/pulse_ability_controller/pulse_ability_controller.gd" id="1_hlo2h"]
+
+[node name="PulseAbilityController" type="Node" unique_id=1773241528]
+script = ExtResource("1_hlo2h")
+
+[node name="Timer" type="Timer" parent="." unique_id=998587339]

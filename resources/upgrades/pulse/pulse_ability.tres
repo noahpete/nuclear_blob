@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="Ability" load_steps=3 format=3 uid="uid://ca4d30g0plkeg"]
+
+[ext_resource type="PackedScene" uid="uid://b56blvbqrllkp" path="res://scenes/abilities/pulse_ability_controller/pulse_ability_controller.tscn" id="1_420lo"]
+[ext_resource type="Script" uid="uid://dn47o4r71l2yb" path="res://resources/upgrades/ability.gd" id="2_m1fg2"]
+
+[resource]
+script = ExtResource("2_m1fg2")
+ability_controller_scene = ExtResource("1_420lo")
+parent_ability_id = "pulse"
+id = "pulse_ability"
+name = "Pulse Ability"
+max_quantity = 1
+description = "Unleash a pulse in all directions, damaging and knocking back nearby Enemies."
+metadata/_custom_type_script = "uid://ch11bkvw0okee"

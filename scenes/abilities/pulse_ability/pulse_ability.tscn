@@ -1,0 +1,68 @@
+[gd_scene load_steps=9 format=3 uid="uid://dahadadkurskm"]
+
+[ext_resource type="Script" uid="uid://codmqqnon3i4n" path="res://scenes/abilities/pulse_ability/pulse_ability.gd" id="1_si8qs"]
+
+[sub_resource type="Gradient" id="Gradient_kseod"]
+offsets = PackedFloat32Array(0.4088937, 0.5390456, 0.5520607)
+colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_si8qs"]
+gradient = SubResource("Gradient_kseod")
+height = 32
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[sub_resource type="Gradient" id="Gradient_si8qs"]
+colors = PackedColorArray(0.4117647, 1, 0.83137256, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_arjhq"]
+gradient = SubResource("Gradient_si8qs")
+
+[sub_resource type="Curve" id="Curve_arjhq"]
+_limits = [0.0, 2.0, 0.0, 1.0]
+_data = [Vector2(0, 0), 0.0, 6.005706, 0, 0, Vector2(1, 2), 0.120920196, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_8i468"]
+curve = SubResource("Curve_arjhq")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_arhbp"]
+particle_flag_disable_z = true
+gravity = Vector3(0, 0, 0)
+scale_curve = SubResource("CurveTexture_8i468")
+color_ramp = SubResource("GradientTexture1D_arjhq")
+
+[node name="PulseAbility" type="Node2D" unique_id=147960176]
+script = ExtResource("1_si8qs")
+
+[node name="BackMask" type="Polygon2D" parent="." unique_id=20636747]
+clip_children = 1
+polygon = PackedVector2Array(5, 0, 5, -10, 4, -11, -4, -11, -5, -10, -5, 0, -50, 0, -50, -37, 52, -37, 52, 0)
+
+[node name="BackGPUParticles2D" type="GPUParticles2D" parent="BackMask" unique_id=1022681261]
+unique_name_in_owner = true
+emitting = false
+amount = 1
+texture = SubResource("GradientTexture2D_si8qs")
+lifetime = 0.6
+one_shot = true
+fixed_fps = 0
+interpolate = false
+local_coords = true
+process_material = SubResource("ParticleProcessMaterial_arhbp")
+
+[node name="FrontMask" type="Polygon2D" parent="." unique_id=875636523]
+clip_children = 1
+polygon = PackedVector2Array(-50, 0, -5, 0, -3, 2, 3, 2, 5, 0, 52, 0, 52, 46, -50, 46)
+
+[node name="FrontGPUParticles2D" type="GPUParticles2D" parent="FrontMask" unique_id=917569559]
+unique_name_in_owner = true
+emitting = false
+amount = 1
+texture = SubResource("GradientTexture2D_si8qs")
+lifetime = 0.6
+one_shot = true
+fixed_fps = 0
+interpolate = false
+local_coords = true
+process_material = SubResource("ParticleProcessMaterial_arhbp")
