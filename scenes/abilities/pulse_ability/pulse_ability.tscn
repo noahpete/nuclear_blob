@@ -1,6 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://dahadadkurskm"]
+[gd_scene load_steps=11 format=3 uid="uid://dahadadkurskm"]
 
 [ext_resource type="Script" uid="uid://codmqqnon3i4n" path="res://scenes/abilities/pulse_ability/pulse_ability.gd" id="1_si8qs"]
+[ext_resource type="PackedScene" uid="uid://bj6s8fpr2cm3u" path="res://scenes/components/hitbox_component/hitbox_component.tscn" id="2_arjhq"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_8i468"]
+radius = 24.0
+height = 88.0
 
 [sub_resource type="Gradient" id="Gradient_kseod"]
 offsets = PackedFloat32Array(0.4088937, 0.5390456, 0.5520607)
@@ -34,6 +39,17 @@ color_ramp = SubResource("GradientTexture1D_arjhq")
 
 [node name="PulseAbility" type="Node2D" unique_id=147960176]
 script = ExtResource("1_si8qs")
+
+[node name="DestroyTimer" type="Timer" parent="." unique_id=1561315353]
+autostart = true
+
+[node name="HitboxComponent" parent="." unique_id=849292559 instance=ExtResource("2_arjhq")]
+damage = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent" unique_id=2128744268]
+unique_name_in_owner = true
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_8i468")
 
 [node name="BackMask" type="Polygon2D" parent="." unique_id=20636747]
 clip_children = 1
