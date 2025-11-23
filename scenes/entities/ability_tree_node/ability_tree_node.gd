@@ -48,6 +48,11 @@ func _ready() -> void:
 	area_2d.mouse_exited.connect(_on_mouse_exited)
 	area_2d.input_event.connect(_on_area_2d_input_event)
 
+	Events.post_round_ability_purchased.connect(_on_ability_purchased)
+
+	if ability != null and ability in GameState.player_data.abilities:
+		unlock()
+
 func unlock() -> void:
 	var start_color := glob_gradient.colors[0]
 	var target_color := Color(0.412, 1.0, 0.831, 1.0)
@@ -102,3 +107,7 @@ func _on_area_2d_input_event(_viewport: Node, event: InputEvent, _shape_idx: int
 	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
 		Log.info("Selected Ability with id %s" % [ability.parent_ability_id])
 		select()
+
+func _on_ability_purchased(input_ability: Ability) -> void:
+	if ability != null and ability.id == input_ability.id:
+		unlock()
