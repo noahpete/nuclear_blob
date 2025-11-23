@@ -1,7 +1,11 @@
 class_name Player
 extends CharacterBody2D
 
-const GLOB = preload("uid://buyg2u6ftbuc4")
+const GLOB: PackedScene = preload("uid://buyg2u6ftbuc4")
+const DASH_ABILITY_CONTROLLER: PackedScene = preload("uid://beor57ripam04")
+const PULSE_ABILITY_CONTROLLER: PackedScene = preload("uid://b56blvbqrllkp")
+const SPRAY_ABILITY_CONTROLLER: PackedScene = preload("uid://dh6gc4trou3gv")
+
 const MAX_VELOCITY: float = 120.0
 const ACCELERATION_SMOOTHING: float = 15.0
 
@@ -21,6 +25,7 @@ func _ready() -> void:
 	instance = self
 	Events.ability_upgrade_added.connect(_on_ability_upgrade_added)
 	hurtbox_component.hit.connect(_on_hurtbox_hit)
+	_initialize_abilities()
 
 func _physics_process(delta: float) -> void:
 	var input_vector := Input.get_vector("left", "right", "up", "down")
@@ -50,9 +55,29 @@ func _update_eyes(delta: float) -> void:
 	var target_position := Input.get_vector("left", "right", "up", "down") * 2
 	eyes_sprite_2d.position = lerp(eyes_sprite_2d.position, target_position, delta * 10)
 
-func _on_ability_upgrade_added(ability_upgrade: AbilityUpgrade, current_upgrades: Dictionary) -> void:
-	if ability_upgrade is Ability:
-		abilities.add_child(ability_upgrade.ability_controller_scene.instantiate())
+func _initialize_abilities() -> void:
+	if GameState.player_data == null or GameState.player_data.abilities == null:
+		return
 
-func _on_hurtbox_hit(hitbox_component: HitboxComponent) -> void:
+	for ability in GameState.player_data.abilities:
+		if ability == null or not ability is Ability:
+			continue
+
+		# Use the ability's controller scene if available
+		if ability.ability_controller_scene != null:
+			var controller_instance = ability.ability_controller_scene.instantiate()
+			if controller_instance:
+				abilities.add_child(controller_instance)
+			else:
+				push_error("Failed to instantiate controller for ability: %s" % ability.id)
+		else:
+			push_warning("Ability %s has no controller scene assigned" % ability.id)
+
+func _on_ability_upgrade_added(ability_upgrade: AbilityUpgrade, _current_upgrades: Dictionary) -> void:
+	if ability_upgrade is Ability:
+		var added_ability: Ability = ability_upgrade as Ability
+		if added_ability.ability_controller_scene:
+			abilities.add_child(added_ability.ability_controller_scene.instantiate())
+
+func _on_hurtbox_hit(_hitbox_component: HitboxComponent) -> void:
 	DecayManager.instance.update_decay(-DecayManager.instance.target_decay * 0.1)

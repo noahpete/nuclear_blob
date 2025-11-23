@@ -19,14 +19,19 @@ func _input(event: InputEvent) -> void:
 func pulse() -> void:
 	if !cooldown_timer.is_stopped():
 		return
+
+	var player = owner if owner else get_parent().get_parent()
+	if not player:
+		return
+
 	var pulse_ability: PulseAbility = PULSE_ABILITY.instantiate()
 	Main.instance.y_sort_root.add_child(pulse_ability)
-	pulse_ability.global_position = owner.global_position
+	pulse_ability.global_position = player.global_position
 	pulse_ability.hitbox_component.damage = damage_base * damage_multiplier
 	pulse_ability.knockback_amount = knockback_base * knockback_multiplier
 	cooldown_timer.start(cooldown_base * cooldown_multiplier)
 
-func _on_ability_upgrade_added(upgrade: AbilityUpgrade, current_upgrades: Dictionary) -> void:
+func _on_ability_upgrade_added(upgrade: AbilityUpgrade, _current_upgrades: Dictionary) -> void:
 	if upgrade is Ability:
 		return
 	match upgrade.id:

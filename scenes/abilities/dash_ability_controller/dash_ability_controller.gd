@@ -25,10 +25,16 @@ func _ready() -> void:
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("dash"):
-		dash(owner.velocity)
+		var player = owner if owner else get_parent().get_parent()
+		if player and player.has_method("move_and_slide"):
+			dash(player.velocity)
 
 func _process(delta: float) -> void:
 	if is_dashing:
+		var player = owner if owner else get_parent().get_parent()
+		if not player or not player.has_method("move_and_slide"):
+			return
+
 		dash_timer -= delta
 		if dash_timer <= 0.0:
 			is_dashing = false
@@ -36,7 +42,7 @@ func _process(delta: float) -> void:
 			return
 
 		if current_dash_ability:
-			current_dash_ability.global_position = owner.global_position
+			current_dash_ability.global_position = player.global_position
 
 		var input_direction := Input.get_vector("left", "right", "up", "down")
 		if input_direction.length() > 0:
@@ -50,14 +56,18 @@ func _process(delta: float) -> void:
 		# Calculate velocity (allow steering if there's input, otherwise use stored direction)
 		var dash_speed := dash_initial_speed * speed_multiplier
 		if not input_direction.is_zero_approx():
-			owner.velocity += input_direction * dash_speed
+			player.velocity += input_direction * dash_speed
 
-		owner.move_and_slide()
+		player.move_and_slide()
 
 func dash(direction: Vector2) -> void:
 	if direction.is_zero_approx():
 		return
 	if not cooldown_timer.is_stopped():
+		return
+
+	var player = owner if owner else get_parent().get_parent()
+	if not player or not player.has_method("move_and_slide"):
 		return
 
 	dash_initial_speed = dash_distance / dash_duration
@@ -66,11 +76,11 @@ func dash(direction: Vector2) -> void:
 
 	cooldown_timer.start()
 
-	owner.velocity += direction.normalized() * dash_initial_speed
+	player.velocity += direction.normalized() * dash_initial_speed
 
 	current_dash_ability = DASH_ABILITY.instantiate()
 	Main.instance.y_sort_root.add_child(current_dash_ability, true)
-	current_dash_ability.global_position = owner.global_position
+	current_dash_ability.global_position = player.global_position
 	current_dash_ability.destroy_timer.start(dash_duration)
 
 func _on_ability_upgrade_added(upgrade: AbilityUpgrade, current_upgrades: Dictionary) -> void:

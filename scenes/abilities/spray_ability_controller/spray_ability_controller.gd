@@ -20,14 +20,19 @@ func _input(event: InputEvent) -> void:
 func spray() -> void:
 	if !cooldown_timer.is_stopped():
 		return
+
+	var player = owner if owner else get_parent().get_parent()
+	if not player:
+		return
+
 	var spray_instance: SprayAbility = SPRAY_ABILITY.instantiate()
 	Main.instance.y_sort_root.add_child(spray_instance)
-	spray_instance.global_position = owner.global_position
-	spray_instance.look_at(owner.get_global_mouse_position())
+	spray_instance.global_position = player.global_position
+	spray_instance.look_at(player.get_global_mouse_position())
 	spray_instance.hitbox_component.damage = damage_base * damage_multiplier
 	cooldown_timer.start(cooldown_base * cooldown_multiplier)
 
-func _on_ability_upgrade_added(upgrade: AbilityUpgrade, current_upgrades: Dictionary) -> void:
+func _on_ability_upgrade_added(upgrade: AbilityUpgrade, _current_upgrades: Dictionary) -> void:
 	if upgrade is Ability:
 		return
 	if upgrade.id == "spray_damage":

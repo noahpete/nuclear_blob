@@ -23,10 +23,15 @@ func _on_post_round_ability_selected(ability: Ability) -> void:
 	ability_icon_texture_rect.texture = ability.ability_icon_texture
 	ability_rich_text_label.text = ability.description
 	buy_button.text = "Buy for %d" % ability.cost
-	buy_button.disabled = GameState.player_data.current_xp < ability.cost
+
+	var ability_already_acquired := false
+	for a in GameState.player_data.abilities:
+		if a.id == ability.id:
+			ability_already_acquired = true
+			break
+	buy_button.disabled = (GameState.player_data.current_xp < ability.cost) or ability_already_acquired
 
 func _on_post_round_ability_buy_button_pressed() -> void:
 	select_an_ability_label.visible = true
 	v_box_container.visible = false
 	Events.post_round_ability_purchased.emit(current_ability)
-	print('here')
