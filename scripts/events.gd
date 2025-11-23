@@ -6,7 +6,9 @@ signal glob_picked_up(amount: float)
 signal ability_upgrade_added(upgrade: AbilityUpgrade, current_upgrades: Dictionary)
 
 # UI
-signal ability_selected(ability: Ability)
+signal upgrade_selected(upgrade: AbilityUpgrade)
+signal post_round_ability_selected(ability: Ability)
+signal post_round_ability_purchased(ability: Ability)
 
 func emit_player_died() -> void:
 	player_died.emit()
@@ -20,5 +22,11 @@ func emit_glob_picked_up(amount: float) -> void:
 func emit_ability_upgrade_added(upgrade: AbilityUpgrade, current_upgrades: Dictionary) -> void:
 	ability_upgrade_added.emit(upgrade, current_upgrades)
 
-func emit_ability_selected(ability: Ability) -> void:
-	ability_selected.emit(ability)
+func emit_upgrade_selected(upgrade: AbilityUpgrade) -> void:
+	upgrade_selected.emit(upgrade)
+
+func emit_post_round_ability_selected(ability: Ability) -> void:
+	post_round_ability_selected.emit(ability)
+
+func emit_post_round_ability_purchased(ability: Ability) -> void:
+	post_round_ability_purchased.emit(ability)

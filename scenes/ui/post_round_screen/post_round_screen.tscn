@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://38lgapsanr1h"]
+[gd_scene load_steps=13 format=3 uid="uid://38lgapsanr1h"]
 
 [ext_resource type="Script" uid="uid://kjod5lhaapjp" path="res://scenes/ui/post_round_screen/post_round_screen.gd" id="1_bjm25"]
 [ext_resource type="Texture2D" uid="uid://bi1ar0i8jlnfx" path="res://assets/glob_large.png" id="1_qt32q"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://c1ah0bp8fhwd" path="res://scenes/effect/liquid/liquid.tscn" id="6_esa2c"]
 [ext_resource type="PackedScene" uid="uid://cy74e717f5wrk" path="res://scenes/effect/background_globs/background_globs.tscn" id="7_qyk5q"]
 [ext_resource type="PackedScene" uid="uid://nxsecflji2n1" path="res://scenes/entities/ability_tree/ability_tree.tscn" id="8_wa01e"]
+[ext_resource type="PackedScene" uid="uid://boqayt56uvvv6" path="res://scenes/ui/post_round_upgrade_container/post_round_upgrade_container.tscn" id="9_sm1x1"]
 
 [sub_resource type="Curve" id="Curve_bi8bv"]
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.06545454, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.014308333), -3.0604184, 0.0, 0, 0]
@@ -146,7 +147,7 @@ grow_horizontal = 2
 grow_vertical = 0
 theme_override_constants/outline_size = 8
 theme_override_font_sizes/font_size = 24
-text = "4"
+text = "0"
 horizontal_alignment = 1
 
 [node name="MarginContainer" type="MarginContainer" parent="." unique_id=1552183946]
@@ -219,42 +220,22 @@ layout_mode = 2
 text = "4"
 horizontal_alignment = 2
 
-[node name="UpgradeContainer" type="PanelContainer" parent="MarginContainer" unique_id=382081872]
-custom_minimum_size = Vector2(160, 92)
-layout_mode = 2
-size_flags_horizontal = 8
-size_flags_vertical = 0
-
-[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/UpgradeContainer" unique_id=1859173431]
+[node name="PostRoundUpgradeContainer" parent="MarginContainer" unique_id=748099014 instance=ExtResource("9_sm1x1")]
 layout_mode = 2
 
-[node name="SelectAnAbilityLabel" type="Label" parent="MarginContainer/UpgradeContainer/MarginContainer" unique_id=423599347]
-layout_mode = 2
-text = "Select an Upgrade"
-horizontal_alignment = 1
-
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/UpgradeContainer/MarginContainer" unique_id=541073548]
-visible = false
-layout_mode = 2
-
-[node name="AbilityLabel" type="Label" parent="MarginContainer/UpgradeContainer/MarginContainer/VBoxContainer" unique_id=1047163102]
-layout_mode = 2
-text = "Ability"
-horizontal_alignment = 1
-
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer" unique_id=118671679]
+[node name="ButtonsContainer" type="HBoxContainer" parent="MarginContainer" unique_id=118671679]
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 8
 
-[node name="RestartButton" type="Button" parent="MarginContainer/HBoxContainer" unique_id=578083762]
+[node name="NewRoundButton" type="Button" parent="MarginContainer/ButtonsContainer" unique_id=578083762]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 8
-text = "Restart"
+text = "New Round"
 
-[node name="MainMenuButton" type="Button" parent="MarginContainer/HBoxContainer" unique_id=582479966]
+[node name="MainMenuButton" type="Button" parent="MarginContainer/ButtonsContainer" unique_id=582479966]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 8

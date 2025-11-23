@@ -4,8 +4,8 @@ extends Node
 const GLOB_PROJECTILE = preload("uid://buyg2u6ftbuc4")
 
 var base_damage: int = 2
-var base_fire_rate_time: float = 0.25
-var base_velocity: int = 200
+var base_fire_rate_time: float = 0.5
+var base_velocity: int = 150
 var additional_damage_percent: float = 1.0
 var additional_fire_rate_percent: float = 1.0
 var additional_velocity_percent: float = 1.0

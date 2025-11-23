@@ -1,0 +1,83 @@
+[gd_scene load_steps=7 format=3 uid="uid://boqayt56uvvv6"]
+
+[ext_resource type="Script" uid="uid://be05cb017ak1u" path="res://scenes/ui/post_round_upgrade_container/post_round_upgrade_container.gd" id="1_c7hvq"]
+[ext_resource type="Theme" uid="uid://bp7gihsracsyc" path="res://resources/theme.tres" id="1_cibgb"]
+[ext_resource type="Texture2D" uid="uid://b0ipjkckrublt" path="res://assets/icons/dash_icon.png" id="4_s4368"]
+
+[sub_resource type="Animation" id="Animation_p8b13"]
+resource_name = "default"
+loop_mode = 1
+step = 0.01
+
+[sub_resource type="Animation" id="Animation_s4368"]
+length = 0.001
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_s4368"]
+_data = {
+&"RESET": SubResource("Animation_s4368"),
+&"default": SubResource("Animation_p8b13")
+}
+
+[node name="PostRoundUpgradeContainer" type="PanelContainer" unique_id=748099014]
+custom_minimum_size = Vector2(180, 100)
+size_flags_horizontal = 8
+size_flags_vertical = 0
+theme = ExtResource("1_cibgb")
+script = ExtResource("1_c7hvq")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=816112253]
+libraries = {
+&"": SubResource("AnimationLibrary_s4368")
+}
+autoplay = &"default"
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=280547875]
+layout_mode = 2
+
+[node name="SelectAnAbilityLabel" type="Label" parent="MarginContainer" unique_id=544957331]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Select an Upgrade"
+horizontal_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" unique_id=234090169]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+
+[node name="AbilityLabel" type="Label" parent="MarginContainer/VBoxContainer" unique_id=1082990406]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Ability"
+horizontal_alignment = 1
+
+[node name="AbilityInformationContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer" unique_id=1751451127]
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="AbilityIconTextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer/AbilityInformationContainer" unique_id=1594193209]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+texture = ExtResource("4_s4368")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="AbilityRichTextLabel" type="RichTextLabel" parent="MarginContainer/VBoxContainer/AbilityInformationContainer" unique_id=332869133]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 10
+text = "Example Ability information text that has words"
+fit_content = true
+scroll_active = false
+
+[node name="ButtonsContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer" unique_id=521356522]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="BuyButton" type="Button" parent="MarginContainer/VBoxContainer/ButtonsContainer" unique_id=656463074]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Buy"

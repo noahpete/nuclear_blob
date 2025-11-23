@@ -169,6 +169,9 @@ libraries = {
 }
 autoplay = &"default"
 
+[node name="LevelUpCooldownTimer" type="Timer" parent="." unique_id=1723603037]
+wait_time = 3.0
+
 [node name="MarginContainer" type="MarginContainer" parent="." unique_id=979638506]
 anchors_preset = 15
 anchor_right = 1.0

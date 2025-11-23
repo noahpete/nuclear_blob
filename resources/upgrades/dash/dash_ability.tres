@@ -1,15 +1,17 @@
-[gd_resource type="Resource" script_class="Ability" load_steps=3 format=3 uid="uid://chtad3cudp1lb"]
+[gd_resource type="Resource" script_class="Ability" load_steps=4 format=3 uid="uid://chtad3cudp1lb"]
 
 [ext_resource type="PackedScene" uid="uid://beor57ripam04" path="res://scenes/abilities/dash_ability_controller/dash_ability_controller.tscn" id="1_yktuw"]
+[ext_resource type="Texture2D" uid="uid://b0ipjkckrublt" path="res://assets/icons/dash_icon.png" id="2_6vvt6"]
 [ext_resource type="Script" uid="uid://dn47o4r71l2yb" path="res://resources/upgrades/ability.gd" id="2_k8asa"]
 
 [resource]
 script = ExtResource("2_k8asa")
 ability_controller_scene = ExtResource("1_yktuw")
+ability_icon_texture = ExtResource("2_6vvt6")
 cost = 20
 parent_ability_id = "dash"
 id = "dash_ability"
 name = "Dash Ability"
 max_quantity = 1
-description = "Dash in the direction of your movement."
+description = "Dash in the direction of your movement with Spacebar."
 metadata/_custom_type_script = "uid://ch11bkvw0okee"

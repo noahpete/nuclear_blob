@@ -1,15 +1,17 @@
-[gd_resource type="Resource" script_class="Ability" load_steps=3 format=3 uid="uid://cdtgdvuhnvn3o"]
+[gd_resource type="Resource" script_class="Ability" load_steps=4 format=3 uid="uid://cdtgdvuhnvn3o"]
 
 [ext_resource type="PackedScene" uid="uid://dh6gc4trou3gv" path="res://scenes/abilities/spray_ability_controller/spray_ability_controller.tscn" id="1_0wqy1"]
 [ext_resource type="Script" uid="uid://dn47o4r71l2yb" path="res://resources/upgrades/ability.gd" id="2_ns2lp"]
+[ext_resource type="Texture2D" uid="uid://cdoknr5fyh7ss" path="res://assets/icons/spray_icon.png" id="2_qi6l7"]
 
 [resource]
 script = ExtResource("2_ns2lp")
 ability_controller_scene = ExtResource("1_0wqy1")
-cost = 100
+ability_icon_texture = ExtResource("2_qi6l7")
+cost = 80
 parent_ability_id = "spray"
 id = "spray_ability"
 name = "Spray Ability"
 max_quantity = 1
-description = "Spew a mist of nuclear waste in the direction of Player movement."
+description = "Spew a mist of nuclear waste in the direction of the cursor with Q."
 metadata/_custom_type_script = "uid://ch11bkvw0okee"

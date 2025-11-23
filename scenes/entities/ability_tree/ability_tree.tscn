@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://nxsecflji2n1"]
+[gd_scene load_steps=8 format=3 uid="uid://nxsecflji2n1"]
 
 [ext_resource type="PackedScene" uid="uid://dyr5f8ibveaix" path="res://scenes/entities/ability_tree_node/ability_tree_node.tscn" id="1_ec83h"]
 [ext_resource type="Resource" uid="uid://chtad3cudp1lb" path="res://resources/upgrades/dash/dash_ability.tres" id="2_64mvu"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://cgrudlhs31e3c" path="res://assets/icons/pulse_icon.png" id="3_y5lye"]
 [ext_resource type="Resource" uid="uid://ca4d30g0plkeg" path="res://resources/upgrades/pulse/pulse_ability.tres" id="4_75yof"]
 [ext_resource type="Texture2D" uid="uid://cdoknr5fyh7ss" path="res://assets/icons/spray_icon.png" id="4_pxr1v"]
+[ext_resource type="Resource" uid="uid://cdtgdvuhnvn3o" path="res://resources/upgrades/spray/spray_ability.tres" id="6_erau6"]
 
 [node name="AbilityTree" type="Node2D" unique_id=1751432994]
 
@@ -23,4 +24,5 @@ ability_icon = ExtResource("3_y5lye")
 
 [node name="SprayAbilityNode" parent="AbilityTreeNode" unique_id=1087325389 instance=ExtResource("1_ec83h")]
 position = Vector2(80, -110)
+ability = ExtResource("6_erau6")
 ability_icon = ExtResource("4_pxr1v")

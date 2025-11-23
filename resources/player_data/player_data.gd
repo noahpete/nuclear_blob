@@ -1,9 +1,9 @@
 class_name PlayerData
 extends Resource
 
-var abilities: Array[AbilityUpgrade]
-var total_xp: int
-var total_time_msec: int
-var total_levels: int
-var total_kills: int
-var total_deaths: int
+@export var abilities: Array[AbilityUpgrade]
+@export var current_xp: int
+@export var total_time_msec: int
+@export var total_levels: int
+@export var total_kills: int
+@export var total_deaths: int

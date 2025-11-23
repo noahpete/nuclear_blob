@@ -11,7 +11,7 @@ var main_menu: PackedScene
 @onready var time_h_box_container: HBoxContainer = %TimeHBoxContainer
 @onready var level_h_box_container: HBoxContainer = %LevelHBoxContainer
 @onready var kills_h_box_container: HBoxContainer = %KillsHBoxContainer
-@onready var restart_button: Button = %RestartButton
+@onready var new_round_button: Button = %NewRoundButton
 @onready var main_menu_button: Button = %MainMenuButton
 @onready var glob_amount_label: Label = %GlobAmountLabel
 
@@ -19,12 +19,13 @@ func _ready() -> void:
 	main = load("uid://da36exb4ldn5o")
 	main_menu = load("uid://shj0dnrasdc2")
 
-	restart_button.pressed.connect(_on_restart_button_pressed)
+	new_round_button.pressed.connect(_on_new_round_button_pressed)
 	main_menu_button.pressed.connect(_on_main_menu_button_pressed)
 
 	time_h_box_container.get_node("Amount").text = str(int(GameState.round_time_msec/60000.0)).pad_zeros(2)+":"+str(int(GameState.round_time_msec/1000.0)).pad_zeros(2)
 	level_h_box_container.get_node("Amount").text = str(GameState.round_level_reached)
 	kills_h_box_container.get_node("Amount").text = str(GameState.round_kills)
+	glob_amount_label.text = "%d" % (GameState.player_data.current_xp - GameState.round_level_reached)
 
 	ScreenTransition.to_transparent()
 	gpu_particles_2d.emitting = true
@@ -33,13 +34,12 @@ func _ready() -> void:
 		.set_trans(Tween.TRANS_CUBIC)\
 		.set_ease(Tween.EASE_IN)
 
-
 	await get_tree().create_timer(2).timeout
-	_update_glob_amount_label()
+	_update_glob_amount_label(GameState.player_data.current_xp)
 	liquid.splash(liquid.global_position + Vector2(liquid.liquid_size.x * randf(), 0), randi_range(150, 200) * liquid.splash_multiplier)
 	gpu_particles_2d.queue_free()
 
-	var fill_percent: float = min(1, GameState.player_data.total_xp / MAX_LEVEL_DISPLAYED)
+	var fill_percent: float = min(1, GameState.player_data.current_xp / MAX_LEVEL_DISPLAYED)
 	var position_tween := create_tween()
 	position_tween.tween_property(liquid, "position:y", liquid.position.y - 40 * fill_percent, 1)\
 		.set_trans(Tween.TRANS_CUBIC)\
@@ -50,12 +50,14 @@ func _ready() -> void:
 	await get_tree().create_timer(0.5).timeout
 	liquid.splash(liquid.global_position + Vector2(liquid.liquid_size.x * randf(), 0), randi_range(100, 200) * liquid.splash_multiplier)
 
-func _update_glob_amount_label() -> void:
-	for i in range(5):
-		glob_amount_label.text = "%d" % (GameState.player_data.total_xp * 0.2 * (i + 1))
-		await get_tree().create_timer(0.1 * i).timeout
+func _update_glob_amount_label(new_amount: int) -> void:
+	if new_amount > int(glob_amount_label.text):
+		var initial_amount := int(glob_amount_label.text)
+		for i in range(new_amount - int(glob_amount_label.text)):
+			glob_amount_label.text = "%d" % (initial_amount + i + 1)
+			await get_tree().create_timer(min(0.4, 0.05 * i)).timeout
 
-func _on_restart_button_pressed() -> void:
+func _on_new_round_button_pressed() -> void:
 	await ScreenTransition.to_black()
 	get_tree().change_scene_to_packed(main)
 	ScreenTransition.to_transparent()

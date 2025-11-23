@@ -10,6 +10,7 @@ var target_percent: float = 0.0
 @onready var level_label_container: Node2D = %LevelLabelContainer
 @onready var level_label: Label = %LevelLabel
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
+@onready var level_up_cooldown_timer: Timer = $LevelUpCooldownTimer
 
 func _ready() -> void:
 	target_percent = progress_bar.value
@@ -44,6 +45,8 @@ func _on_level_up(new_level: int) -> void:
 			progress_bar.get_node("ShakeAnimationComponent").shake_strength = 6
 		20:
 			progress_bar.get_node("ShakeAnimationComponent").shake_strength = 8
+
+	level_up_cooldown_timer.start()
 
 func _on_player_died(level: int) -> void:
 	Log.info("DecayUI: _on_player_died")

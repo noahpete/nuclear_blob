@@ -85,7 +85,7 @@ func select() -> void:
 
 	selected = true
 	currently_selected_node = self
-	Events.ability_selected.emit(ability)
+	Events.post_round_ability_selected.emit(ability)
 
 func deselect() -> void:
 	selected = false

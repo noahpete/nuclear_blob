@@ -3,14 +3,14 @@ extends Node
 
 signal decay_updated(current_decay: float, target_decay: float)
 
-const TARGET_DECAY_GROWTH_FACTOR: float = 1.4
+const TARGET_DECAY_GROWTH_FACTOR: float = 1.5
 const DECAY_DECAY_GROWTH_FACTOR: float = TARGET_DECAY_GROWTH_FACTOR + 0.1
 
 static var instance: DecayManager
 
 var current_decay: float = 10.0
 var target_decay: float = 12.0
-var decay_rate_factor: float = 0.8
+var decay_rate_factor: float = 0.9
 var current_level: int = 8
 var paused: bool = false
 
@@ -46,7 +46,7 @@ func _level_up() -> void:
 	Events.level_up.emit(current_level)
 
 	paused = true
-	await get_tree().create_timer(0.2).timeout
+	await get_tree().create_timer(3).timeout
 	paused = false
 	decay_updated.emit(current_decay, target_decay)
 

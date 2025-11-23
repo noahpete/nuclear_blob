@@ -23,6 +23,10 @@ func _ready() -> void:
 	cooldown_timer.one_shot = true
 	Events.ability_upgrade_added.connect(_on_ability_upgrade_added)
 
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("dash"):
+		dash(owner.velocity)
+
 func _process(delta: float) -> void:
 	if is_dashing:
 		dash_timer -= delta
