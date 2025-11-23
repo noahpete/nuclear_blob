@@ -5,5 +5,5 @@
 
 [resource]
 script = ExtResource("1_vsvis")
-current_xp = 99
+current_xp = 64
 metadata/_custom_type_script = "uid://dl7s62y4ha7up"

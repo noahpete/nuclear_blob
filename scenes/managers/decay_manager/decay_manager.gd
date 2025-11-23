@@ -4,14 +4,14 @@ extends Node
 signal decay_updated(current_decay: float, target_decay: float)
 
 const TARGET_DECAY_GROWTH_FACTOR: float = 1.5
-const DECAY_DECAY_GROWTH_FACTOR: float = TARGET_DECAY_GROWTH_FACTOR + 0.1
+const DECAY_DECAY_GROWTH_FACTOR: float = TARGET_DECAY_GROWTH_FACTOR + 0.15
 
 static var instance: DecayManager
 
-var current_decay: float = 10.0
+var current_decay: float = 8.0
 var target_decay: float = 12.0
 var decay_rate_factor: float = 0.9
-var current_level: int = 8
+var current_level: int = 0
 var paused: bool = false
 
 func _ready() -> void:

@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Nuclear Blob"
-run/main_scene="uid://da36exb4ldn5o"
+run/main_scene="uid://shj0dnrasdc2"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://icon.svg"
 
