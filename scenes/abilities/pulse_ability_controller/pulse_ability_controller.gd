@@ -3,9 +3,9 @@ extends Node
 
 const PULSE_ABILITY: PackedScene = preload("uid://dahadadkurskm")
 
-var cooldown_base: float = 5.0
+var cooldown_base: float = 8.0
 var cooldown_multiplier: float = 1.0
-var damage_base: float = 5.0
+var damage_base: float = 3.0
 var damage_multiplier: float = 1.0
 var knockback_base: float = 200.0
 var knockback_multiplier: float = 1.0

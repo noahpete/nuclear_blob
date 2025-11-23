@@ -5,7 +5,7 @@
 [resource]
 script = ExtResource("1_kgq24")
 parent_ability_id = "shoot"
-id = "shoot_penetration"
-name = "Full Glob Jacket"
-description = "Allow Globs to penetrate through Enemies."
+id = "shoot_knockback"
+name = "Massive Globs"
+description = "Globs hit harder, knocking back enemies further by 10%."
 metadata/_custom_type_script = "uid://ch11bkvw0okee"

@@ -41,6 +41,7 @@ color_ramp = SubResource("GradientTexture1D_arjhq")
 script = ExtResource("1_si8qs")
 
 [node name="DestroyTimer" type="Timer" parent="." unique_id=1561315353]
+wait_time = 0.6
 autostart = true
 
 [node name="HitboxComponent" parent="." unique_id=849292559 instance=ExtResource("2_arjhq")]

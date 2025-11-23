@@ -1,0 +1,59 @@
+[gd_scene load_steps=9 format=3 uid="uid://8wnos6mmpvbj"]
+
+[ext_resource type="Texture2D" uid="uid://b21xaipkf0fns" path="res://assets/glob_white.png" id="1_75wrw"]
+[ext_resource type="Script" uid="uid://d0u1nftn633jf" path="res://scenes/abilities/spray_ability/spray_ability.gd" id="1_iwhrp"]
+[ext_resource type="PackedScene" uid="uid://bj6s8fpr2cm3u" path="res://scenes/components/hitbox_component/hitbox_component.tscn" id="3_vkn6g"]
+
+[sub_resource type="Gradient" id="Gradient_iwhrp"]
+offsets = PackedFloat32Array(0.14, 0.15333334)
+colors = PackedColorArray(1, 1, 1, 1, 0.4117647, 1, 0.83137256, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_vkn6g"]
+gradient = SubResource("Gradient_iwhrp")
+
+[sub_resource type="Curve" id="Curve_412og"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.05687204, 1), 0.0, 0.0, 0, 0, Vector2(0.6279621, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_1bl5a"]
+curve = SubResource("Curve_412og")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_k0oby"]
+particle_flag_disable_z = true
+emission_shape_offset = Vector3(4, 0.5, 0)
+emission_shape = 1
+emission_sphere_radius = 6.0
+angle_min = -179.99998
+angle_max = 180.00002
+spread = 30.0
+initial_velocity_min = 100.0
+initial_velocity_max = 140.0
+gravity = Vector3(0, 0, 0)
+scale_min = 1.5999999
+scale_max = 2.3999999
+scale_curve = SubResource("CurveTexture_1bl5a")
+color_initial_ramp = SubResource("GradientTexture1D_vkn6g")
+
+[node name="SprayAbility" type="Node2D" unique_id=2141695378]
+script = ExtResource("1_iwhrp")
+
+[node name="DestroyTimer" type="Timer" parent="." unique_id=1059915312]
+wait_time = 2.0
+autostart = true
+
+[node name="SparkGlobs" type="GPUParticles2D" parent="." unique_id=1712359330]
+unique_name_in_owner = true
+emitting = false
+amount = 32
+texture = ExtResource("1_75wrw")
+one_shot = true
+explosiveness = 0.95
+fixed_fps = 0
+interpolate = false
+process_material = SubResource("ParticleProcessMaterial_k0oby")
+
+[node name="HitboxComponent" parent="." unique_id=849292559 instance=ExtResource("3_vkn6g")]
+damage = 4
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="HitboxComponent" unique_id=1022390094]
+polygon = PackedVector2Array(0, 0, 64, -50, 64, 50)

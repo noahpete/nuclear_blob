@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://ubcbq426qntu"]
+[gd_scene load_steps=21 format=3 uid="uid://ubcbq426qntu"]
 
 [ext_resource type="Script" uid="uid://dub2ajnceaf0f" path="res://scenes/entities/player/player.gd" id="1_8afob"]
 [ext_resource type="Texture2D" uid="uid://qy5r42vctva0" path="res://scenes/entities/player/player_body.png" id="2_dovo2"]
@@ -6,7 +6,8 @@
 [ext_resource type="PackedScene" uid="uid://dm0pr40hihdw2" path="res://scenes/abilities/shoot_ability_controller/shoot_ability_controller.tscn" id="3_1murt"]
 [ext_resource type="PackedScene" uid="uid://bd6x8kbb5otsi" path="res://scenes/components/hurtbox_component/hurtbox_component.tscn" id="3_5sj0x"]
 [ext_resource type="Texture2D" uid="uid://lhkp8nvo84ll" path="res://assets/glob.png" id="3_gmlin"]
-[ext_resource type="PackedScene" uid="uid://b56blvbqrllkp" path="res://scenes/abilities/pulse_ability_controller/pulse_ability_controller.tscn" id="3_ovg4i"]
+[ext_resource type="PackedScene" uid="uid://dh6gc4trou3gv" path="res://scenes/abilities/spray_ability_controller/spray_ability_controller.tscn" id="3_ovg4i"]
+[ext_resource type="PackedScene" uid="uid://b56blvbqrllkp" path="res://scenes/abilities/pulse_ability_controller/pulse_ability_controller.tscn" id="4_ovg4i"]
 [ext_resource type="PackedScene" uid="uid://bt7fhktqolmdo" path="res://scenes/effect/lighting/light/light.tscn" id="5_5sj0x"]
 [ext_resource type="Texture2D" uid="uid://bj788wkatxe0n" path="res://scenes/entities/player/player_eyes.png" id="5_p47bc"]
 
@@ -64,7 +65,7 @@ shader_parameter/outline_color = Color(0.14509805, 0.58431375, 0.41568628, 1)
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.13080895, 1), 0.0, 0.0, 0, 0, Vector2(0.93459547, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
 point_count = 4
 
-[sub_resource type="CurveTexture" id="CurveTexture_1murt"]
+[sub_resource type="CurveTexture" id="CurveTexture_7wli1"]
 curve = SubResource("Curve_gmlin")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_p47bc"]
@@ -77,7 +78,7 @@ angle_max = 180.00002
 gravity = Vector3(0, 0, 0)
 scale_min = 0.39999998
 scale_max = 1.1999999
-scale_curve = SubResource("CurveTexture_1murt")
+scale_curve = SubResource("CurveTexture_7wli1")
 turbulence_enabled = true
 turbulence_noise_strength = 0.2
 turbulence_noise_scale = 0.6
@@ -102,7 +103,9 @@ unique_name_in_owner = true
 
 [node name="ShootAbilityController" parent="Abilities" unique_id=2128148816 instance=ExtResource("3_1murt")]
 
-[node name="PulseAbilityController" parent="Abilities" unique_id=1773241528 instance=ExtResource("3_ovg4i")]
+[node name="SprayAbilityController" parent="Abilities" unique_id=1597562238 instance=ExtResource("3_ovg4i")]
+
+[node name="PulseAbilityController" parent="Abilities" unique_id=1773241528 instance=ExtResource("4_ovg4i")]
 
 [node name="PickupArea2D" type="Area2D" parent="." unique_id=636212757]
 collision_layer = 16

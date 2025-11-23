@@ -6,6 +6,7 @@
 [resource]
 script = ExtResource("2_m1fg2")
 ability_controller_scene = ExtResource("1_420lo")
+cost = 50
 parent_ability_id = "pulse"
 id = "pulse_ability"
 name = "Pulse Ability"
