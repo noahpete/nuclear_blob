@@ -50,6 +50,7 @@ func _try_add_upgrade_to_pool(new_upgrade_pool: Array[AbilityUpgrade]) -> void:
 	if new_upgrade_pool.size() == 0 or new_upgrade_pool[0] in upgrade_pool:
 		return
 	upgrade_pool += new_upgrade_pool
+	Log.info("Added upgrade pool (example upgrade: %s)" % new_upgrade_pool[0])
 
 func _on_upgrade_selected(upgrade: AbilityUpgrade) -> void:
 	apply_upgrade(upgrade)

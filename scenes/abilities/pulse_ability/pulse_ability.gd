@@ -1,7 +1,7 @@
 class_name PulseAbility
 extends Node2D
 
-@export var knockback_amount: float = 300.0
+@export var knockback_amount: float = 200.0
 
 @onready var destroy_timer: Timer = $DestroyTimer
 @onready var back_gpu_particles_2d: GPUParticles2D = %BackGPUParticles2D

@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="AbilityUpgrade" load_steps=2 format=3 uid="uid://beg83w07rurk5"]
+
+[ext_resource type="Script" uid="uid://ch11bkvw0okee" path="res://resources/upgrades/ability_upgrade.gd" id="1_sar3t"]
+
+[resource]
+script = ExtResource("1_sar3t")
+parent_ability_id = "pulse"
+id = "pulse_damage"
+name = "Harsher Pulse Hit"
+description = "Increase Damage for the Pulse Ability by 10%."
+metadata/_custom_type_script = "uid://ch11bkvw0okee"

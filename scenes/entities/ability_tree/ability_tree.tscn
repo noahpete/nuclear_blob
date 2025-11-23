@@ -1,39 +1,26 @@
-[gd_scene load_steps=9 format=3 uid="uid://nxsecflji2n1"]
+[gd_scene load_steps=7 format=3 uid="uid://nxsecflji2n1"]
 
 [ext_resource type="PackedScene" uid="uid://dyr5f8ibveaix" path="res://scenes/entities/ability_tree_node/ability_tree_node.tscn" id="1_ec83h"]
 [ext_resource type="Resource" uid="uid://chtad3cudp1lb" path="res://resources/upgrades/dash/dash_ability.tres" id="2_64mvu"]
 [ext_resource type="Texture2D" uid="uid://b0ipjkckrublt" path="res://assets/icons/dash_icon.png" id="2_kmt32"]
-[ext_resource type="Texture2D" uid="uid://ccaaim5ifdqq4" path="res://assets/icons/consume_icon.png" id="3_55qlb"]
 [ext_resource type="Texture2D" uid="uid://cgrudlhs31e3c" path="res://assets/icons/pulse_icon.png" id="3_y5lye"]
+[ext_resource type="Resource" uid="uid://ca4d30g0plkeg" path="res://resources/upgrades/pulse/pulse_ability.tres" id="4_75yof"]
 [ext_resource type="Texture2D" uid="uid://cdoknr5fyh7ss" path="res://assets/icons/spray_icon.png" id="4_pxr1v"]
-[ext_resource type="Texture2D" uid="uid://clo7afb804eqg" path="res://assets/icons/spike_icon.png" id="5_erau6"]
-[ext_resource type="Texture2D" uid="uid://bkly4qmi2j24q" path="res://assets/icons/cloud_icon.png" id="7_64mvu"]
 
 [node name="AbilityTree" type="Node2D" unique_id=1751432994]
 
 [node name="AbilityTreeNode" parent="." unique_id=1718034372 instance=ExtResource("1_ec83h")]
 
 [node name="DashAbilityNode" parent="AbilityTreeNode" unique_id=69999793 instance=ExtResource("1_ec83h")]
-position = Vector2(-60, -80)
+position = Vector2(-80, -110)
 ability = ExtResource("2_64mvu")
 ability_icon = ExtResource("2_kmt32")
 
-[node name="PulseAbilityNode" parent="AbilityTreeNode/DashAbilityNode" unique_id=1800889749 instance=ExtResource("1_ec83h")]
-position = Vector2(0, -100)
+[node name="PulseAbilityNode" parent="AbilityTreeNode" unique_id=1800889749 instance=ExtResource("1_ec83h")]
+position = Vector2(0, -140)
+ability = ExtResource("4_75yof")
 ability_icon = ExtResource("3_y5lye")
 
-[node name="ConsumeAbilityNode" parent="AbilityTreeNode" unique_id=1864544927 instance=ExtResource("1_ec83h")]
-position = Vector2(0, -110)
-ability_icon = ExtResource("3_55qlb")
-
-[node name="SpikeAbilityNode" parent="AbilityTreeNode/ConsumeAbilityNode" unique_id=1213176506 instance=ExtResource("1_ec83h")]
-position = Vector2(0, -110)
-ability_icon = ExtResource("5_erau6")
-
 [node name="SprayAbilityNode" parent="AbilityTreeNode" unique_id=1087325389 instance=ExtResource("1_ec83h")]
-position = Vector2(60, -80)
+position = Vector2(80, -110)
 ability_icon = ExtResource("4_pxr1v")
-
-[node name="CloudAbilityNode" parent="AbilityTreeNode/SprayAbilityNode" unique_id=2015774280 instance=ExtResource("1_ec83h")]
-position = Vector2(0, -100)
-ability_icon = ExtResource("7_64mvu")
