@@ -1,9 +1,14 @@
-[gd_scene load_steps=2 format=3 uid="uid://dh6gc4trou3gv"]
+[gd_scene load_steps=3 format=3 uid="uid://dh6gc4trou3gv"]
 
 [ext_resource type="Script" uid="uid://e401m7g77a5n" path="res://scenes/abilities/spray_ability_controller/spray_ability_controller.gd" id="1_vpo0w"]
+[ext_resource type="AudioStream" uid="uid://vex5cwlutn5n" path="res://assets/sounds/hose_spray_short.mp3" id="2_cynxc"]
 
 [node name="SprayAbilityController" type="Node" unique_id=1597562238]
 script = ExtResource("1_vpo0w")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=306814901]
+stream = ExtResource("2_cynxc")
+volume_db = -8.0
 
 [node name="CooldownTimer" type="Timer" parent="." unique_id=744802157]
 one_shot = true

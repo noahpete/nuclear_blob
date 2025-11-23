@@ -25,6 +25,7 @@ func spray() -> void:
 	if not player:
 		return
 
+	$AudioStreamPlayer.play()
 	var spray_instance: SprayAbility = SPRAY_ABILITY.instantiate()
 	Main.instance.y_sort_root.add_child(spray_instance)
 	spray_instance.global_position = player.global_position

@@ -1,8 +1,13 @@
-[gd_scene load_steps=2 format=3 uid="uid://beor57ripam04"]
+[gd_scene load_steps=3 format=3 uid="uid://beor57ripam04"]
 
 [ext_resource type="Script" uid="uid://chmpvbf2wm5ol" path="res://scenes/abilities/dash_ability_controller/dash_ability_controller.gd" id="1_eojki"]
+[ext_resource type="AudioStream" uid="uid://dh14erdk1otoc" path="res://assets/sounds/air_move.wav" id="2_fkhkf"]
 
 [node name="DashAbilityController" type="Node" unique_id=656836596]
 script = ExtResource("1_eojki")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1190111506]
+stream = ExtResource("2_fkhkf")
+volume_db = -8.0
 
 [node name="CooldownTimer" type="Timer" parent="." unique_id=1012415244]

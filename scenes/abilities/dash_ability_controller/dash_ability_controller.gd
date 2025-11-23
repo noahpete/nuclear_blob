@@ -77,6 +77,7 @@ func dash(direction: Vector2) -> void:
 	cooldown_timer.start()
 
 	player.velocity += direction.normalized() * dash_initial_speed
+	$AudioStreamPlayer.play()
 
 	current_dash_ability = DASH_ABILITY.instantiate()
 	Main.instance.y_sort_root.add_child(current_dash_ability, true)

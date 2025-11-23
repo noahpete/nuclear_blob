@@ -24,6 +24,7 @@ func pulse() -> void:
 	if not player:
 		return
 
+	$AudioStreamPlayer.play()
 	var pulse_ability: PulseAbility = PULSE_ABILITY.instantiate()
 	Main.instance.y_sort_root.add_child(pulse_ability)
 	pulse_ability.global_position = player.global_position

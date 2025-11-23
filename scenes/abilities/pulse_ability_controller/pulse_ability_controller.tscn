@@ -1,9 +1,14 @@
-[gd_scene load_steps=2 format=3 uid="uid://b56blvbqrllkp"]
+[gd_scene load_steps=3 format=3 uid="uid://b56blvbqrllkp"]
 
 [ext_resource type="Script" uid="uid://d1yvt4sxknavq" path="res://scenes/abilities/pulse_ability_controller/pulse_ability_controller.gd" id="1_hlo2h"]
+[ext_resource type="AudioStream" uid="uid://bxfw8otwlnxp4" path="res://assets/sounds/body_punch_impact_3.mp3" id="2_4gc8q"]
 
 [node name="PulseAbilityController" type="Node" unique_id=1773241528]
 script = ExtResource("1_hlo2h")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=123331786]
+stream = ExtResource("2_4gc8q")
+volume_db = -8.0
 
 [node name="CooldownTimer" type="Timer" parent="." unique_id=998587339]
 one_shot = true
