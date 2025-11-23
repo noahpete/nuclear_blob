@@ -1,9 +1,36 @@
-[gd_scene load_steps=14 format=3 uid="uid://dyr5f8ibveaix"]
+[gd_scene load_steps=17 format=3 uid="uid://dyr5f8ibveaix"]
 
 [ext_resource type="Script" uid="uid://c40w0ww3fqfip" path="res://scenes/entities/ability_tree_node/ability_tree_node.gd" id="1_he6mp"]
 [ext_resource type="Shader" uid="uid://cihq4jbvcmy1s" path="res://resources/shaders/line_sway.gdshader" id="4_6skot"]
 [ext_resource type="Shader" uid="uid://dmd8ma15d1ulh" path="res://resources/shaders/sway.gdshader" id="4_c4thr"]
 [ext_resource type="Texture2D" uid="uid://b0ipjkckrublt" path="res://assets/icons/dash_icon.png" id="6_s1pa4"]
+
+[sub_resource type="Animation" id="Animation_c4thr"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("GlobSprite2D/IconSprite2D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("GlobSprite2D/IconSprite2D:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
 
 [sub_resource type="Animation" id="Animation_s1pa4"]
 resource_name = "default"
@@ -35,33 +62,6 @@ tracks/1/keys = {
 "values": [Vector2(1, 1), Vector2(1.25, 1.25)]
 }
 
-[sub_resource type="Animation" id="Animation_c4thr"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("GlobSprite2D/IconSprite2D:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("GlobSprite2D/IconSprite2D:scale")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(1, 1)]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_88rb5"]
 _data = {
 &"RESET": SubResource("Animation_c4thr"),
@@ -71,12 +71,13 @@ _data = {
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_c4thr"]
 shader = ExtResource("4_6skot")
 shader_parameter/sway_speed = 2.00000009174012
-shader_parameter/sway_strength = 10.000000475
+shader_parameter/sway_strength_vertical = 10.0
+shader_parameter/sway_strength_horizontal = 5.0
 shader_parameter/noise_scale = 4.000000142499999
 shader_parameter/time_offset = 0.0
 
 [sub_resource type="Gradient" id="Gradient_line"]
-colors = PackedColorArray(0.4117647, 1, 0.83137256, 1, 0.4117647, 1, 0.83137256, 1)
+colors = PackedColorArray(0.16862746, 0.18431373, 0.19607843, 1, 0.16862746, 0.18431373, 0.19607843, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_line"]
 gradient = SubResource("Gradient_line")
@@ -91,15 +92,31 @@ shader_parameter/noise_scale = 2.0000000475
 shader_parameter/time_offset = 0.0
 
 [sub_resource type="Gradient" id="Gradient_6skot"]
+resource_local_to_scene = true
 offsets = PackedFloat32Array(0.5229508, 0.5262295)
-colors = PackedColorArray(0.4117647, 1, 0.83137256, 1, 1, 1, 1, 0)
+colors = PackedColorArray(0.16862746, 0.18431373, 0.19607843, 1, 1, 1, 1, 0)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_s1pa4"]
+resource_local_to_scene = true
 gradient = SubResource("Gradient_6skot")
 width = 32
 height = 32
 fill = 1
 fill_from = Vector2(0.5, 0.5)
+
+[sub_resource type="Gradient" id="Gradient_c4thr"]
+offsets = PackedFloat32Array(0.5625, 0.63962764, 0.64228725)
+colors = PackedColorArray(0.41000003, 1, 0.83283335, 0, 0.4117647, 1, 0.83137256, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_6skot"]
+gradient = SubResource("Gradient_c4thr")
+width = 32
+height = 32
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_c4thr"]
+radius = 15.0
 
 [node name="AbilityTreeNode" type="Node2D" unique_id=1800889749]
 script = ExtResource("1_he6mp")
@@ -126,3 +143,14 @@ texture = SubResource("GradientTexture2D_s1pa4")
 [node name="IconSprite2D" type="Sprite2D" parent="GlobSprite2D" unique_id=153613838]
 unique_name_in_owner = true
 texture = ExtResource("6_s1pa4")
+
+[node name="OutlineSprite2D" type="Sprite2D" parent="." unique_id=486598896]
+unique_name_in_owner = true
+z_index = 1
+material = SubResource("ShaderMaterial_88rb5")
+texture = SubResource("GradientTexture2D_6skot")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1172079062]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1921188679]
+shape = SubResource("CircleShape2D_c4thr")

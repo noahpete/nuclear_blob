@@ -33,7 +33,7 @@ func _ready() -> void:
 		.set_ease(Tween.EASE_IN)
 
 	await get_tree().create_timer(2).timeout
-	liquid.splash(liquid.global_position + Vector2(liquid.liquid_size.x * randf(), 0), randi_range(350, 400) * liquid.splash_multiplier)
+	liquid.splash(liquid.global_position + Vector2(liquid.liquid_size.x * randf(), 0), randi_range(150, 200) * liquid.splash_multiplier)
 	gpu_particles_2d.queue_free()
 
 	var fill_percent: float = min(1, GameState.round_level_reached / MAX_LEVEL)
@@ -43,9 +43,9 @@ func _ready() -> void:
 		.set_ease(Tween.EASE_OUT)
 
 	await get_tree().create_timer(0.5).timeout
-	liquid.splash(liquid.global_position + Vector2(liquid.liquid_size.x * randf(), 0), randi_range(200, 400) * liquid.splash_multiplier)
+	liquid.splash(liquid.global_position + Vector2(liquid.liquid_size.x * randf(), 0), randi_range(100, 200) * liquid.splash_multiplier)
 	await get_tree().create_timer(0.5).timeout
-	liquid.splash(liquid.global_position + Vector2(liquid.liquid_size.x * randf(), 0), randi_range(200, 400) * liquid.splash_multiplier)
+	liquid.splash(liquid.global_position + Vector2(liquid.liquid_size.x * randf(), 0), randi_range(100, 200) * liquid.splash_multiplier)
 
 func _on_restart_button_pressed() -> void:
 	await ScreenTransition.to_black()

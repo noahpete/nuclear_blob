@@ -5,6 +5,9 @@ signal level_up(new_level: int)
 signal glob_picked_up(amount: float)
 signal ability_upgrade_added(upgrade: AbilityUpgrade, current_upgrades: Dictionary)
 
+# UI
+signal ability_selected(ability: Ability)
+
 func emit_player_died() -> void:
 	player_died.emit()
 
@@ -16,3 +19,6 @@ func emit_glob_picked_up(amount: float) -> void:
 
 func emit_ability_upgrade_added(upgrade: AbilityUpgrade, current_upgrades: Dictionary) -> void:
 	ability_upgrade_added.emit(upgrade, current_upgrades)
+
+func emit_ability_selected(ability: Ability) -> void:
+	ability_selected.emit(ability)

@@ -22,7 +22,6 @@ func _process(_delta: float) -> void:
 func shoot(direction: Vector2) -> void:
 	if !fire_rate_timer.is_stopped():
 		return
-
 	var glob_projectile: GlobProjectile = GLOB_PROJECTILE.instantiate()
 	Main.instance.y_sort_root.add_child(glob_projectile, true)
 	glob_projectile.global_position = owner.global_position

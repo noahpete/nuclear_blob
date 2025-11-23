@@ -42,6 +42,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 theme = ExtResource("1_wa01e")
 script = ExtResource("1_bjm25")
 
@@ -76,6 +77,7 @@ process_material = SubResource("ParticleProcessMaterial_bjm25")
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
+mouse_filter = 1
 
 [node name="GlobContainerTextureRect" type="TextureRect" parent="GlobContainerAndTree" unique_id=120714789]
 z_index = 2
@@ -116,9 +118,12 @@ stretch_mode = 5
 
 [node name="Liquid" parent="GlobContainerAndTree/GlobContainerMaskTextureRect" unique_id=802954304 instance=ExtResource("6_esa2c")]
 unique_name_in_owner = true
-position = Vector2(10, 57)
-liquid_size = Vector2(128, 64)
-wave_energy_loss = 0.01
+position = Vector2(-11, 58)
+liquid_size = Vector2(150, 64)
+liquid_physics_speed = 60.0
+liquid_restoring_force = 0.04
+wave_energy_loss = 0.02
+wave_strength = 0.2
 
 [node name="AbilityTree" parent="GlobContainerAndTree" unique_id=1850353781 instance=ExtResource("8_wa01e")]
 position = Vector2(320, 320)
